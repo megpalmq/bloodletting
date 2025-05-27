@@ -189,6 +189,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 10px #3bb298;
   font-family: "Cinzel", serif;
+  color: #0b1412;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .hero .hero-content .buy-button:hover {

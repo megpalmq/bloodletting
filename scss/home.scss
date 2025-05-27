@@ -209,6 +209,7 @@ body {
       border-radius: 4px;
       box-shadow: 0 0 10px $mint;
       font-family: "Cinzel", serif;
+      color: $dark;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
 
       &:hover {
