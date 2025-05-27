@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@600&family=Open+Sans:wght@400;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(to bottom, #61304b 0%, #5c0029 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: rgba(97, 48, 75, 0.95);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+header nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: #acf7c1;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+header nav ul li a:hover {
+  color: #94bfbe;
+  transform: scale(1.1);
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(to right, rgba(92, 0, 41, 0.8), rgba(97, 48, 75, 0.8)), url("https://images.unsplash.com/photo-1618336736819-f2ee6bdb1c34?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.hero .overlay {
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+  max-width: 800px;
+  padding: 2rem;
+}
+.hero .overlay h1 {
+  font-family: "Unbounded", sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #acf7c1;
+  text-shadow: 2px 2px #5c0029;
+}
+.hero .overlay p {
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  padding: 4rem 2rem;
+}
+.story .timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.story .timeline .event {
+  position: relative;
+  padding-left: 1rem;
+}
+.story .timeline .event .text {
+  background-color: #61304b;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  position: relative;
+  z-index: 2;
+  color: #acf7c1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.story .timeline .event .line-to-image {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #acf7c1;
+  animation: lineGrow 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+.story .timeline-image img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100px;
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+body.light-mode {
+  background: linear-gradient(to bottom, #acf7c1, #94bfbe);
+  color: #5c0029;
+}
+body.light-mode header {
+  background-color: rgba(172, 247, 193, 0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+body.light-mode header nav ul li a {
+  color: #5c0029;
+}
+body.light-mode header nav ul li a:hover {
+  color: #857c8d;
+}
+body.light-mode .hero {
+  background: linear-gradient(to right, rgba(172, 247, 193, 0.6), rgba(148, 191, 190, 0.6)), url("PASTE_SAME_IMAGE_HERE") center/cover no-repeat;
+}
+body.light-mode .hero .overlay h1 {
+  color: #5c0029;
+}
+body.light-mode .hero .overlay p {
+  color: #61304b;
+}
+body.light-mode .story {
+  background-color: #ffffff;
+}
+body.light-mode .story h2 {
+  color: #5c0029;
+}
+body.light-mode .story .timeline .event {
+  background-color: #acf7c1;
+}
+body.light-mode .story .timeline .event h3 {
+  color: #61304b;
+}
+body.light-mode .story .timeline .event p {
+  color: #5c0029;
+}
+body.light-mode footer {
+  background-color: #94bfbe;
+  color: #5c0029;
+}
+
+footer {
+  background-color: #5c0029;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}

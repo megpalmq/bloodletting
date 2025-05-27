@@ -1,0 +1,25 @@
+{
+  "name": "bloodletting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "live-server",
+    "compile-sass": "sass scss/styles.scss css/styles.css -w --no-source-map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megpalmq/bloodletting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/megpalmq/bloodletting/issues"
+  },
+  "homepage": "https://github.com/megpalmq/bloodletting#readme",
+  "devDependencies": {
+    "sass": "^1.89.0"
+  }
+}

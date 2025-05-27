@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@600&family=Open+Sans:wght@400;600&display=swap");
+
+$deep-plum: #5c0029;
+$plum: #61304b;
+$purple-gray: #857c8d;
+$cool-blue: #94bfbe;
+$mint: #acf7c1;
+$white: #ffffff;
+$black: #000000;
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(to bottom, $plum 0%, $deep-plum 100%);
+  color: $white;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: rgba($plum, 0.95);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba($black, 0.2);
+
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li a {
+      text-decoration: none;
+      color: $mint;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $cool-blue;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(to right, rgba($deep-plum, 0.8), rgba($plum, 0.8)),
+    url("https://images.unsplash.com/photo-1618336736819-f2ee6bdb1c34?auto=format&fit=crop&w=1400&q=80")
+      center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+
+  .overlay {
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+    max-width: 800px;
+    padding: 2rem;
+
+    h1 {
+      font-family: "Unbounded", sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: $mint;
+      text-shadow: 2px 2px $deep-plum;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: $white;
+    }
+  }
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  padding: 4rem 2rem;
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    .event {
+      position: relative;
+      padding-left: 1rem;
+
+      .text {
+        background-color: $plum;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        position: relative;
+        z-index: 2;
+        color: $mint;
+        box-shadow: 0 4px 12px rgba($black, 0.2);
+      }
+
+      .line-to-image {
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        width: 0;
+        height: 3px;
+        background-color: $mint;
+        animation: lineGrow 1s ease-out forwards;
+        animation-delay: 0.3s;
+      }
+    }
+  }
+
+  .timeline-image {
+    img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba($black, 0.25);
+      animation: fadeIn 1s ease-out 0.5s forwards;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100px; // Adjust for spacing
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  &.light-mode {
+    background: linear-gradient(to bottom, $mint, $cool-blue);
+    color: $deep-plum;
+
+    header {
+      background-color: rgba($mint, 0.95);
+      box-shadow: 0 4px 10px rgba($black, 0.1);
+
+      nav ul li a {
+        color: $deep-plum;
+
+        &:hover {
+          color: $purple-gray;
+        }
+      }
+    }
+
+    .hero {
+      background: linear-gradient(
+          to right,
+          rgba($mint, 0.6),
+          rgba($cool-blue, 0.6)
+        ),
+        url("PASTE_SAME_IMAGE_HERE") center/cover no-repeat;
+
+      .overlay {
+        h1 {
+          color: $deep-plum;
+        }
+
+        p {
+          color: $plum;
+        }
+      }
+    }
+
+    .story {
+      background-color: $white;
+
+      h2 {
+        color: $deep-plum;
+      }
+
+      .timeline .event {
+        background-color: $mint;
+
+        h3 {
+          color: $plum;
+        }
+
+        p {
+          color: $deep-plum;
+        }
+      }
+    }
+
+    footer {
+      background-color: $cool-blue;
+      color: $deep-plum;
+    }
+  }
+}
+
+footer {
+  background-color: $deep-plum;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: $white;
+}
+
+// ✨ Animations
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
