@@ -87,17 +87,6 @@ body {
     }
   }
 
-  .glitch {
-    animation: glitchText 1s steps(2, end) infinite;
-  }
-
-  &.rough-edge {
-    &::before {
-      background: url("/images/nav-rough.png");
-      opacity: 0.5;
-    }
-  }
-
   // Responsive
   @media (max-width: 768px) {
     .hamburger {
