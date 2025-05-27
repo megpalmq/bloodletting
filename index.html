@@ -3,101 +3,122 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Board Game</title>
+    <title>Ruined King</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Story</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">My Board Game</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="cursor-glow"></div>
+    <nav class="navbar">
+      <div class="logo glitch">MyLogo</div>
+      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
 
     <section class="hero">
-      <div class="overlay">
-        <h1>MY FEATURED GAME</h1>
-        <p>
-          A thrilling tabletop adventure through enchanted realms and legendary
-          quests. Assemble your party. Roll your fate.
+      <img src="/assets/images/guy.png" alt="Ruined King" class="hero-image" />
+      <div class="hero-content">
+        <h1>Bloodletting</h1>
+        <h2>A League of Legends Story</h2>
+        <p class="hero-description">
+          Four apocalyptic cults — War, Famine, Pestilence, and Death — vie for
+          control of the kingdom. Each spreads their influence through unique
+          troops, battle cards, and secret objectives, while sabotaging their
+          rivals. The War faction leads with brutal force and relentless
+          tactics.
         </p>
+        <br />
+        <p>Will you follow the path of destruction or rise to stop them?</p>
+        <button class="buy-button">Join the War</button>
       </div>
+      <div class="fog fog-1"></div>
+    </section>
+    <section class="learn-about">
+      <h2>Learn About the Game</h2>
+      <p>
+        Discover the story, strategy, and secrets behind this immersive
+        experience. From the four legendary regions to the powerful characters,
+        dive into what makes this game unforgettable.
+      </p>
+      <button onclick="location.href='#about-game'">Explore More</button>
     </section>
 
-    <section class="story-section">
-      <h2 class="section-title">Our Story</h2>
-      <div class="timeline">
-        <!-- Event 1 -->
-        <div class="timeline-block left">
-          <div class="timeline-img">
-            <img src="/assets/img/game-launch.jpg" alt="Game Launch" />
-          </div>
-          <div class="timeline-content">
-            <h3>I Buy Game</h3>
-            <p>
-              We launched our first RPG with a pre-sale event and glowing
-              reception.
-            </p>
-            <span class="date">01/01/2020</span>
-          </div>
+    <section class="regions">
+      <h2>The Factions</h2>
+
+      <div class="regions-row">
+        <div class="region death">
+          <img src="assets/images/death.png" alt="Death Faction Character" />
+          <h3>Death Faction</h3>
+          <p class="description">
+            Masters of the afterlife, Death's faction rules over the balance
+            between life and oblivion.
+          </p>
+          <button>Explore</button>
         </div>
 
-        <!-- Event 2 -->
-        <div class="timeline-block right">
-          <div class="timeline-img">
-            <img src="/assets/img/character.jpg" alt="Create Character" />
-          </div>
-          <div class="timeline-content">
-            <h3>Create Character</h3>
-            <p>
-              Players designed their own heroes, bringing life to the world’s
-              lore.
-            </p>
-            <span class="date">03/07/2020</span>
-          </div>
+        <div class="region famine">
+          <img src="assets/images/famine.png" alt="Famine Faction Character" />
+          <h3>Famine Faction</h3>
+          <p class="description">
+            Bringers of scarcity, they manipulate resources and survival in
+            times of hardship.
+          </p>
+          <button>Explore</button>
         </div>
 
-        <!-- Event 3 -->
-        <div class="timeline-block left">
-          <div class="timeline-img">
-            <img src="/assets/img/fight.jpg" alt="Play With Friends" />
-          </div>
-          <div class="timeline-content">
-            <h3>Play With Friend</h3>
-            <p>
-              Multiplayer battles and co-op storytelling connected communities.
-            </p>
-            <span class="date">09/07/2020</span>
-          </div>
+        <div class="region pestilence">
+          <img
+            src="assets/images/pest.png"
+            alt="Pestilence Faction Character"
+          />
+          <h3>Pestilence Faction</h3>
+          <p class="description">
+            Spreading plagues and chaos, Pestilence weakens enemies through
+            disease and decay.
+          </p>
+          <button>Explore</button>
         </div>
 
-        <!-- Event 4 -->
-        <div class="timeline-block right">
-          <div class="timeline-img">
-            <img src="/assets/img/final-battle.jpg" alt="End Game" />
-          </div>
-          <div class="timeline-content">
-            <h3>End Game</h3>
-            <p>The final chapter brought epic boss fights and legacy saves.</p>
-            <span class="date">12/12/2020</span>
-          </div>
+        <div class="region war">
+          <img src="assets/images/war.png" alt="War Faction Character" />
+          <h3>War Faction</h3>
+          <p class="description">
+            Warlords and strategists, this faction thrives in the heat of battle
+            and conflict.
+          </p>
+          <button>Explore</button>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>&copy; 2025 My Board Game Co. All rights reserved.</p>
+      <p>&copy; Riot Games. All rights reserved.</p>
     </footer>
-    <script>
-      const toggleBtn = document.getElementById("themeToggle");
-      toggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-      });
-    </script>
+    <script src="js/app.js"></script>
   </body>
 </html>
