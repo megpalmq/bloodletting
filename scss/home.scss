@@ -76,7 +76,7 @@ body {
         color: $light;
         text-decoration: none;
         text-transform: uppercase;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         transition: color 0.3s ease;
 
         &:hover {
@@ -172,7 +172,7 @@ body {
     animation: fadeInUp 2s ease-out;
     max-width: 90%;
     margin: 0 auto;
-    right: 200px;
+    right: 130px;
 
     h1 {
       font-size: 4rem;
@@ -510,6 +510,10 @@ body {
       box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
     }
   }
+}
+footer {
+  height: 200px;
+  position: relative;
 }
 @media (max-width: 1200px) {
   .regions {
