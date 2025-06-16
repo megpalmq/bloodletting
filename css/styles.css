@@ -347,32 +347,76 @@ body {
   text-shadow: 0 0 8px #5df2d6, 0 0 15px #3bb298;
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-3deg);
+  }
+  30% {
+    transform: rotate(3deg);
+  }
+  45% {
+    transform: rotate(-2deg);
+  }
+  60% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes float {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
 .regions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4rem;
-  gap: 3rem;
-  height: 70vh;
+  height: auto;
 }
 .regions h2 {
-  font-size: 3rem;
+  font-size: 5rem;
   color: #f0f0f0;
   text-shadow: 0 0 10px #5df2d6, 0 0 25px #5df2d6;
   margin-bottom: 0;
   text-align: center;
+  margin-top: 50px;
 }
 .regions .regions-row {
   display: flex;
+  flex-wrap: nowrap;
   gap: 3rem;
   justify-content: center;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   padding-top: 200px;
   max-width: 1920px;
 }
 .regions .region {
-  background: rgba(255, 255, 255, 0.08);
   border: 2px solid transparent;
   padding: 2.5rem 1.5rem 1rem;
   width: 100%;
@@ -391,8 +435,10 @@ body {
 }
 .regions .region:hover {
   transform: scale(1.07);
-  box-shadow: 0 0 35px rgba(0, 255, 200, 0.4);
-  border: 2px solid #5df2d6;
+  backdrop-filter: blur(20px);
+}
+.regions .region:hover img {
+  animation: float 4s ease-in-out infinite;
 }
 .regions .region h3 {
   font-size: 2rem;
@@ -403,7 +449,7 @@ body {
   letter-spacing: 1px;
 }
 .regions .region .description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: center;
   color: white;
   margin-bottom: 1.5rem;
@@ -412,13 +458,12 @@ body {
 }
 .regions .region img {
   position: absolute;
-  top: -230px;
+  margin-top: 200px;
   left: 50%;
   transform: translateX(-50%);
   width: 260px;
   height: auto;
   z-index: 3;
-  animation: float 4s ease-in-out infinite;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
 }
 .regions .region button {
@@ -443,6 +488,9 @@ body {
   box-shadow: 0 0 14px #5df2d6, 0 0 22px #5df2d6;
   transform: scale(1.05);
 }
+.regions .region.death, .regions .region.war, .regions .region.pestilence, .regions .region.famine {
+  height: 600px;
+}
 .regions .region.death {
   border-color: rgba(255, 0, 100, 0.4);
   box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
@@ -459,113 +507,102 @@ body {
   border-color: rgba(255, 255, 0, 0.4);
   box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
 }
-
-footer {
-  height: 200px;
-  position: relative;
-}
-
 @media (max-width: 1200px) {
-  .regions {
-    margin-top: 7rem;
-    height: auto;
-    gap: 2rem;
-  }
   .regions h2 {
-    font-size: 2rem;
-    padding: 0 1rem;
+    font-size: 4rem;
+  }
+  .regions .regions-row {
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .regions .region {
+    max-width: 380px;
+  }
+}
+@media (max-width: 768px) {
+  .regions h2 {
+    font-size: 3.2rem;
   }
   .regions .regions-row {
     flex-direction: column;
-    gap: 2rem;
-    padding-top: 300px;
-    align-items: center;
+    flex-wrap: nowrap;
+    padding-top: 100px;
   }
   .regions .region {
     max-width: 90%;
-    height: 400px;
-    padding: 2rem 1rem 1rem;
+    padding: 2rem 1rem;
+    height: auto;
   }
   .regions .region img {
-    top: 150px;
-    width: 180px;
+    width: 280px;
+    margin-top: 150px;
   }
   .regions .region h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .regions .region .description {
-    font-size: 1rem;
-    padding: 0;
-  }
-  .regions .region button {
-    padding: 0.8rem 1.6rem;
     font-size: 0.95rem;
   }
 }
 @media (max-width: 480px) {
-  .regions {
-    margin-top: 5rem;
-    gap: 1.5rem;
-  }
   .regions h2 {
-    font-size: 1.7rem;
-    padding: 0 0.5rem;
-  }
-  .regions .regions-row {
-    padding-top: 200px;
-    gap: 1.5rem;
+    font-size: 2.5rem;
   }
   .regions .region {
-    height: 400px;
-    padding: 1.5rem 1rem 1rem;
+    margin: 0 auto;
+    height: auto;
+    min-height: 380px;
+    padding: 2rem 1rem;
   }
   .regions .region img {
-    top: 160px;
-    width: 150px;
+    width: 200px;
+    padding: 50px;
+    margin-top: 120px;
   }
   .regions .region h3 {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
   }
   .regions .region .description {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    padding: 0 0.5rem;
   }
   .regions .region button {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    padding: 0.8rem 1.4rem;
+  }
+  .regions .region.death, .regions .region.war, .regions .region.pestilence, .regions .region.famine {
+    height: auto !important;
+    min-height: 420px;
   }
 }
 @media (max-width: 330px) {
-  .regions {
-    margin-top: 5rem;
-    gap: 1.5rem;
-  }
   .regions h2 {
-    font-size: 1.7rem;
-    padding: 0 0.5rem;
-  }
-  .regions .regions-row {
-    padding-top: 200px;
-    gap: 1.5rem;
+    font-size: 2rem;
   }
   .regions .region {
-    height: 450px;
-    padding: 1.5rem 1rem 1rem;
+    padding: 1.5rem 0.5rem;
+    min-height: 200px;
   }
   .regions .region img {
-    top: 200px;
-    width: 150px;
+    width: 160px;
+    margin-top: 100px;
   }
   .regions .region h3 {
     font-size: 1.3rem;
   }
   .regions .region .description {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   .regions .region button {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    padding: 0.6rem 1.2rem;
   }
 }
+
+footer {
+  min-height: 200px;
+}
+
 footer {
   height: 100px;
   justify-content: center;
@@ -633,74 +670,478 @@ footer {
     transform: translateX(20%) scale(1.6);
   }
 }
-.rules {
-  background: #0f0f0f;
-  color: #e0e0e0;
-  padding: 4rem 2rem;
-  font-family: "Cinzel", serif;
+.how-to-play-page {
+  min-height: 100vh;
+  padding: 3rem 2rem 5rem;
+  background: linear-gradient(135deg, #0b0f1f, #000000);
+  color: #f1f1f1;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
-.rules .fog {
+.how-to-play-page::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
-  width: 180vw;
-  height: 100vh;
-  background: url("/assets/images/mist.jpeg") center/cover no-repeat;
-  opacity: 0.7;
-  animation: floatFog 30s linear infinite;
-  pointer-events: none;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: particleMove 60s linear infinite;
+  z-index: 0;
+}
+.how-to-play-page header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 10;
+}
+.how-to-play-page header h1 {
+  font-family: "Cinzel", serif;
+  font-size: 5rem;
+  font-weight: 900;
+  margin-top: 100px;
+  background: linear-gradient(90deg, #76fff9, #f1f1f1, #76fff9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px #76fff9, 0 0 20px #f1f1f1, 0 0 30px #76fff9;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  user-select: none;
+}
+.how-to-play-page header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 60%);
+  transform: translate(-50%, -50%);
+  filter: blur(15px);
+  z-index: -1;
+  animation: pulseGlow 4s ease-in-out infinite;
+  border-radius: 50%;
+}
+.how-to-play-page .yap {
+  font-size: 1rem;
+  width: 50%;
+  margin: 0 auto;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  padding-bottom: 200px;
+}
+.how-to-play-page .objective {
+  background-color: #00ffe7;
+  width: 70%;
+  color: #000000;
+}
+.how-to-play-page .timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  z-index: 10;
+}
+.how-to-play-page .timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  background: linear-gradient(180deg, #00ffe7, transparent 40%, #00ffe7 80%);
+  box-shadow: 0 0 12px #00ffe7, 0 0 25px #00ffe7;
+  border-radius: 4px;
+  filter: drop-shadow(0 0 6px #00ffe7);
   z-index: -1;
 }
-.rules .fog.fog-1 {
-  animation-delay: 0s;
+.how-to-play-page .step {
+  position: relative;
+  width: 45%;
+  right: 0;
+  margin: 4rem 0;
+  padding: 2.5rem 3rem;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2rem 1rem 2rem 1rem;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 25px rgba(0, 255, 230, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.8);
+  color: #f1f1f1;
+  font-family: "Open Sans", sans-serif;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.rules .container {
-  max-width: 960px;
+.how-to-play-page .step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.how-to-play-page .step::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  width: 24px;
+  height: 24px;
+  background: #00ffe7;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00ffe7, 0 0 18px rgba(0, 255, 230, 0.8);
+  filter: drop-shadow(0 0 8px #00ffe7);
+  z-index: 10;
   margin: 0 auto;
-  padding: 2rem;
-  background: linear-gradient(to bottom right, #1a1a1a, #292929);
-  border: 1px solid #444;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+  animation: pulseGlow 2.5s ease-in-out infinite;
 }
-.rules h1 {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #ff4d4d;
-  text-shadow: 0 0 10px #ff4d4d;
+.how-to-play-page .step .icon {
+  font-size: 60px;
 }
-.rules .rule-section {
-  margin-bottom: 3rem;
+.how-to-play-page .step:nth-child(odd) {
+  margin-left: 18px;
+  margin-right: auto;
+  border-radius: 2rem 1rem 1rem 2rem;
 }
-.rules .rule-section h2 {
+.how-to-play-page .step:nth-child(odd)::before {
+  left: 100%;
+  transform: translateX(50%);
+}
+.how-to-play-page .step:nth-child(even) {
+  margin-left: auto;
+  margin-right: 18px;
+  border-radius: 1rem 2rem 2rem 1rem;
+}
+.how-to-play-page .step:nth-child(even)::before {
+  right: 100%;
+  transform: translateX(-55%);
+}
+.how-to-play-page .step:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 255, 230, 0.5), inset 0 0 22px rgba(255, 255, 255, 0.15);
+  cursor: default;
+}
+.how-to-play-page .step:hover::before {
+  animation-duration: 1.5s;
+  box-shadow: 0 0 18px #00ffe7, 0 0 30px rgb(0, 255, 230);
+}
+.how-to-play-page .step:hover .icon {
+  transform: translateY(-10px);
+  filter: drop-shadow(0 0 10px #00ffe7);
+}
+.how-to-play-page .step .step-number {
+  position: absolute;
+  top: -300px;
+  right: 10%;
+  font-size: 30rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.8);
+  user-select: none;
+  font-family: "Cinzel", serif;
+  pointer-events: none;
+}
+.how-to-play-page .step .step-number:nth-child(odd) .how-to-play-page .step .step-number {
+  margin-left: 100px;
+}
+.how-to-play-page .step .step-number:nth-child(even) .how-to-play-page .step .step-number {
+  right: -3rem;
+}
+.how-to-play-page .step .two,
+.how-to-play-page .step .three,
+.how-to-play-page .step .five {
+  right: -5%;
+  font-size: 27rem;
+}
+.how-to-play-page .step .icon {
+  font-size: 80px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 230, 0.7));
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+.how-to-play-page .step h3 {
+  font-family: "Cinzel", serif;
   font-size: 2rem;
-  color: #e63946;
-  border-bottom: 2px solid #e63946;
-  padding-bottom: 0.5rem;
   margin-bottom: 1rem;
+  text-shadow: 0 0 10px #00ffe7;
+  user-select: none;
+  margin-top: 50px;
 }
-.rules .rule-section h3 {
+.how-to-play-page .step p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: white;
+  padding-right: 1rem;
+  user-select: text;
+}
+.how-to-play-page .start-game-cta {
+  margin-top: 5rem;
+  text-align: center;
+}
+.how-to-play-page .start-game-cta button {
+  padding: 1rem 3rem;
   font-size: 1.5rem;
-  margin-top: 1.5rem;
-  color: #f1a208;
+  font-family: "Cinzel", serif;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg, #f1f1f1, #76fff9);
+  color: #000000;
+  box-shadow: 0 0 25px #76fff9, 0 0 45px #f1f1f1;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.rules .rule-section ul,
-.rules .rule-section ol {
-  margin-left: 2rem;
-  padding-left: 1rem;
+.how-to-play-page .start-game-cta button:hover {
+  background: linear-gradient(45deg, #76fff9, #f1f1f1);
+  box-shadow: 0 0 50px #76fff9, 0 0 80px #f1f1f1;
+  transform: scale(1.1);
 }
-.rules .rule-section ul li,
-.rules .rule-section ol li {
-  padding: 0.3rem 0;
-  line-height: 1.6;
+
+@keyframes particleMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+    margin: 0 auto;
+  }
 }
-.rules .rule-section p,
-.rules .rule-section em {
-  line-height: 1.8;
-  margin-bottom: 1rem;
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 8px #76fff9, 0 0 20px #f1f1f1, 0 0 30px #76fff9;
+  }
+  100% {
+    text-shadow: 0 0 14px #76fff9, 0 0 30px #76fff9, 0 0 45px #f1f1f1;
+  }
 }
-.rules .rule-section em {
-  color: #aaa;
-  font-style: italic;
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #00ffe7, 0 0 18px rgba(0, 255, 230, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 18px #00ffe7, 0 0 30px rgb(0, 255, 230);
+  }
+}
+@media (max-width: 1024px) {
+  .how-to-play-page {
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .how-to-play-page header h1 {
+    font-size: 4rem;
+    margin-top: 80px;
+  }
+  .how-to-play-page header::after {
+    width: 140px;
+    height: 140px;
+  }
+  .how-to-play-page .yap {
+    width: 70%;
+    padding-bottom: 150px;
+  }
+  .how-to-play-page .objective {
+    width: 80%;
+  }
+  .how-to-play-page .timeline {
+    max-width: 700px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .how-to-play-page .timeline::before {
+    width: 5px;
+  }
+  .how-to-play-page .step {
+    width: 48%;
+    margin: 3rem 0;
+    padding: 2rem 2.5rem;
+  }
+  .how-to-play-page .step::before {
+    width: 20px;
+    height: 20px;
+  }
+  .how-to-play-page .step .icon {
+    font-size: 55px;
+    margin-bottom: 0.8rem;
+  }
+  .how-to-play-page .step h3 {
+    font-size: 1.7rem;
+    margin-top: 40px;
+  }
+  .how-to-play-page .step p {
+    font-size: 1rem;
+    padding-right: 0.8rem;
+  }
+  .how-to-play-page .step .step-number {
+    font-size: 20rem;
+    top: -250px;
+    right: 8%;
+  }
+  .how-to-play-page .step .two,
+  .how-to-play-page .step .three,
+  .how-to-play-page .step .five {
+    font-size: 18rem;
+    right: -4%;
+  }
+  .how-to-play-page .start-game-cta {
+    margin-top: 4rem;
+  }
+  .how-to-play-page .start-game-cta button {
+    padding: 0.9rem 2.5rem;
+    font-size: 1.3rem;
+    border-radius: 25px;
+  }
+}
+@media (max-width: 768px) {
+  .how-to-play-page {
+    padding: 2rem 1rem 3rem;
+  }
+  .how-to-play-page header h1 {
+    font-size: 3rem;
+    margin-top: 60px;
+  }
+  .how-to-play-page header::after {
+    width: 120px;
+    height: 120px;
+  }
+  .how-to-play-page .yap {
+    width: 90%;
+    padding-bottom: 120px;
+  }
+  .how-to-play-page .objective {
+    width: 90%;
+  }
+  .how-to-play-page .timeline {
+    max-width: 600px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .how-to-play-page .timeline::before {
+    width: 4px;
+  }
+  .how-to-play-page .step {
+    width: 90%; /* or a fixed max-width like max-width: 400px; */
+    margin: 2.5rem auto;
+    padding: 1.8rem 2rem;
+    justify-content: center;
+  }
+  .how-to-play-page .step::before {
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50% !important;
+    right: auto !important;
+  }
+  .how-to-play-page .step:nth-child(odd)::before, .how-to-play-page .step:nth-child(even)::before {
+    display: none;
+  }
+  .how-to-play-page .step:nth-child(odd)::before {
+    margin: 0 auto;
+  }
+  .how-to-play-page .step:nth-child(even)::before {
+    margin: 0 auto;
+  }
+  .how-to-play-page .step .icon {
+    font-size: 50px;
+    margin-bottom: 0.6rem;
+  }
+  .how-to-play-page .step h3 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    width: 50%;
+  }
+  .how-to-play-page .step p {
+    font-size: 0.95rem;
+    padding-right: 0;
+    width: 70%;
+  }
+  .how-to-play-page .step .step-number {
+    font-size: 10rem;
+    margin-left: 300px;
+    left: 0;
+    margin-top: 270px;
+  }
+  .start-game-cta {
+    margin-top: 3rem;
+  }
+  .start-game-cta button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 22px;
+  }
+}
+@media (max-width: 480px) {
+  .how-to-play-page {
+    padding: 2rem 1rem 3rem;
+  }
+  .how-to-play-page header h1 {
+    font-size: 3rem;
+    margin-top: 60px;
+  }
+  .how-to-play-page header::after {
+    width: 120px;
+    height: 120px;
+  }
+  .how-to-play-page .yap {
+    width: 90%;
+    padding-bottom: 120px;
+  }
+  .how-to-play-page .objective {
+    width: 90%;
+  }
+  .how-to-play-page .timeline {
+    max-width: 600px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .how-to-play-page .timeline::before {
+    width: 4px;
+  }
+  .how-to-play-page .step {
+    width: 90%; /* or a fixed max-width like max-width: 400px; */
+    margin: 2.5rem auto;
+    padding: 1.8rem 2rem;
+    justify-content: center;
+  }
+  .how-to-play-page .step::before {
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50% !important;
+    right: auto !important;
+  }
+  .how-to-play-page .step:nth-child(odd)::before, .how-to-play-page .step:nth-child(even)::before {
+    display: none;
+  }
+  .how-to-play-page .step:nth-child(odd)::before {
+    margin: 0 auto;
+  }
+  .how-to-play-page .step:nth-child(even)::before {
+    margin: 0 auto;
+  }
+  .how-to-play-page .step .icon {
+    font-size: 50px;
+    margin-bottom: 0.6rem;
+  }
+  .how-to-play-page .step h3 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    width: 100%;
+  }
+  .how-to-play-page .step p {
+    font-size: 0.95rem;
+    padding-right: 0;
+    width: 100%;
+  }
+  .how-to-play-page .step .step-number {
+    font-size: 10rem;
+    margin-left: 300px;
+    left: 0;
+    margin-top: 270px;
+  }
+  .start-game-cta {
+    margin-top: 3rem;
+  }
+  .start-game-cta button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 22px;
+  }
 }

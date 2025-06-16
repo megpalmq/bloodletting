@@ -1,78 +1,547 @@
-.rules {
-  background: #0f0f0f;
-  color: #e0e0e0;
-  padding: 4rem 2rem;
-  font-family: "Cinzel", serif;
-  .fog {
+// Variables for colors & fonts
+$bg-gradient-start: #0b0f1f;
+$bg-gradient-end: #000000;
+$accent-glow: #00ffe7;
+$highlight1: #76fff9;
+$highlight2: #f1f1f1;
+$highlight3: #76fff9;
+$text-light: #f1f1f1;
+$font-title: "Cinzel", serif;
+$font-body: "Open Sans", sans-serif;
+
+.how-to-play-page {
+  min-height: 100vh;
+  padding: 3rem 2rem 5rem;
+  background: linear-gradient(135deg, $bg-gradient-start, $bg-gradient-end);
+  color: $text-light;
+  font-family: $font-body;
+  position: relative;
+  overflow-x: hidden;
+
+  // Subtle animated particle background (dots)
+  &::before {
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
-    width: 180vw;
-    height: 100vh;
-    background: url("/assets/images/mist.jpeg") center/cover no-repeat;
-    opacity: 0.7;
-    animation: floatFog 30s linear infinite;
-    pointer-events: none;
-    z-index: -1;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: particleMove 60s linear infinite;
 
-    &.fog-1 {
-      animation-delay: 0s;
-    }
-  }
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: linear-gradient(to bottom right, #1a1a1a, #292929);
-    border: 1px solid #444;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+    z-index: 0;
   }
 
-  h1 {
-    font-size: 3rem;
+  // Page Header
+  header {
     text-align: center;
-    margin-bottom: 2rem;
-    color: #ff4d4d;
-    text-shadow: 0 0 10px #ff4d4d;
+    margin-bottom: 4rem;
+    position: relative;
+    z-index: 10;
+    h1 {
+      font-family: $font-title;
+      font-size: 5rem;
+      font-weight: 900;
+      margin-top: 100px;
+      background: linear-gradient(90deg, $highlight1, $highlight2, $highlight3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 8px $highlight1, 0 0 20px $highlight2,
+        0 0 30px $highlight3;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+      user-select: none;
+    }
+
+    // Optional sparkle burst behind the title
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.2),
+        transparent 60%
+      );
+      transform: translate(-50%, -50%);
+      filter: blur(15px);
+      z-index: -1;
+      animation: pulseGlow 4s ease-in-out infinite;
+      border-radius: 50%;
+    }
+  }
+  .yap {
+    font-size: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    font-family: $font-body;
+    text-align: center;
+    padding-bottom: 200px;
+  }
+  .objective {
+    background-color: #00ffe7;
+    width: 70%;
+    color: #000000;
+  }
+  // Timeline container - vertical glowing line in center
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    z-index: 10;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      background: linear-gradient(
+        180deg,
+        $accent-glow,
+        transparent 40%,
+        $accent-glow 80%
+      );
+      box-shadow: 0 0 12px $accent-glow, 0 0 25px $accent-glow;
+      border-radius: 4px;
+      filter: drop-shadow(0 0 6px $accent-glow);
+      z-index: -1;
+    }
   }
 
-  .rule-section {
-    margin-bottom: 3rem;
-
-    h2 {
-      font-size: 2rem;
-      color: #e63946;
-      border-bottom: 2px solid #e63946;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+  // Each Step - alternating left & right
+  .step {
+    position: relative;
+    width: 45%;
+    right: 0;
+    margin: 4rem 0;
+    padding: 2.5rem 3rem;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 2rem 1rem 2rem 1rem;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 25px rgba(0, 255, 230, 0.25),
+      inset 0 0 15px rgba(255, 255, 255, 0.8);
+    color: $text-light;
+    font-family: $font-body;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    // Floating glow orb (timeline point)
+    &::before {
+      content: "";
+      position: absolute;
+      top: 2rem;
+      width: 24px;
+      height: 24px;
+      background: $accent-glow;
+      border-radius: 50%;
+      box-shadow: 0 0 10px $accent-glow, 0 0 18px rgba(0, 255, 230, 0.8);
+      filter: drop-shadow(0 0 8px $accent-glow);
+      z-index: 10;
+      margin: 0 auto;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    .icon {
+      font-size: 60px;
     }
 
-    h3 {
-      font-size: 1.5rem;
-      margin-top: 1.5rem;
-      color: #f1a208;
-    }
+    // Odd steps on left side
+    &:nth-child(odd) {
+      margin-left: 18px;
+      margin-right: auto;
+      border-radius: 2rem 1rem 1rem 2rem;
 
-    ul,
-    ol {
-      margin-left: 2rem;
-      padding-left: 1rem;
-      li {
-        padding: 0.3rem 0;
-        line-height: 1.6;
+      &::before {
+        left: 100%;
+        transform: translateX(50%);
       }
     }
 
-    p,
-    em {
-      line-height: 1.8;
-      margin-bottom: 1rem;
+    // Even steps on right side
+    &:nth-child(even) {
+      margin-left: auto;
+      margin-right: 18px;
+      border-radius: 1rem 2rem 2rem 1rem;
+
+      &::before {
+        right: 100%;
+        transform: translateX(-55%);
+      }
     }
 
-    em {
-      color: #aaa;
-      font-style: italic;
+    // Hover effect - slight scale & glow intensifies
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(0, 255, 230, 0.5),
+        inset 0 0 22px rgba(255, 255, 255, 0.15);
+      cursor: default;
+
+      &::before {
+        animation-duration: 1.5s;
+        box-shadow: 0 0 18px $accent-glow, 0 0 30px rgba(0, 255, 230, 1);
+      }
+
+      .icon {
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 10px $accent-glow);
+      }
+    }
+
+    // Step number big, faded behind text
+    .step-number {
+      position: absolute;
+      top: -300px;
+      right: 10%;
+      font-size: 30rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.8);
+      user-select: none;
+      font-family: $font-title;
+      pointer-events: none;
+      &:nth-child(odd) & {
+        margin-left: 100px;
+      }
+      &:nth-child(even) & {
+        right: -3rem;
+      }
+    }
+
+    .two,
+    .three,
+    .five {
+      right: -5%;
+      font-size: 27rem;
+    }
+
+    // Step icon - floating with glow
+    .icon {
+      font-size: 80px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 230, 0.7));
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    h3 {
+      font-family: $font-title;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px $accent-glow;
+      user-select: none;
+      margin-top: 50px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: lighten($text-light, 10%);
+      padding-right: 1rem;
+      user-select: text;
+    }
+  }
+
+  // Call to action area
+  .start-game-cta {
+    margin-top: 5rem;
+    text-align: center;
+
+    button {
+      padding: 1rem 3rem;
+      font-size: 1.5rem;
+      font-family: $font-title;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(45deg, $highlight2, $highlight3);
+      color: $bg-gradient-end;
+      box-shadow: 0 0 25px $highlight3, 0 0 45px $highlight2;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(45deg, $highlight3, $highlight2);
+        box-shadow: 0 0 50px $highlight3, 0 0 80px $highlight2;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// ANIMATIONS
+@keyframes particleMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+    margin: 0 auto;
+  }
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 8px $highlight1, 0 0 20px $highlight2, 0 0 30px $highlight3;
+  }
+  100% {
+    text-shadow: 0 0 14px $highlight3, 0 0 30px $highlight1,
+      0 0 45px $highlight2;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px $accent-glow, 0 0 18px rgba(0, 255, 230, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 18px $accent-glow, 0 0 30px rgba(0, 255, 230, 1);
+  }
+}
+@media (max-width: 1024px) {
+  .how-to-play-page {
+    padding: 2.5rem 1.5rem 4rem;
+    header {
+      h1 {
+        font-size: 4rem;
+        margin-top: 80px;
+      }
+      &::after {
+        width: 140px;
+        height: 140px;
+      }
+    }
+    .yap {
+      width: 70%;
+      padding-bottom: 150px;
+    }
+    .objective {
+      width: 80%;
+    }
+    .timeline {
+      max-width: 700px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      &::before {
+        width: 5px;
+      }
+    }
+    .step {
+      width: 48%;
+      margin: 3rem 0;
+      padding: 2rem 2.5rem;
+      &::before {
+        width: 20px;
+        height: 20px;
+      }
+      .icon {
+        font-size: 55px;
+        margin-bottom: 0.8rem;
+      }
+      h3 {
+        font-size: 1.7rem;
+        margin-top: 40px;
+      }
+      p {
+        font-size: 1rem;
+        padding-right: 0.8rem;
+      }
+      .step-number {
+        font-size: 20rem;
+        top: -250px;
+        right: 8%;
+      }
+      .two,
+      .three,
+      .five {
+        font-size: 18rem;
+        right: -4%;
+      }
+    }
+    .start-game-cta {
+      margin-top: 4rem;
+      button {
+        padding: 0.9rem 2.5rem;
+        font-size: 1.3rem;
+        border-radius: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .how-to-play-page {
+    padding: 2rem 1rem 3rem;
+    header {
+      h1 {
+        font-size: 3rem;
+        margin-top: 60px;
+      }
+      &::after {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    .yap {
+      width: 90%;
+      padding-bottom: 120px;
+    }
+    .objective {
+      width: 90%;
+    }
+    .timeline {
+      max-width: 600px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      &::before {
+        width: 4px;
+      }
+    }
+    .step {
+      width: 90%; /* or a fixed max-width like max-width: 400px; */
+      margin: 2.5rem auto;
+      padding: 1.8rem 2rem;
+      justify-content: center;
+
+      &::before {
+        width: 18px;
+        height: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 50% !important;
+        right: auto !important;
+      }
+      &:nth-child(odd)::before,
+      &:nth-child(even)::before {
+        display: none;
+      }
+      &:nth-child(odd)::before {
+        margin: 0 auto;
+      }
+      &:nth-child(even)::before {
+        margin: 0 auto;
+      }
+      .icon {
+        font-size: 50px;
+        margin-bottom: 0.6rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 30px;
+        width: 50%;
+      }
+      p {
+        font-size: 0.95rem;
+        padding-right: 0;
+        width: 70%;
+      }
+      .step-number {
+        font-size: 10rem;
+        margin-left: 300px;
+        left: 0;
+        margin-top: 270px;
+      }
+    }
+  }
+  .start-game-cta {
+    margin-top: 3rem;
+    button {
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 22px;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .how-to-play-page {
+    padding: 2rem 1rem 3rem;
+    header {
+      h1 {
+        font-size: 3rem;
+        margin-top: 60px;
+      }
+      &::after {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    .yap {
+      width: 90%;
+      padding-bottom: 120px;
+    }
+    .objective {
+      width: 90%;
+    }
+    .timeline {
+      max-width: 600px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      &::before {
+        width: 4px;
+      }
+    }
+    .step {
+      width: 90%; /* or a fixed max-width like max-width: 400px; */
+      margin: 2.5rem auto;
+      padding: 1.8rem 2rem;
+      justify-content: center;
+
+      &::before {
+        width: 18px;
+        height: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 50% !important;
+        right: auto !important;
+      }
+      &:nth-child(odd)::before,
+      &:nth-child(even)::before {
+        display: none;
+      }
+      &:nth-child(odd)::before {
+        margin: 0 auto;
+      }
+      &:nth-child(even)::before {
+        margin: 0 auto;
+      }
+      .icon {
+        font-size: 50px;
+        margin-bottom: 0.6rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 30px;
+        width: 100%;
+      }
+      p {
+        font-size: 0.95rem;
+        padding-right: 0;
+        width: 100%;
+      }
+      .step-number {
+        font-size: 10rem;
+        margin-left: 300px;
+        left: 0;
+        margin-top: 270px;
+      }
+    }
+  }
+  .start-game-cta {
+    margin-top: 3rem;
+    button {
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 22px;
     }
   }
 }

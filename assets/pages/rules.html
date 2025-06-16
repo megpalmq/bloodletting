@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bloodletting - Rules</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
@@ -12,126 +19,158 @@
       <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/assets/pages/rules.html">Rules</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/assets/pages/rules.html">How to Play</a></li>
+        <li><a href="#">Factions</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Setup</a></li>
+        <li><a href="#">Credits</a></li>
       </ul>
     </nav>
-    <section class="rules">
-      <div class="fog fog-1"></div>
-      <div class="container">
-        <h1>Game Rules</h1>
+    <section class="how-to-play-page">
+      <header>
+        <h1>How to Play</h1>
+      </header>
+      <p class="yap">
+        Bloodletting is a dark strategy game where you embody the apocalypse to
+        overthrow the throne. Choose between powerful factions like War or
+        Death, each with unique units, strategies, and victory conditions.
+      </p>
+      <!-- <div class="objective">
+        <h2>Objective</h2>
+        <p>
+          Objective Complete your faction's specific objective to win. This
+          usually involves controlling the Throne Tile under certain conditions.
+        </p>
+      </div> -->
+      <div class="timeline">
+        <article class="step">
+          <div class="step-number">1</div>
+          <div class="icon"><i class="fa-solid fa-dice"></i></div>
 
-        <article class="rule-section">
-          <h2>Setup</h2>
+          <h3>Setup</h3>
           <p>
-            Place the game board in the center of the play-space, with the pile
-            of Blood Tokens reachable for all players. Shuffle the location
-            tiles with their symbols up, and place each at a location with the
-            matching symbol, face down.
+            1. Place the game board and Blood Tokens in the center.
+            <br />
+            2. Shuffle and place Location Tiles face-down.
+            <br />
+            3. Each player picks a faction (War or Death) and gathers their
+            cards, units, and faction sheet. <br />
+            4. Follow any special faction setup.
           </p>
-          <p>
-            Each player chooses a faction to play as containing Units, a Faction
-            Sheet, an Action Deck, and a Victory Deck. Check the Factions Page
-            for unique setups for certain factions.
-          </p>
-          <em>(Come back to this after finalizing faction Sheet)</em>
         </article>
 
-        <article class="rule-section">
-          <h2>Faction Sheet</h2>
-          <em>(Guide on faction Sheet layout)</em>
+        <article class="step">
+          <div class="step-number two">2</div>
+          <div class="icon"><i class="fa-regular fa-rectangle-list"></i></div>
+          <h3>Start the Game</h3>
+          <p>
+            Each player gets: <br />
+            2 Blood Tokens
+            <br />4 Action Cards <br />
+            Give the Initiative Token to the first player.
+          </p>
         </article>
 
-        <article class="rule-section">
-          <h2>Cards</h2>
-          <p>There are five types of cards in Bloodletting:</p>
-          <ul>
-            <li>
-              <strong>Victory Cards</strong> – Used to defeat units in contested
-              locations.
-            </li>
-            <li>
-              <strong>Plots</strong> – Played into the combat pile when
-              contested, if readied during Planning.
-            </li>
-            <li>
-              <strong>Schemes</strong> – Played into the combat pile once per
-              combat phase by any player.
-            </li>
-            <li>
-              <strong>Instantaneous Cards</strong> – Played during the Planning
-              Phase directly.
-            </li>
-            <li>
-              <strong>Active Cards</strong> – Provide ongoing effects as long as
-              they are readied.
-            </li>
-          </ul>
+        <article class="step">
+          <div class="step-number three">3</div>
+          <div class="icon"><i class="fa-solid fa-feather"></i></div>
+          <h3>Take Turns (Planning Phase)</h3>
+          <p>
+            On your turn, do any of the following in any order: 
+            <ol>
+              <li>Draw cards up to
+            your hand limit</li>
+              <li>Move units based on their speed</li>
+              <li>Summon units by
+            paying their blood cost</li>
+              <li>Ready cards by placing them on your Faction
+            Sheet</li>
+            <li>Play Instant cards from hand or your sheet</li>
+            <li>Discard cards you
+            don't need ➡️ Then end your turn</li>
+            </ol>
+          </p>
         </article>
 
-        <article class="rule-section">
-          <h2>The Board</h2>
+        <article class="step">
+          <div class="step-number">4</div>
+         <div class="icon" style="margin-top: 100px;"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <h3>Repeat Turns Clockwise</h3>
           <p>
-            The board is a series of open locations connected by paths. Players
-            may move units between them to gain advantages.
+            Players take turns until it comes back to the player with the Initiative Token.
+
+
           </p>
-          <ul>
-            <li>
-              <strong>Villages:</strong> Gain 1 blood per Village occupied.
-            </li>
-            <li>
-              <strong>Ruins:</strong> Increase hand size by 2 per Ruin occupied.
-            </li>
-            <li>
-              <strong>Farmland:</strong> Units moving from Farmland get +1
-              speed.
-            </li>
-          </ul>
         </article>
-
-        <article class="rule-section">
-          <h2>How to Play</h2>
-
-          <h3>Game Start</h3>
+        <article class="step">
+          <div class="step-number five">5</div>
+         <div class="icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <h3>Start Combat Phase</h3>
           <p>
-            Players collect 2 Blood-Tokens and draw 4 cards. Choose a first
-            player and give them the Initiative token.
+            <ol>
+              <li>Add Victory Cards to the Combat Pile for all contested units</li>
+              <li>Add any readied Plot cards (if contested)</li>
+              <li>Add one readied Scheme card (any player)</li>
+              <li>Shuffle the Combat Pile and reveal cards one at a time</li>
+              <li>Resolve card effects and remove defeated units</li>
+            </ol>
           </p>
-
-          <h3>Planning Phase</h3>
-          <p>Players may perform these actions in any order:</p>
-          <ul>
-            <li>Summon units</li>
-            <li>Move units</li>
-            <li>Ready action cards</li>
-            <li>Resolve Instantaneous cards</li>
-            <li>Discard cards</li>
-          </ul>
+        </article>
+        <article class="step">
+          <div class="step-number five">6</div>
+         <div class="icon"><i class="fa-solid fa-circle-xmark"></i></div>
+          <h3>End of Round</h3>
           <p>
-            End the turn by declaring. Continue clockwise until it returns to
-            the Initiative holder.
+            <ol>
+              <li>Return Victory Cards to their decks</li>
+              <li>Discard used action cards</li>
+              <li>Pass the Initiative Token clockwise</li>
+              <li>Everyone gains:
+                <ul>
+                  <li>+2 Blood, and</li>
+                  <li>+1 per Village they occupy</li>
+                </ul>
+              </li>
+              <li>Draw up to your hand size (add +2 cards per Ruin)</li>
+            </ol>
           </p>
-
-          <h3>Combat Phase</h3>
-          <ol>
-            <li>Add Victory cards equal to contested strength.</li>
-            <li>Add readied Plots for contested units.</li>
-            <li>Add one readied Scheme per player.</li>
-            <li>Shuffle and resolve combat pile.</li>
-          </ol>
-          <p>End of Combat Phase:</p>
-          <ul>
-            <li>Return Victory cards to piles</li>
-            <li>Discard resolved actions</li>
-            <li>Pass Initiative clockwise</li>
-            <li>Gain 2 Blood (+1 per Village)</li>
-            <li>Draw cards to hand size</li>
-          </ul>
-
-          <p>Repeat phases until one faction meets their win condition.</p>
+        </article>
+        <article class="step">
+          <div class="step-number five">7</div>
+         <div class="icon"><i class="fa-solid fa-trophy"></i></div>
+          <h3>Repeat Until Victory</h3>
+          <p>
+            The game continues with new rounds until one faction completes their Faction Objective and wins.
+          </p>
         </article>
       </div>
+
+      <div class="start-game-cta">
+        <button type="button">Start the Game!</button>
+      </div>
     </section>
+    <script>
+  const steps = document.querySelectorAll('.step');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); // optional if you want it to float *again* on re-entry
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    }
+  );
+
+  steps.forEach((step) => {
+    observer.observe(step);
+  });
+</script>
+
   </body>
 </html>

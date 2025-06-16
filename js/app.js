@@ -12,7 +12,7 @@ document.addEventListener("mousemove", (e) => {
   cursorGlow.style.left = `${e.clientX - 75}px`;
   cursorGlow.style.top = `${e.clientY - 75}px`;
 });
-  const hamburger = document.querySelector(".hamburger");
+const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".navbar ul");
 
 hamburger.addEventListener("click", () => {
