@@ -15,6 +15,7 @@ $paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.p
   margin: 6rem auto;
   perspective: 1500px;
   cursor: pointer;
+  overflow-x: visible;
 
   .faction-icon {
     width: 64px;
@@ -83,7 +84,7 @@ $paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.p
     }
   }
 
-  // Default tilt stacking
+  // Default tilt stacking for all screens
   .faction-card:nth-child(1) {
     z-index: 1;
     transform: translateX(-50%) rotate(-6deg);
@@ -104,40 +105,44 @@ $paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.p
     transform: translateX(-50%) rotate(6deg);
   }
 
-  // Hover spread
-  &:hover {
-    .faction-card:nth-child(1) {
-      transform: translateX(-180%) rotate(-12deg);
-    }
+  // Hover spread and focus ONLY on desktop (min-width 769px)
+  @media (min-width: 769px) {
+    &:hover {
+      .faction-card:nth-child(1) {
+        transform: translateX(-180%) rotate(-12deg);
+      }
 
-    .faction-card:nth-child(2) {
-      transform: translateX(-60%) rotate(-4deg);
-    }
+      .faction-card:nth-child(2) {
+        transform: translateX(-60%) rotate(-4deg);
+      }
 
-    .faction-card:nth-child(3) {
-      transform: translateX(60%) rotate(4deg);
-    }
+      .faction-card:nth-child(3) {
+        transform: translateX(60%) rotate(4deg);
+      }
 
-    .faction-card:nth-child(4) {
-      transform: translateX(180%) rotate(12deg);
-    }
+      .faction-card:nth-child(4) {
+        transform: translateX(180%) rotate(12deg);
+      }
 
-    .faction-card:hover {
-      transform: translateX(-50%) rotate(0deg) scale(1.1);
-      z-index: 10;
+      .faction-card:hover {
+        transform: translateX(-50%) rotate(0deg) scale(1.1);
+        z-index: 10;
+      }
     }
   }
 
-  // ————— MEDIA QUERIES —————
-
+  // Responsive sizes and tweaks
   @media (max-width: 1024px) {
     width: 100%;
+
     .faction-card {
       width: 240px;
       height: 360px;
+
       h2 {
         font-size: 1.8rem;
       }
+
       p {
         font-size: 0.95rem;
       }
@@ -156,24 +161,6 @@ $paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.p
 
       p {
         font-size: 0.9rem;
-      }
-    }
-
-    &:hover {
-      .faction-card:nth-child(1) {
-        transform: translateX(-130%) rotate(-10deg);
-      }
-
-      .faction-card:nth-child(2) {
-        transform: translateX(-40%) rotate(-3deg);
-      }
-
-      .faction-card:nth-child(3) {
-        transform: translateX(40%) rotate(3deg);
-      }
-
-      .faction-card:nth-child(4) {
-        transform: translateX(130%) rotate(10deg);
       }
     }
   }
@@ -195,24 +182,6 @@ $paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.p
       button {
         font-size: 0.9rem;
         padding: 0.4rem 1rem;
-      }
-    }
-
-    &:hover {
-      .faction-card:nth-child(1) {
-        transform: translateX(-100%) rotate(-8deg);
-      }
-
-      .faction-card:nth-child(2) {
-        transform: translateX(-30%) rotate(-2deg);
-      }
-
-      .faction-card:nth-child(3) {
-        transform: translateX(30%) rotate(2deg);
-      }
-
-      .faction-card:nth-child(4) {
-        transform: translateX(100%) rotate(8deg);
       }
     }
   }

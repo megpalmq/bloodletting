@@ -1193,6 +1193,7 @@ footer {
   margin: 6rem auto;
   perspective: 1500px;
   cursor: pointer;
+  overflow-x: visible;
 }
 .factions-stack .faction-icon {
   width: 64px;
@@ -1269,21 +1270,23 @@ footer {
   z-index: 4;
   transform: translateX(-50%) rotate(6deg);
 }
-.factions-stack:hover .faction-card:nth-child(1) {
-  transform: translateX(-180%) rotate(-12deg);
-}
-.factions-stack:hover .faction-card:nth-child(2) {
-  transform: translateX(-60%) rotate(-4deg);
-}
-.factions-stack:hover .faction-card:nth-child(3) {
-  transform: translateX(60%) rotate(4deg);
-}
-.factions-stack:hover .faction-card:nth-child(4) {
-  transform: translateX(180%) rotate(12deg);
-}
-.factions-stack:hover .faction-card:hover {
-  transform: translateX(-50%) rotate(0deg) scale(1.1);
-  z-index: 10;
+@media (min-width: 769px) {
+  .factions-stack:hover .faction-card:nth-child(1) {
+    transform: translateX(-180%) rotate(-12deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(2) {
+    transform: translateX(-60%) rotate(-4deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(3) {
+    transform: translateX(60%) rotate(4deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(4) {
+    transform: translateX(180%) rotate(12deg);
+  }
+  .factions-stack:hover .faction-card:hover {
+    transform: translateX(-50%) rotate(0deg) scale(1.1);
+    z-index: 10;
+  }
 }
 @media (max-width: 1024px) {
   .factions-stack {
@@ -1312,18 +1315,6 @@ footer {
   .factions-stack .faction-card p {
     font-size: 0.9rem;
   }
-  .factions-stack:hover .faction-card:nth-child(1) {
-    transform: translateX(-130%) rotate(-10deg);
-  }
-  .factions-stack:hover .faction-card:nth-child(2) {
-    transform: translateX(-40%) rotate(-3deg);
-  }
-  .factions-stack:hover .faction-card:nth-child(3) {
-    transform: translateX(40%) rotate(3deg);
-  }
-  .factions-stack:hover .faction-card:nth-child(4) {
-    transform: translateX(130%) rotate(10deg);
-  }
 }
 @media (max-width: 480px) {
   .factions-stack .faction-card {
@@ -1340,17 +1331,5 @@ footer {
   .factions-stack .faction-card button {
     font-size: 0.9rem;
     padding: 0.4rem 1rem;
-  }
-  .factions-stack:hover .faction-card:nth-child(1) {
-    transform: translateX(-100%) rotate(-8deg);
-  }
-  .factions-stack:hover .faction-card:nth-child(2) {
-    transform: translateX(-30%) rotate(-2deg);
-  }
-  .factions-stack:hover .faction-card:nth-child(3) {
-    transform: translateX(30%) rotate(2deg);
-  }
-  .factions-stack:hover .faction-card:nth-child(4) {
-    transform: translateX(100%) rotate(8deg);
   }
 }
