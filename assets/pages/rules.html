@@ -15,15 +15,14 @@
   </head>
   <body>
     <nav class="navbar">
-      <div class="logo glitch">Witless Crusade Games</div>
+      <div class="logo"><a href="/" style="text-decoration: none; color: #00ffe7"
+          >Witless Crusade Games</a
+        ></div>
       <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/assets/pages/rules.html">How to Play</a></li>
-        <li><a href="#">Factions</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Setup</a></li>
-        <li><a href="#">Credits</a></li>
+        <li><a href="/assets/pages/factions.html">Factions</a></li>
       </ul>
     </nav>
     <section class="how-to-play-page">
@@ -35,13 +34,9 @@
         overthrow the throne. Choose between powerful factions like War or
         Death, each with unique units, strategies, and victory conditions.
       </p>
-      <!-- <div class="objective">
-        <h2>Objective</h2>
-        <p>
-          Objective Complete your faction's specific objective to win. This
-          usually involves controlling the Throne Tile under certain conditions.
-        </p>
-      </div> -->
+     
+
+       
       <div class="timeline">
         <article class="step">
           <div class="step-number">1</div>
@@ -144,11 +139,17 @@
           </p>
         </article>
       </div>
+      <div class="start-game-wrapper">
+  <a target="_blank" href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1c479c44-3973-4a7c-8f4a-410d20c35b88">
+    <div class="start-game-cta">
+      See the full rules and gameplay 
+    </div>
+  </a>
+</div>
 
-      <div class="start-game-cta">
-        <button type="button">Start the Game!</button>
-      </div>
     </section>
+   
+
     <script>
   const steps = document.querySelectorAll('.step');
 
@@ -170,6 +171,22 @@
   steps.forEach((step) => {
     observer.observe(step);
   });
+  const hero = document.querySelector(".hero");
+if (hero) {
+  window.addEventListener("scroll", () => {
+    const scrolled = window.scrollY;
+    hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+  });
+}
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".navbar ul");
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
 </script>
 
   </body>

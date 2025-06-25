@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloodletting - Factions</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/" style="text-decoration: none; color: #00ffe7"
+          >Witless Crusade Games</a
+        >
+      </div>
+      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/assets/pages/rules.html">How to Play</a></li>
+        <li><a href="/assets/pages/factions.html">Factions</a></li>
+      </ul>
+    </nav>
+    <div class="factions-stack">
+      <div class="faction-card" data-faction="war">
+        <i
+          class="fa-solid fa-bomb"
+          style="font-size: 40px; margin-bottom: 20px"
+        ></i>
+        <h2>War</h2>
+        <p>
+          Fanatical crusaders who dominate through brute force and aggressive
+          tactics.
+        </p>
+        <button>View</button>
+      </div>
+      <div class="faction-card" data-faction="death">
+        <i
+          class="fa-solid fa-skull"
+          style="font-size: 40px; margin-bottom: 20px"
+        ></i>
+        <h2>Death</h2>
+        <p>
+          Necromancers who raise the dead and manipulate the battlefield from
+          the shadows.
+        </p>
+        <button>View</button>
+      </div>
+      <div class="faction-card" data-faction="pestilence">
+        <i
+          class="fa-solid fa-viruses"
+          style="font-size: 40px; margin-bottom: 20px"
+        ></i>
+        <h2>Pestilence</h2>
+        <p>
+          A rotting force that spreads sickness and weakness across the land.
+        </p>
+        <button>View</button>
+      </div>
+      <div class="faction-card" data-faction="famine">
+        <i
+          class="fa-solid fa-wheat-awn-circle-exclamation"
+          style="font-size: 40px; margin-bottom: 20px"
+        ></i>
+        <h2>Famine</h2>
+        <p>A devourer of resources, starving out all who oppose it.</p>
+        <button>View</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".faction");
+        const toggleButtons = document.querySelectorAll(".toggle-details");
+
+        const onScroll = () => {
+          cards.forEach((card) => {
+            if (card.getBoundingClientRect().top < window.innerHeight - 100) {
+              card.classList.add("visible");
+            }
+          });
+        };
+
+        toggleButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const card = btn.closest(".faction");
+            card.classList.toggle("active");
+            btn.textContent = card.classList.contains("active")
+              ? "Read Less"
+              : "Read More";
+          });
+        });
+
+        window.addEventListener("scroll", onScroll);
+        onScroll(); // initial trigger
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".faction-card");
+        let activeIndex = 0;
+
+        function focusCard(index) {
+          cards.forEach((card, i) => {
+            card.classList.remove("active");
+            card.style.zIndex = i === index ? "10" : `${4 - i}`;
+            card.style.transform =
+              i === index
+                ? "translateX(-50%) rotate(0deg) scale(1.12)"
+                : card.dataset.originalTransform;
+          });
+        }
+
+        // Save original transforms for restore
+        cards.forEach((card, i) => {
+          card.dataset.originalTransform = card.style.transform;
+        });
+
+        // Keyboard nav
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") {
+            activeIndex = (activeIndex + 1) % cards.length;
+            focusCard(activeIndex);
+          } else if (e.key === "ArrowLeft") {
+            activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+            focusCard(activeIndex);
+          }
+        });
+
+        // Touch/swipe nav
+        let touchStartX = 0;
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          let deltaX = e.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(deltaX) > 50) {
+            if (deltaX < 0) {
+              activeIndex = (activeIndex + 1) % cards.length;
+            } else {
+              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+            }
+            focusCard(activeIndex);
+          }
+        });
+      });
+      const hero = document.querySelector(".hero");
+      if (hero) {
+        window.addEventListener("scroll", () => {
+          const scrolled = window.scrollY;
+          hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+        });
+      }
+
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".navbar ul");
+
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+      }
+    </script>
+  </body>
+</html>

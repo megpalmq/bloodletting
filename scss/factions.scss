@@ -1,0 +1,219 @@
+// Variables
+$card-width: 280px;
+$card-height: 400px;
+$rust-color: #8b4513;
+$rust-dark: #5c3317;
+$rust-light: #c97c3d;
+$font-title: "Cinzel", serif;
+$font-body: "Open Sans", sans-serif;
+$paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+.factions-stack {
+  position: relative;
+  width: $card-width + 200px;
+  height: $card-height + 200px;
+  margin: 6rem auto;
+  perspective: 1500px;
+  cursor: pointer;
+
+  .faction-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.5));
+    pointer-events: none;
+  }
+
+  .faction-card {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: $card-width;
+    height: $card-height;
+    transform: translateX(-50%);
+    background: $rust-color;
+    border-radius: 16px;
+    box-shadow: inset 0 0 40px rgba(139, 69, 19, 0.8),
+      0 12px 25px rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    font-family: $font-body;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: $paper-texture,
+      linear-gradient(45deg, $rust-dark, $rust-light);
+    background-blend-mode: multiply;
+    border: 2px solid #6b3f18;
+    box-sizing: border-box;
+    transition: transform 0.5s ease, z-index 0.5s ease;
+
+    h2 {
+      font-family: $font-title;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 0 #422b0d, 2px 2px 5px rgba(0, 0, 0, 0.8);
+      user-select: none;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.4;
+      flex-grow: 1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      user-select: text;
+    }
+
+    button {
+      background: #6b3f18;
+      color: #f1f1f1;
+      font-family: $font-title;
+      font-size: 1.1rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 0 8px #ac7c35, inset 0 -2px 5px rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        background: #a56b2e;
+        box-shadow: 0 0 15px #d8b065, inset 0 -2px 8px rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+
+  // Default tilt stacking
+  .faction-card:nth-child(1) {
+    z-index: 1;
+    transform: translateX(-50%) rotate(-6deg);
+  }
+
+  .faction-card:nth-child(2) {
+    z-index: 2;
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  .faction-card:nth-child(3) {
+    z-index: 3;
+    transform: translateX(-50%) rotate(2deg);
+  }
+
+  .faction-card:nth-child(4) {
+    z-index: 4;
+    transform: translateX(-50%) rotate(6deg);
+  }
+
+  // Hover spread
+  &:hover {
+    .faction-card:nth-child(1) {
+      transform: translateX(-180%) rotate(-12deg);
+    }
+
+    .faction-card:nth-child(2) {
+      transform: translateX(-60%) rotate(-4deg);
+    }
+
+    .faction-card:nth-child(3) {
+      transform: translateX(60%) rotate(4deg);
+    }
+
+    .faction-card:nth-child(4) {
+      transform: translateX(180%) rotate(12deg);
+    }
+
+    .faction-card:hover {
+      transform: translateX(-50%) rotate(0deg) scale(1.1);
+      z-index: 10;
+    }
+  }
+
+  // ————— MEDIA QUERIES —————
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    .faction-card {
+      width: 240px;
+      height: 360px;
+      h2 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faction-card {
+      width: 200px;
+      height: 320px;
+      padding: 1.5rem;
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    &:hover {
+      .faction-card:nth-child(1) {
+        transform: translateX(-130%) rotate(-10deg);
+      }
+
+      .faction-card:nth-child(2) {
+        transform: translateX(-40%) rotate(-3deg);
+      }
+
+      .faction-card:nth-child(3) {
+        transform: translateX(40%) rotate(3deg);
+      }
+
+      .faction-card:nth-child(4) {
+        transform: translateX(130%) rotate(10deg);
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faction-card {
+      width: 180px;
+      height: 300px;
+      padding: 1.2rem;
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+      }
+    }
+
+    &:hover {
+      .faction-card:nth-child(1) {
+        transform: translateX(-100%) rotate(-8deg);
+      }
+
+      .faction-card:nth-child(2) {
+        transform: translateX(-30%) rotate(-2deg);
+      }
+
+      .faction-card:nth-child(3) {
+        transform: translateX(30%) rotate(2deg);
+      }
+
+      .faction-card:nth-child(4) {
+        transform: translateX(100%) rotate(8deg);
+      }
+    }
+  }
+}

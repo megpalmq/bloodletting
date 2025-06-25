@@ -1,16 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap");
-
-// ----------------------------------------------
-// Color Variables
-// ----------------------------------------------
 $dark: #0b1412;
 $light: #f0f0f0;
 $accent: #5df2d6;
 $mint: #3bb298;
 
-// ----------------------------------------------
-// Base Styles
-// ----------------------------------------------
 body {
   font-family: "Cinzel", serif;
   background: linear-gradient(#0c1e1c, #18332f);
@@ -33,7 +26,6 @@ body {
     mix-blend-mode: overlay;
     opacity: 0.4;
     z-index: -1;
-    pointer-events: none;
   }
 }
 
@@ -124,7 +116,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   position: relative;
   overflow: hidden;
   padding: 1rem;
@@ -146,22 +138,6 @@ body {
     inset: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
     z-index: 1;
-  }
-
-  .cursor-glow {
-    position: fixed;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle,
-      rgba(93, 242, 214, 0.3) 0%,
-      transparent 80%
-    );
-    pointer-events: none;
-    mix-blend-mode: screen;
-    z-index: 9999;
-    transition: transform 0.1s linear;
   }
 
   .hero-content {
@@ -300,11 +276,6 @@ body {
     .hero-description {
       font-size: 0.9rem;
     }
-
-    .cursor-glow {
-      width: 100px;
-      height: 100px;
-    }
   }
 
   @media (max-width: 480px) {
@@ -332,17 +303,22 @@ body {
 }
 .learn-about {
   padding: 4rem 2rem;
-  background: rgba(0, 0, 0, 0.3);
   border-top: 2px solid $accent;
   border-bottom: 2px solid $accent;
-  text-align: center;
+  text-align: left;
   z-index: 100;
+  display: flex;
+  width: 100%;
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     color: $light;
     margin-bottom: 1rem;
     text-shadow: 0 0 10px $accent;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    text-align: center;
   }
 
   p {
@@ -351,6 +327,8 @@ body {
     max-width: 700px;
     margin: 0 auto 2rem;
     line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 100px;
   }
 
   button {
@@ -368,6 +346,56 @@ body {
       background: $accent;
       color: $dark;
       box-shadow: 0 0 14px $accent;
+    }
+  }
+
+  // ————— MEDIA QUERIES —————
+
+  @media (max-width: 1024px) {
+    h2 {
+      font-size: 3.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-right: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      font-size: 3rem;
+      margin-top: 80px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-right: 0;
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+
+    h2 {
+      font-size: 2.2rem;
+      margin-top: 60px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      padding: 0;
+      text-align: left;
+    }
+
+    button {
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -454,12 +482,12 @@ body {
 
   .regions-row {
     display: flex;
-    flex-wrap: nowrap; // ❗️Keep all 4 in a row by default
+    flex-wrap: nowrap;
     gap: 3rem;
     justify-content: center;
     width: 100%;
     align-items: flex-start;
-    padding-top: 200px;
+    padding-top: 100px;
     max-width: 1920px;
   }
 
@@ -505,6 +533,7 @@ body {
       margin-bottom: 1.5rem;
       padding: 0 1rem;
       line-height: 1.4;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     img {

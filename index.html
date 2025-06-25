@@ -29,15 +29,16 @@
   <body>
     <div class="cursor-glow"></div>
     <nav class="navbar">
-      <div class="logo glitch">Witless Crusade Games</div>
+      <div class="logo">
+        <a href="/" style="text-decoration: none; color: #00ffe7"
+          >Witless Crusade Games</a
+        >
+      </div>
       <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/assets/pages/rules.html">How to Play</a></li>
         <li><a href="#">Factions</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Setup</a></li>
-        <li><a href="#">Credits</a></li>
       </ul>
     </nav>
     <section id="app">
@@ -59,18 +60,40 @@
           </p>
           <br />
           <p>Will you follow the path of destruction or rise to stop them?</p>
-          <button class="buy-button">Join the War</button>
+
+          <button class="buy-button">
+            <a style="text-decoration: none; color: #000" href="#learn">
+              Learn about bloodletting</a
+            >
+          </button>
         </div>
         <div class="fog fog-1"></div>
       </section>
-      <section class="learn-about">
-        <h2>Learn About the Game</h2>
-        <p>
-          Discover the story, strategy, and secrets behind this immersive
-          experience. From the four legendary regions to the powerful
-          characters, dive into what makes this game unforgettable.
-        </p>
-        <button onclick="location.href='#about-game'">Explore More</button>
+      <section id="learn" class="learn-about">
+        <h2>What is Bloodletting?</h2>
+        <div class="text">
+          <p>
+            Bloodletting is a dark, strategy-driven board game where players
+            take on the roles of apocalyptic factions vying for control of a
+            crumbling world. In this expansion, choose between the Horsemen of
+            War, a brutal cult of crusaders who burn and conquer, or the
+            Horsemen of Death, an undead force led by a necromancer raising
+            skeleton armies and summoning the Calamity.
+            <br />
+            <br />
+            Each player commands units, manages resources like blood and bones,
+            and plays action cards to shape the outcome of battles through a
+            unique combat pile system. Victory isn't just about strength—it's
+            about how and when you strike. Use plots, schemes, and strategy to
+            outwit your opponents and complete your faction's unique objective,
+            often involving seizing the powerful Throne Tile.
+            <br />
+            <br />
+            Explore hidden locations, contest enemies, and unleash chaos in this
+            asymmetric game of war, deception, and end-times ambition.
+          </p>
+          <button onclick="location.href='#about-game'">Explore More</button>
+        </div>
       </section>
 
       <section class="regions">
@@ -78,7 +101,10 @@
 
         <div class="regions-row">
           <div class="region death">
-            <img src="assets/images/death.png" alt="Death Faction Character" />
+            <img
+              src="assets/images/CalamityColored.png"
+              alt="Death Faction Character"
+            />
             <h3>Death Faction</h3>
             <p class="description">
               Masters of the afterlife, Death's faction rules over the balance
@@ -89,7 +115,7 @@
 
           <div class="region famine">
             <img
-              src="assets/images/famine.png"
+              src="assets/images/FamineSymbol.png"
               alt="Famine Faction Character"
             />
             <h3>Famine Faction</h3>
@@ -115,7 +141,11 @@
           </div>
 
           <div class="region war">
-            <img src="assets/images/war.png" alt="War Faction Character" />
+            <img
+              src="assets/images/Inquisitor2nd Edition.png"
+              alt="War Faction Character"
+              style="top: -10px"
+            />
             <h3>War Faction</h3>
             <p class="description">
               Warlords and strategists, this faction thrives in the heat of

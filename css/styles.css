@@ -42,7 +42,6 @@ body {
   mix-blend-mode: overlay;
   opacity: 0.4;
   z-index: -1;
-  pointer-events: none;
 }
 
 .navbar {
@@ -117,7 +116,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   position: relative;
   overflow: hidden;
   padding: 1rem;
@@ -138,17 +137,6 @@ body {
   inset: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   z-index: 1;
-}
-.hero .cursor-glow {
-  position: fixed;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(93, 242, 214, 0.3) 0%, transparent 80%);
-  pointer-events: none;
-  mix-blend-mode: screen;
-  z-index: 9999;
-  transition: transform 0.1s linear;
 }
 .hero .hero-content {
   position: relative;
@@ -268,10 +256,6 @@ body {
   .hero .hero-description {
     font-size: 0.9rem;
   }
-  .hero .cursor-glow {
-    width: 100px;
-    height: 100px;
-  }
 }
 @media (max-width: 480px) {
   .hero .hero-content h1 {
@@ -294,17 +278,22 @@ body {
 
 .learn-about {
   padding: 4rem 2rem;
-  background: rgba(0, 0, 0, 0.3);
   border-top: 2px solid #5df2d6;
   border-bottom: 2px solid #5df2d6;
-  text-align: center;
+  text-align: left;
   z-index: 100;
+  display: flex;
+  width: 100%;
 }
 .learn-about h2 {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   color: #f0f0f0;
   margin-bottom: 1rem;
   text-shadow: 0 0 10px #5df2d6;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  text-align: center;
 }
 .learn-about p {
   font-size: 1.2rem;
@@ -312,6 +301,8 @@ body {
   max-width: 700px;
   margin: 0 auto 2rem;
   line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 100px;
 }
 .learn-about button {
   padding: 1rem 2rem;
@@ -328,6 +319,49 @@ body {
   background: #5df2d6;
   color: #0b1412;
   box-shadow: 0 0 14px #5df2d6;
+}
+@media (max-width: 1024px) {
+  .learn-about h2 {
+    font-size: 3.5rem;
+  }
+  .learn-about p {
+    font-size: 1.1rem;
+    margin-right: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .learn-about {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .learn-about h2 {
+    font-size: 3rem;
+    margin-top: 80px;
+  }
+  .learn-about p {
+    font-size: 1rem;
+    margin-right: 0;
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .learn-about {
+    padding: 3rem 1rem;
+  }
+  .learn-about h2 {
+    font-size: 2.2rem;
+    margin-top: 60px;
+  }
+  .learn-about p {
+    font-size: 0.95rem;
+    padding: 0;
+    text-align: left;
+  }
+  .learn-about button {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .signup,
@@ -413,7 +447,7 @@ body {
   justify-content: center;
   width: 100%;
   align-items: flex-start;
-  padding-top: 200px;
+  padding-top: 100px;
   max-width: 1920px;
 }
 .regions .region {
@@ -455,6 +489,7 @@ body {
   margin-bottom: 1.5rem;
   padding: 0 1rem;
   line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .regions .region img {
   position: absolute;
@@ -676,11 +711,11 @@ footer {
   background: linear-gradient(135deg, #0b0f1f, #000000);
   color: #f1f1f1;
   font-family: "Open Sans", sans-serif;
-  position: relative;
   overflow-x: hidden;
 }
 .how-to-play-page::before {
   content: "";
+  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -836,7 +871,6 @@ footer {
   color: rgba(255, 255, 255, 0.8);
   user-select: none;
   font-family: "Cinzel", serif;
-  pointer-events: none;
 }
 .how-to-play-page .step .step-number:nth-child(odd) .how-to-play-page .step .step-number {
   margin-left: 100px;
@@ -872,11 +906,17 @@ footer {
   padding-right: 1rem;
   user-select: text;
 }
-.how-to-play-page .start-game-cta {
-  margin-top: 5rem;
+.how-to-play-page .start-game-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   text-align: center;
 }
-.how-to-play-page .start-game-cta button {
+.how-to-play-page .start-game-wrapper a {
+  text-decoration: none;
+}
+.how-to-play-page .start-game-cta {
   padding: 1rem 3rem;
   font-size: 1.5rem;
   font-family: "Cinzel", serif;
@@ -886,9 +926,10 @@ footer {
   color: #000000;
   box-shadow: 0 0 25px #76fff9, 0 0 45px #f1f1f1;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
-.how-to-play-page .start-game-cta button:hover {
+.how-to-play-page .start-game-cta:hover {
   background: linear-gradient(45deg, #76fff9, #f1f1f1);
   box-shadow: 0 0 50px #76fff9, 0 0 80px #f1f1f1;
   transform: scale(1.1);
@@ -1143,5 +1184,173 @@ footer {
     padding: 0.8rem 2rem;
     font-size: 1.1rem;
     border-radius: 22px;
+  }
+}
+.factions-stack {
+  position: relative;
+  width: 480px;
+  height: 600px;
+  margin: 6rem auto;
+  perspective: 1500px;
+  cursor: pointer;
+}
+.factions-stack .faction-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+.factions-stack .faction-card {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 280px;
+  height: 400px;
+  transform: translateX(-50%);
+  background: #8b4513;
+  border-radius: 16px;
+  box-shadow: inset 0 0 40px rgba(139, 69, 19, 0.8), 0 12px 25px rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  font-family: "Open Sans", sans-serif;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"), linear-gradient(45deg, #5c3317, #c97c3d);
+  background-blend-mode: multiply;
+  border: 2px solid #6b3f18;
+  box-sizing: border-box;
+  transition: transform 0.5s ease, z-index 0.5s ease;
+}
+.factions-stack .faction-card h2 {
+  font-family: "Cinzel", serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 0 #422b0d, 2px 2px 5px rgba(0, 0, 0, 0.8);
+  user-select: none;
+}
+.factions-stack .faction-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  user-select: text;
+}
+.factions-stack .faction-card button {
+  background: #6b3f18;
+  color: #f1f1f1;
+  font-family: "Cinzel", serif;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 8px #ac7c35, inset 0 -2px 5px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.factions-stack .faction-card button:hover {
+  background: #a56b2e;
+  box-shadow: 0 0 15px #d8b065, inset 0 -2px 8px rgba(255, 255, 255, 0.25);
+}
+.factions-stack .faction-card:nth-child(1) {
+  z-index: 1;
+  transform: translateX(-50%) rotate(-6deg);
+}
+.factions-stack .faction-card:nth-child(2) {
+  z-index: 2;
+  transform: translateX(-50%) rotate(-2deg);
+}
+.factions-stack .faction-card:nth-child(3) {
+  z-index: 3;
+  transform: translateX(-50%) rotate(2deg);
+}
+.factions-stack .faction-card:nth-child(4) {
+  z-index: 4;
+  transform: translateX(-50%) rotate(6deg);
+}
+.factions-stack:hover .faction-card:nth-child(1) {
+  transform: translateX(-180%) rotate(-12deg);
+}
+.factions-stack:hover .faction-card:nth-child(2) {
+  transform: translateX(-60%) rotate(-4deg);
+}
+.factions-stack:hover .faction-card:nth-child(3) {
+  transform: translateX(60%) rotate(4deg);
+}
+.factions-stack:hover .faction-card:nth-child(4) {
+  transform: translateX(180%) rotate(12deg);
+}
+.factions-stack:hover .faction-card:hover {
+  transform: translateX(-50%) rotate(0deg) scale(1.1);
+  z-index: 10;
+}
+@media (max-width: 1024px) {
+  .factions-stack {
+    width: 100%;
+  }
+  .factions-stack .faction-card {
+    width: 240px;
+    height: 360px;
+  }
+  .factions-stack .faction-card h2 {
+    font-size: 1.8rem;
+  }
+  .factions-stack .faction-card p {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 768px) {
+  .factions-stack .faction-card {
+    width: 200px;
+    height: 320px;
+    padding: 1.5rem;
+  }
+  .factions-stack .faction-card h2 {
+    font-size: 1.6rem;
+  }
+  .factions-stack .faction-card p {
+    font-size: 0.9rem;
+  }
+  .factions-stack:hover .faction-card:nth-child(1) {
+    transform: translateX(-130%) rotate(-10deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(2) {
+    transform: translateX(-40%) rotate(-3deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(3) {
+    transform: translateX(40%) rotate(3deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(4) {
+    transform: translateX(130%) rotate(10deg);
+  }
+}
+@media (max-width: 480px) {
+  .factions-stack .faction-card {
+    width: 180px;
+    height: 300px;
+    padding: 1.2rem;
+  }
+  .factions-stack .faction-card h2 {
+    font-size: 1.4rem;
+  }
+  .factions-stack .faction-card p {
+    font-size: 0.85rem;
+  }
+  .factions-stack .faction-card button {
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+  .factions-stack:hover .faction-card:nth-child(1) {
+    transform: translateX(-100%) rotate(-8deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(2) {
+    transform: translateX(-30%) rotate(-2deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(3) {
+    transform: translateX(30%) rotate(2deg);
+  }
+  .factions-stack:hover .faction-card:nth-child(4) {
+    transform: translateX(100%) rotate(8deg);
   }
 }
