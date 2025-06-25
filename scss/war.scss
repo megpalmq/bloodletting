@@ -1,0 +1,167 @@
+// Variables
+$bg-dark: #0e0a07;
+$bg-mid: #1a110c;
+$rust-color: #8b4513;
+$rust-dark: #5c3317;
+$rust-light: #e2703a;
+$text-light: #f8e3c7;
+$text-accent: #ffd8a8;
+$font-title: "Cinzel", serif;
+$font-body: "Open Sans", sans-serif;
+
+.war-page {
+  background: radial-gradient(#2b1c17, $bg-dark);
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  color: $text-light;
+  font-family: $font-title;
+
+  .war-hero {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      #3a0e00,
+      #6b1f00
+    ); // dark fiery background
+    color: #fff;
+    padding: 6rem 2rem;
+    overflow: hidden;
+
+    h1 {
+      font-family: "Cinzel", serif;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6f00, 0 0 30px #ff8c00;
+    }
+
+    // Smoke and ash container
+    .smoke-ash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; // so it doesn’t block clicks
+      overflow: visible;
+    }
+
+    // Particle style
+    .particle {
+      position: absolute;
+      background: radial-gradient(
+        circle,
+        rgba(200, 200, 200, 0.15) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      animation-timing-function: ease-out;
+      opacity: 0.8;
+    }
+
+    // Smoke particles (big, slow rising)
+    .smoke {
+      width: 80px;
+      height: 80px;
+      animation-name: riseSmoke;
+      animation-iteration-count: infinite;
+      animation-duration: 12s;
+    }
+
+    // Ash particles (small, fluttering)
+    .ash {
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(
+        circle,
+        rgba(150, 150, 150, 0.5) 0%,
+        transparent 80%
+      );
+      animation-name: flutterAsh;
+      animation-iteration-count: infinite;
+      animation-duration: 8s;
+    }
+  }
+
+  @keyframes riseSmoke {
+    0% {
+      transform: translateY(100%) scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-150%) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes flutterAsh {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(10px, -10px) rotate(15deg);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translate(0, -20px) rotate(-15deg);
+      opacity: 0;
+    }
+  }
+}
+
+// Flame flicker animation
+@keyframes flameFlicker {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-5px) scale(1.03);
+  }
+}
+
+.war-content {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: $bg-mid;
+  border: 2px solid $rust-dark;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $rust-light;
+  }
+
+  p {
+    font-family: $font-body;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: lighten($text-light, 10%);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.back-link {
+  display: block;
+  margin: 2rem auto 0;
+  width: fit-content;
+  text-decoration: none;
+  color: $text-accent;
+  font-size: 1rem;
+  border: 2px solid $rust-light;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $rust-light;
+    color: $bg-mid;
+  }
+}

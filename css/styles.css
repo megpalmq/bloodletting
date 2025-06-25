@@ -635,12 +635,74 @@ body {
 }
 
 footer {
-  min-height: 200px;
+  color: #eee;
+  padding: 2rem 3rem;
+  border-top: 3px solid #5df2d6;
 }
-
-footer {
-  height: 100px;
-  justify-content: center;
+footer .footer-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+footer .footer-col {
+  flex: 1 1 0;
+  min-width: 180px;
+}
+footer .footer-col.copyright {
+  font-size: 0.9rem;
+  align-self: center;
+}
+footer .footer-col.creators p {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #c97c3d;
+}
+footer .footer-col.creators ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+footer .footer-col.creators ul li a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+footer .footer-col.creators ul li a:hover, footer .footer-col.creators ul li a:focus {
+  border-bottom: 2px solid #c97c3d;
+  color: #c97c3d;
+}
+footer .footer-col.web-designer {
+  font-size: 1rem;
+  text-align: right;
+  color: #c97c3d;
+}
+footer .footer-col.web-designer a {
+  color: #f1f1f1;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+footer .footer-col.web-designer a:hover, footer .footer-col.web-designer a:focus {
+  border-bottom: 2px solid #c97c3d;
+  color: #c97c3d;
+}
+@media (max-width: 600px) {
+  footer .footer-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  footer .footer-col {
+    text-align: left !important;
+    min-width: 100%;
+  }
 }
 
 @keyframes float {
@@ -1173,9 +1235,10 @@ footer {
   }
   .how-to-play-page .step .step-number {
     font-size: 10rem;
-    margin-left: 300px;
+    margin-left: 230px;
     left: 0;
-    margin-top: 270px;
+    opacity: 0.4;
+    margin-top: 250px;
   }
   .start-game-cta {
     margin-top: 3rem;
@@ -1238,7 +1301,7 @@ footer {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   user-select: text;
 }
-.factions-stack .faction-card button {
+.factions-stack .faction-card a button {
   background: #6b3f18;
   color: #f1f1f1;
   font-family: "Cinzel", serif;
@@ -1250,7 +1313,7 @@ footer {
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-.factions-stack .faction-card button:hover {
+.factions-stack .faction-card a button:hover {
   background: #a56b2e;
   box-shadow: 0 0 15px #d8b065, inset 0 -2px 8px rgba(255, 255, 255, 0.25);
 }
@@ -1332,4 +1395,131 @@ footer {
     font-size: 0.9rem;
     padding: 0.4rem 1rem;
   }
+}
+
+.war-page {
+  background: radial-gradient(#2b1c17, #0e0a07);
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  color: #f8e3c7;
+  font-family: "Cinzel", serif;
+}
+.war-page .war-hero {
+  position: relative;
+  background: linear-gradient(135deg, #3a0e00, #6b1f00);
+  color: #fff;
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+.war-page .war-hero h1 {
+  font-family: "Cinzel", serif;
+  font-size: 4rem;
+  text-align: center;
+  text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6f00, 0 0 30px #ff8c00;
+}
+.war-page .war-hero .smoke-ash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.war-page .war-hero .particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(200, 200, 200, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation-timing-function: ease-out;
+  opacity: 0.8;
+}
+.war-page .war-hero .smoke {
+  width: 80px;
+  height: 80px;
+  animation-name: riseSmoke;
+  animation-iteration-count: infinite;
+  animation-duration: 12s;
+}
+.war-page .war-hero .ash {
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle, rgba(150, 150, 150, 0.5) 0%, transparent 80%);
+  animation-name: flutterAsh;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+@keyframes riseSmoke {
+  0% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-150%) scale(1.2);
+    opacity: 0;
+  }
+}
+@keyframes flutterAsh {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(10px, -10px) rotate(15deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(0, -20px) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flameFlicker {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-5px) scale(1.03);
+  }
+}
+.war-content {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #1a110c;
+  border: 2px solid #5c3317;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+}
+.war-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #e2703a;
+}
+.war-content p {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: rgb(253.6666666667, 249.6666666667, 244.3333333333);
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: block;
+  margin: 2rem auto 0;
+  width: fit-content;
+  text-decoration: none;
+  color: #ffd8a8;
+  font-size: 1rem;
+  border: 2px solid #e2703a;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.back-link:hover {
+  background: #e2703a;
+  color: #1a110c;
 }
