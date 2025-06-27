@@ -331,7 +331,7 @@ body {
     margin-right: 100px;
   }
 
-  button {
+  a button {
     padding: 1rem 2rem;
     border: 2px solid $accent;
     background: transparent;
@@ -707,91 +707,40 @@ body {
     }
   }
 }
-footer {
-  color: #eee;
-  padding: 2rem 3rem;
-  border-top: 3px solid $accent;
-
-  .footer-columns {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #111;
+  color: #fff;
 
   .footer-col {
-    flex: 1 1 0;
-    min-width: 180px;
+    flex: 1 1 200px;
+    margin: 10px;
 
-    &.copyright {
-      font-size: 0.9rem;
-      align-self: center;
-    }
+    a {
+      color: #e36d6d;
+      text-decoration: none;
 
-    &.creators {
-      p {
-        font-weight: 600;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-        color: #c97c3d;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        gap: 1.5rem;
-
-        li {
-          a {
-            color: #f1f1f1;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease;
-
-            &:hover,
-            &:focus {
-              border-bottom: 2px solid #c97c3d;
-              color: #c97c3d;
-            }
-          }
-        }
-      }
-    }
-
-    &.web-designer {
-      font-size: 1rem;
-      text-align: right;
-      color: #c97c3d;
-
-      a {
-        color: #f1f1f1;
-        font-weight: 600;
-        text-decoration: none;
-        border-bottom: 2px solid transparent;
-        transition: border-color 0.3s ease;
-
-        &:hover,
-        &:focus {
-          border-bottom: 2px solid #c97c3d;
-          color: #c97c3d;
-        }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
 
-  @media (max-width: 600px) {
-    .footer-columns {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
+  .feedback-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1ce8f7;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
 
-    .footer-col {
-      text-align: left !important;
-      min-width: 100%;
+    &:hover {
+      background-color: #ffffff;
     }
   }
 }

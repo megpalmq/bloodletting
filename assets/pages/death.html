@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloodletting - Death Faction</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/" style="text-decoration: none; color: #00ffe7"
+          >Witless Crusade Games</a
+        >
+      </div>
+      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/assets/pages/rules.html">How to Play</a></li>
+        <li><a href="/assets/pages/factions.html">Factions</a></li>
+      </ul>
+    </nav>
+    <div class="death-page">
+      <div class="death-hero">
+        <h1>Death Faction</h1>
+        <div class="smoke-ash">
+          <div
+            class="particle smoke"
+            style="top: 90%; left: 20%; animation-delay: 0s"
+          ></div>
+          <div
+            class="particle smoke"
+            style="top: 95%; left: 50%; animation-delay: 4s"
+          ></div>
+          <div
+            class="particle smoke"
+            style="top: 92%; left: 75%; animation-delay: 7s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 80%; left: 25%; animation-delay: 1s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 85%; left: 40%; animation-delay: 3s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 78%; left: 65%; animation-delay: 5s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 83%; left: 85%; animation-delay: 2s"
+          ></div>
+        </div>
+      </div>
+
+      <section class="death-content">
+        <h2>The Inevitable End</h2>
+        <p>
+          The Death faction operates with quiet certainty. They don't rush. They
+          don't panic. They simply wait — and eventually, they win. Death brings
+          the long game to life.
+        </p>
+
+        <h2>Signature Strategy</h2>
+        <p>
+          Death manipulates the discard pile, revives the fallen, and punishes
+          opponents for every loss. Each card is a reminder: all things must
+          end.
+        </p>
+
+        <h2>Card Traits</h2>
+        <p>
+          ☠️ <strong>Resurrection</strong><br />
+          🌒 <strong>Graveyard Mechanics</strong><br />
+          🕯️ <strong>Delayed Triggers</strong>
+        </p>
+
+        <a href="/assets/pages/factions.html" class="back-link">
+          <i class="fa-solid fa-arrow-left"></i> Back to Factions
+        </a>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer-columns">
+        <div class="footer-col copyright">
+          &copy; Witless Crusade Games. All rights reserved.
+        </div>
+
+        <div class="footer-col creators">
+          <p>Game Creators:</p>
+          <ul>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/donovan-jennings/"
+                target="_blank"
+                >Donovan Jennings</a
+              >
+            </li>
+            <li>
+              <a href="https://example.com/sam" target="_blank">Sam Patel</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jonathanshaw2/"
+                target="_blank"
+                >Jonathan Shaw</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col web-designer">
+          Web Designer + Developer: <br />
+          <a href="https://www.linkedin.com/in/megan-palmquist/" target="_blank"
+            >Megan Palmquist</a
+          >
+        </div>
+
+        <div class="footer-col feedback">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
+            target="_blank"
+            class="feedback-btn"
+            >Give Feedback</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".faction-card");
+        let activeIndex = 0;
+
+        function updateCards() {
+          cards.forEach((card, i) => {
+            card.classList.remove("active", "tilted-left", "tilted-right");
+            if (i < activeIndex) card.classList.add("tilted-left");
+            else if (i > activeIndex) card.classList.add("tilted-right");
+            else card.classList.add("active");
+          });
+        }
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          const deltaX = e.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(deltaX) > 50) {
+            if (deltaX < 0) {
+              activeIndex = (activeIndex + 1) % cards.length;
+            } else {
+              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+            }
+            updateCards();
+          }
+        });
+
+        // Click on desktop to advance
+        document
+          .querySelector(".factions-stack")
+          .addEventListener("click", () => {
+            if (window.innerWidth > 768) {
+              activeIndex = (activeIndex + 1) % cards.length;
+              updateCards();
+            }
+          });
+
+        updateCards(); // initial load
+      });
+
+      // Hamburger Menu
+      document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".navbar ul");
+
+        hamburger?.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+// Famine Theme Colors
+$famine-bg-dark: #191511;
+$famine-bg-mid: #2c221a;
+$famine-bone: #d6c8aa;
+$famine-bone-dark: #b3a582;
+$famine-bone-light: #f5e7c4;
+$famine-text-light: #fdf6e3;
+$famine-accent: #ffddaa;
+$font-title: "Cinzel", serif;
+$font-body: "Open Sans", sans-serif;
+
+.famine-page {
+  //background: radial-gradient(#302a24, $famine-bg-dark);
+  //background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
+  color: $famine-text-light;
+  font-family: $font-title;
+
+  .famine-hero {
+    position: relative;
+    background: linear-gradient(135deg, #4e3c2b, #6a543c);
+    color: #fdf6e3;
+    padding: 6rem 2rem;
+    overflow: hidden;
+
+    h1 {
+      font-family: $font-title;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 0 0 10px $famine-bone-light, 0 0 20px $famine-accent;
+    }
+
+    .smoke-ash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 200, 0.15) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      animation-timing-function: ease-out;
+      opacity: 0.7;
+    }
+
+    .smoke {
+      width: 80px;
+      height: 80px;
+      animation-name: riseSmoke;
+      animation-iteration-count: infinite;
+      animation-duration: 12s;
+    }
+
+    .ash {
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(
+        circle,
+        rgba(220, 200, 150, 0.5) 0%,
+        transparent 80%
+      );
+      animation-name: flutterAsh;
+      animation-iteration-count: infinite;
+      animation-duration: 8s;
+    }
+  }
+
+  .famine-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: $famine-bg-mid;
+    border: 2px solid $famine-bone-dark;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $famine-bone-light;
+    }
+
+    p {
+      font-family: $font-body;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      color: lighten($famine-text-light, 10%);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .back-link {
+    display: block;
+    margin: 2rem auto 0;
+    width: fit-content;
+    text-decoration: none;
+    color: $famine-accent;
+    font-size: 1rem;
+    border: 2px solid $famine-bone-light;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $famine-bone-light;
+      color: $famine-bg-mid;
+    }
+  }
+}

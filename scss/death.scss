@@ -1,0 +1,114 @@
+$death-bg-dark: #0a0a0f;
+$death-bg-mid: #1c1c2a;
+$death-purple: #5e5a7a;
+$death-purple-dark: #3a364f;
+$death-purple-light: #aaa3e6;
+$death-text-light: #e0ddf5;
+$death-accent: #d1cfff;
+$font-title: "Cinzel", serif;
+$font-body: "Open Sans", sans-serif;
+.death-page {
+  background: radial-gradient(#1a1925, $death-bg-dark);
+  background-image: url("https://www.transparenttextures.com/patterns/noise-pattern-with-crosslines.png");
+  color: $death-text-light;
+  font-family: $font-title;
+
+  .death-hero {
+    position: relative;
+    background: linear-gradient(135deg, #2b2640, #3a335b);
+    color: $death-text-light;
+    padding: 6rem 2rem;
+    overflow: hidden;
+
+    h1 {
+      font-family: $font-title;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 0 0 10px $death-purple-light, 0 0 20px $death-accent;
+    }
+
+    .smoke-ash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(
+        circle,
+        rgba(200, 200, 255, 0.1) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      animation-timing-function: ease-out;
+      opacity: 0.8;
+    }
+
+    .smoke {
+      width: 80px;
+      height: 80px;
+      animation-name: riseSmoke;
+      animation-iteration-count: infinite;
+      animation-duration: 14s;
+    }
+
+    .ash {
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(
+        circle,
+        rgba(180, 180, 255, 0.4) 0%,
+        transparent 80%
+      );
+      animation-name: flutterAsh;
+      animation-iteration-count: infinite;
+      animation-duration: 9s;
+    }
+  }
+
+  .death-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: $death-bg-mid;
+    border: 2px solid $death-purple-dark;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $death-purple-light;
+    }
+
+    p {
+      font-family: $font-body;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      color: lighten($death-text-light, 10%);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .back-link {
+    display: block;
+    margin: 2rem auto 0;
+    width: fit-content;
+    text-decoration: none;
+    color: $death-accent;
+    font-size: 1rem;
+    border: 2px solid $death-purple-light;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $death-purple-light;
+      color: $death-bg-mid;
+    }
+  }
+}

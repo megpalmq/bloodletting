@@ -1,0 +1,116 @@
+$pest-bg-dark: #0b0f0b;
+$pest-bg-mid: #1d2c1d;
+$pest-green: #3d8f55;
+$pest-green-dark: #2b5e3a;
+$pest-green-light: #8ef2a3;
+$pest-text-light: #e2fce9;
+$pest-text-accent: #c5ffd0;
+$font-title: "Cinzel", serif;
+$font-body: "Open Sans", sans-serif;
+
+.pest-theme {
+  background: radial-gradient(#1a2a1a, $pest-bg-dark);
+  background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+  color: $pest-text-light;
+  font-family: $font-title;
+
+  .pestilence-hero {
+    position: relative;
+    background: linear-gradient(135deg, #0f3d1e, #264d2e);
+    color: #c5ffd0;
+    padding: 6rem 2rem;
+    overflow: hidden;
+
+    h1 {
+      font-family: $font-title;
+      font-size: 4rem;
+      text-align: center;
+      text-shadow: 0 0 10px $pest-green-light, 0 0 20px $pest-green,
+        0 0 30px $pest-green-dark;
+    }
+
+    .smoke-ash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(
+        circle,
+        rgba(150, 255, 150, 0.15) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      animation-timing-function: ease-out;
+      opacity: 0.8;
+    }
+
+    .smoke {
+      width: 80px;
+      height: 80px;
+      animation-name: riseSmoke;
+      animation-iteration-count: infinite;
+      animation-duration: 12s;
+    }
+
+    .ash {
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(
+        circle,
+        rgba(100, 255, 100, 0.5) 0%,
+        transparent 80%
+      );
+      animation-name: flutterAsh;
+      animation-iteration-count: infinite;
+      animation-duration: 8s;
+    }
+  }
+
+  .pestilence-content {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: $pest-bg-mid;
+    border: 2px solid $pest-green-dark;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    border-radius: 16px;
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $pest-green-light;
+    }
+
+    p {
+      font-family: $font-body;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      color: lighten($pest-text-light, 10%);
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .back-link {
+    display: block;
+    margin: 2rem auto 0;
+    width: fit-content;
+    text-decoration: none;
+    color: $pest-text-accent;
+    font-size: 1rem;
+    border: 2px solid $pest-green-light;
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $pest-green-light;
+      color: $pest-bg-mid;
+    }
+  }
+}

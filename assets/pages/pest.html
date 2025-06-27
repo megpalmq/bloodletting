@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloodletting - Pestilence Factions</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/" style="text-decoration: none; color: #00ffe7"
+          >Witless Crusade Games</a
+        >
+      </div>
+      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/assets/pages/rules.html">How to Play</a></li>
+        <li><a href="/assets/pages/factions.html">Factions</a></li>
+      </ul>
+    </nav>
+    <div class="pest-theme">
+      <div class="pestilence-hero">
+        <h1>Pestilence</h1>
+        <p class="subtitle">Decay. Disease. Despair.</p>
+      </div>
+
+      <section class="pestilence-content">
+        <h2>The Masters of Decay</h2>
+        <p>
+          This faction thrives where others wither. Pestilence spreads like a
+          sickness—slow, painful, and inescapable. Their cards weaken opponents
+          turn by turn, stacking debuffs and infecting strategies.
+        </p>
+
+        <h2>Signature Strategy</h2>
+        <p>
+          Focused on slow-burn tactics, Pestilence cards infect the enemy and
+          hinder progress. They win by surviving while others rot.
+        </p>
+
+        <h2>Card Traits</h2>
+        <p>
+          🦠 <strong>Poison Over Time</strong><br />
+          💀 <strong>Decay Mechanics</strong><br />
+          🧬 <strong>Contagion Spread</strong>
+        </p>
+
+        <a href="/assets/pages/factions.html" class="back-link">
+          <i class="fa-solid fa-arrow-left"></i> Back to Factions
+        </a>
+      </section>
+    </div>
+    <footer>
+      <div class="footer-columns">
+        <div class="footer-col copyright">
+          &copy; Witless Crusade Games. All rights reserved.
+        </div>
+
+        <div class="footer-col creators">
+          <p>Game Creators:</p>
+          <ul>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/donovan-jennings/"
+                target="_blank"
+                >Donovan Jennings</a
+              >
+            </li>
+            <li>
+              <a href="https://example.com/sam" target="_blank">Sam Patel</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jonathanshaw2/"
+                target="_blank"
+                >Jonathan Shaw</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col web-designer">
+          Web Designer + Developer: <br />
+          <a href="https://www.linkedin.com/in/megan-palmquist/" target="_blank"
+            >Megan Palmquist</a
+          >
+        </div>
+
+        <div class="footer-col feedback">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
+            target="_blank"
+            class="feedback-btn"
+            >Give Feedback</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".faction-card");
+        let activeIndex = 0;
+
+        function updateCards() {
+          cards.forEach((card, i) => {
+            card.classList.remove("active", "tilted-left", "tilted-right");
+            if (i < activeIndex) card.classList.add("tilted-left");
+            else if (i > activeIndex) card.classList.add("tilted-right");
+            else card.classList.add("active");
+          });
+        }
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          const deltaX = e.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(deltaX) > 50) {
+            if (deltaX < 0) {
+              activeIndex = (activeIndex + 1) % cards.length;
+            } else {
+              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+            }
+            updateCards();
+          }
+        });
+
+        // Click on desktop to advance
+        document
+          .querySelector(".factions-stack")
+          .addEventListener("click", () => {
+            if (window.innerWidth > 768) {
+              activeIndex = (activeIndex + 1) % cards.length;
+              updateCards();
+            }
+          });
+
+        updateCards(); // initial load
+      });
+
+      // Hamburger Menu
+      document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".navbar ul");
+
+        hamburger?.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>
