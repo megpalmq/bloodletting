@@ -14,6 +14,12 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -44,14 +50,14 @@
     <section id="app">
       <section class="hero">
         <img
-          src="/assets/images/guy.png"
+          src="/assets/images/BoxCover_Transparent.png"
           alt="Ruined King"
           class="hero-image"
         />
         <div class="hero-content">
-          <h1>Bloodletting</h1>
-          <h2>A League of Legends Story</h2>
-          <p class="hero-description">
+          <h1 class="reveal-on-scroll">Bloodletting</h1>
+          <h2 class="reveal-on-scroll">A League of Legends Story</h2>
+          <p class="hero-description reveal-on-scroll">
             Four apocalyptic cults — War, Famine, Pestilence, and Death — vie
             for control of the kingdom. Each spreads their influence through
             unique troops, battle cards, and secret objectives, while sabotaging
@@ -59,7 +65,9 @@
             tactics.
           </p>
           <br />
-          <p>Will you follow the path of destruction or rise to stop them?</p>
+          <p class="reveal-on-scroll">
+            Will you follow the path of destruction or rise to stop them?
+          </p>
 
           <button class="buy-button">
             <a style="text-decoration: none; color: #000" href="#learn">
@@ -70,8 +78,8 @@
         <div class="fog fog-1"></div>
       </section>
       <section id="learn" class="learn-about">
-        <h2>What is Bloodletting?</h2>
-        <div class="text">
+        <h2 class="reveal-on-scroll">What is Bloodletting?</h2>
+        <div class="text reveal-on-scroll">
           <p>
             Bloodletting is a dark, strategy-driven board game where players
             take on the roles of apocalyptic factions vying for control of a
@@ -99,9 +107,24 @@
         <h2>The Factions</h2>
 
         <div class="regions-row">
-          <div class="region death">
+          <div class="region war reveal-on-scroll">
             <img
-              src="assets/images/DeathCoinActive.png"
+              src="assets/images/WarLogoRed.png"
+              alt="War Faction Character"
+              style="top: 50px"
+            />
+            <h3>War Faction</h3>
+            <p class="description">
+              Warlords and strategists, this faction thrives in the heat of
+              battle and conflict.
+            </p>
+            <a href="/assets/pages/war.html" style="text-decoration: none">
+              <button>Explore</button>
+            </a>
+          </div>
+          <div class="region death reveal-on-scroll">
+            <img
+              src="assets/images/DeathlogoBlue.png"
               alt="Death Faction Character"
             />
             <h3>Death Faction</h3>
@@ -114,9 +137,9 @@
             </a>
           </div>
 
-          <div class="region famine">
+          <div class="region famine reveal-on-scroll">
             <img
-              src="assets/images/FamineSymbol.png"
+              src="assets/images/famineLogoYellow.png"
               alt="Famine Faction Character"
             />
             <h3>Famine Faction</h3>
@@ -129,9 +152,9 @@
             </a>
           </div>
 
-          <div class="region pestilence">
+          <div class="region pestilence reveal-on-scroll">
             <img
-              src="assets/images/PestilenceVictory.png"
+              src="assets/images/pestilenceLogo.png"
               alt="Pestilence Faction Character"
               style="width: 200px"
             />
@@ -141,22 +164,6 @@
               disease and decay.
             </p>
             <a href="/assets/pages/pest.html" style="text-decoration: none">
-              <button>Explore</button>
-            </a>
-          </div>
-
-          <div class="region war">
-            <img
-              src="assets/images/WarCoin_Active.png"
-              alt="War Faction Character"
-              style="top: 50px"
-            />
-            <h3>War Faction</h3>
-            <p class="description">
-              Warlords and strategists, this faction thrives in the heat of
-              battle and conflict.
-            </p>
-            <a href="/assets/pages/war.html" style="text-decoration: none">
               <button>Explore</button>
             </a>
           </div>
@@ -202,11 +209,12 @@
           </div>
 
           <div class="footer-col feedback">
+            <h4>Already played Bloodletting? We'd Love your Feedback!</h4>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
               target="_blank"
               class="feedback-btn"
-              >Give Feedback</a
+              >Playtest Review Form</a
             >
           </div>
         </div>

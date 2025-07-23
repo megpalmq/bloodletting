@@ -34,24 +34,54 @@
       <div class="pestilence-hero">
         <h1>Pestilence</h1>
         <p class="subtitle">Decay. Disease. Despair.</p>
+        <div class="smoke-ash">
+          <div
+            class="particle smoke"
+            style="top: 90%; left: 20%; animation-delay: 0s"
+          ></div>
+          <div
+            class="particle smoke"
+            style="top: 95%; left: 50%; animation-delay: 4s"
+          ></div>
+          <div
+            class="particle smoke"
+            style="top: 92%; left: 75%; animation-delay: 7s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 80%; left: 25%; animation-delay: 1s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 85%; left: 40%; animation-delay: 3s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 78%; left: 65%; animation-delay: 5s"
+          ></div>
+          <div
+            class="particle ash"
+            style="top: 83%; left: 85%; animation-delay: 2s"
+          ></div>
+        </div>
       </div>
 
       <section class="pestilence-content">
-        <h2>The Masters of Decay</h2>
-        <p>
+        <h2 class="reveal-on-scroll">The Masters of Decay</h2>
+        <p class="reveal-on-scroll">
           This faction thrives where others wither. Pestilence spreads like a
           sickness—slow, painful, and inescapable. Their cards weaken opponents
           turn by turn, stacking debuffs and infecting strategies.
         </p>
 
-        <h2>Signature Strategy</h2>
-        <p>
+        <h2 class="reveal-on-scroll">Signature Strategy</h2>
+        <p class="reveal-on-scroll">
           Focused on slow-burn tactics, Pestilence cards infect the enemy and
           hinder progress. They win by surviving while others rot.
         </p>
 
-        <h2>Card Traits</h2>
-        <p>
+        <h2 class="reveal-on-scroll">Card Traits</h2>
+        <p class="reveal-on-scroll">
           🦠 <strong>Poison Over Time</strong><br />
           💀 <strong>Decay Mechanics</strong><br />
           🧬 <strong>Contagion Spread</strong>
@@ -99,15 +129,17 @@
         </div>
 
         <div class="footer-col feedback">
+          <h4>Already played Bloodletting? We'd Love your Feedback!</h4>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
             target="_blank"
             class="feedback-btn"
-            >Give Feedback</a
+            >Playtest Review Form</a
           >
         </div>
       </div>
     </footer>
+    <script src="/js/app.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const cards = document.querySelectorAll(".faction-card");

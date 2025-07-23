@@ -123,8 +123,8 @@ body {
   flex-direction: row;
 }
 .hero img {
-  width: 50%;
-  height: 100vh;
+  width: 100%;
+  height: 90vh;
   object-fit: cover;
   filter: brightness(0.8);
   position: relative;
@@ -144,9 +144,11 @@ body {
   padding: 1rem;
   color: #f0f0f0;
   animation: fadeInUp 2s ease-out;
-  max-width: 90%;
+  max-width: 85%;
   margin: 0 auto;
   right: 130px;
+  background-color: rgba(11, 20, 18, 0.7);
+  padding: 20px;
 }
 .hero .hero-content h1 {
   font-size: 4rem;
@@ -157,7 +159,6 @@ body {
 .hero .hero-content h2 {
   font-size: 1.2rem;
   color: #5df2d6;
-  text-shadow: 0 0 6px #5df2d6;
 }
 .hero .hero-content .buy-button {
   margin-top: 1rem;
@@ -257,6 +258,30 @@ body {
     font-size: 0.9rem;
   }
 }
+@media (max-width: 768px) {
+  .hero .hero-content {
+    padding: 1rem 0.5rem;
+  }
+  .hero .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  .hero .hero-content h2 {
+    font-size: 0.95rem;
+  }
+  .hero .hero-content .buy-button {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.85rem;
+  }
+  .hero .hero-title {
+    font-size: 1.7rem;
+  }
+  .hero .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .hero .hero-description {
+    font-size: 0.88rem;
+  }
+}
 @media (max-width: 480px) {
   .hero .hero-content h1 {
     font-size: 1.6rem;
@@ -284,6 +309,7 @@ body {
   z-index: 100;
   display: flex;
   width: 100%;
+  animation: fadeInUp 2s ease-out;
 }
 .learn-about h2 {
   font-size: 4.5rem;
@@ -301,7 +327,7 @@ body {
   max-width: 700px;
   margin: 0 auto 2rem;
   line-height: 1.6;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   margin-right: 100px;
 }
 .learn-about a button {
@@ -329,7 +355,7 @@ body {
     margin-right: 50px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .learn-about {
     flex-direction: column;
     align-items: center;
@@ -483,21 +509,21 @@ body {
   letter-spacing: 1px;
 }
 .regions .region .description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
   color: white;
   margin-bottom: 1.5rem;
   padding: 0 1rem;
   line-height: 1.4;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
 }
 .regions .region img {
   position: absolute;
-  margin-top: 200px;
+  margin-top: 300px;
   left: 50%;
   transform: translateX(-50%);
   width: 260px;
-  height: auto;
+  height: 250px;
   z-index: 3;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
 }
@@ -527,16 +553,16 @@ body {
   height: 600px;
 }
 .regions .region.death {
-  border-color: rgba(255, 0, 100, 0.4);
-  box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
+  border-color: rgba(43, 0, 255, 0.4);
+  box-shadow: 0 0 20px rgba(43, 0, 255, 0.4);
 }
 .regions .region.war {
   border-color: rgba(255, 80, 0, 0.4);
   box-shadow: 0 0 20px rgba(255, 80, 0, 0.3);
 }
 .regions .region.pestilence {
-  border-color: rgba(120, 255, 100, 0.4);
-  box-shadow: 0 0 20px rgba(120, 255, 100, 0.3);
+  border-color: rgba(255, 100, 227, 0.4);
+  box-shadow: 0 0 20px, rgba(255, 100, 227, 0.4);
 }
 .regions .region.famine {
   border-color: rgba(255, 255, 0, 0.4);
@@ -647,7 +673,7 @@ body {
   margin: 10px;
 }
 .footer-columns .footer-col a {
-  color: #e36d6d;
+  color: #fe5353;
   text-decoration: none;
 }
 .footer-columns .footer-col a:hover {
@@ -656,8 +682,8 @@ body {
 .footer-columns .feedback-btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #1ce8f7;
-  color: #fff;
+  background-color: #98e1db;
+  color: #000000;
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
@@ -729,12 +755,31 @@ body {
     transform: translateX(20%) scale(1.6);
   }
 }
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-on-scroll.visible {
+  animation: floatIn 0.8s ease forwards;
+}
+
 .how-to-play-page {
   min-height: 100vh;
   padding: 3rem 2rem 5rem;
   background: linear-gradient(135deg, #0b0f1f, #000000);
   color: #f1f1f1;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Times New Roman", Times, serif;
   overflow-x: hidden;
 }
 .how-to-play-page::before {
@@ -783,10 +828,10 @@ body {
   border-radius: 50%;
 }
 .how-to-play-page .yap {
-  font-size: 1rem;
+  font-size: 1.2rem;
   width: 50%;
   margin: 0 auto;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Times New Roman", Times, serif;
   text-align: center;
   padding-bottom: 200px;
 }
@@ -828,7 +873,7 @@ body {
   backdrop-filter: blur(14px);
   box-shadow: 0 0 25px rgba(0, 255, 230, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.8);
   color: #f1f1f1;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Times New Roman", Times, serif;
   transition: transform 0.3s ease;
   opacity: 0;
   transform: translateY(50px);
@@ -1213,12 +1258,13 @@ body {
 }
 .factions-stack {
   position: relative;
-  width: 480px;
-  height: 600px;
-  margin: 6rem auto;
+  width: 500px;
+  height: 650px;
+  margin: 3rem auto;
   perspective: 1500px;
   cursor: pointer;
   overflow-x: visible;
+  left: -80px;
 }
 .factions-stack .faction-icon {
   width: 64px;
@@ -1231,19 +1277,19 @@ body {
   position: absolute;
   top: 40px;
   left: 50%;
-  width: 280px;
-  height: 400px;
+  width: 300px;
+  height: 450px;
   transform: translateX(-50%);
-  background: #8b4513;
+  background: rgba(80, 80, 80, 0.7);
   border-radius: 16px;
   box-shadow: inset 0 0 40px rgba(139, 69, 19, 0.8), 0 12px 25px rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Times New Roman";
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"), linear-gradient(45deg, #5c3317, #c97c3d);
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"), linear-gradient(45deg, rgba(129, 244, 230, 0.6), #c97c3d);
   background-blend-mode: multiply;
   border: 2px solid #6b3f18;
   box-sizing: border-box;
@@ -1257,7 +1303,7 @@ body {
   user-select: none;
 }
 .factions-stack .faction-card p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1.4;
   flex-grow: 1;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
@@ -1282,18 +1328,22 @@ body {
 .factions-stack .faction-card:nth-child(1) {
   z-index: 1;
   transform: translateX(-50%) rotate(-6deg);
+  border: 2px solid #d031cd;
 }
 .factions-stack .faction-card:nth-child(2) {
   z-index: 2;
   transform: translateX(-50%) rotate(-2deg);
+  border: 2px solid #997f08;
 }
 .factions-stack .faction-card:nth-child(3) {
   z-index: 3;
   transform: translateX(-50%) rotate(2deg);
+  border: 2px solid #2e186b;
 }
 .factions-stack .faction-card:nth-child(4) {
   z-index: 4;
   transform: translateX(-50%) rotate(6deg);
+  border: 2px solid #6b1818;
 }
 @media (min-width: 769px) {
   .factions-stack:hover .faction-card:nth-child(1) {
@@ -1487,15 +1537,15 @@ body {
 }
 
 .pest-theme {
-  background: radial-gradient(#1a2a1a, #0b0f0b);
+  background: radial-gradient(#2a1a28, #0b0f0b);
   background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
-  color: #e2fce9;
+  color: #fce2fc;
   font-family: "Cinzel", serif;
 }
 .pest-theme .pestilence-hero {
   position: relative;
-  background: linear-gradient(135deg, #0f3d1e, #264d2e);
-  color: #c5ffd0;
+  background: linear-gradient(135deg, #390f3d, #4d2645);
+  color: #fac5ff;
   padding: 6rem 2rem;
   overflow: hidden;
 }
@@ -1503,7 +1553,13 @@ body {
   font-family: "Cinzel", serif;
   font-size: 4rem;
   text-align: center;
-  text-shadow: 0 0 10px #8ef2a3, 0 0 20px #3d8f55, 0 0 30px #2b5e3a;
+  text-shadow: 0 0 10px #f28edb, 0 0 20px #cc33a8, 0 0 30px #5e0250;
+}
+.pest-theme .pestilence-hero .subtitle {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
 }
 .pest-theme .pestilence-hero .smoke-ash {
   position: absolute;
@@ -1515,7 +1571,7 @@ body {
 }
 .pest-theme .pestilence-hero .particle {
   position: absolute;
-  background: radial-gradient(circle, rgba(150, 255, 150, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 150, 255, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   animation-timing-function: ease-out;
   opacity: 0.8;
@@ -1530,7 +1586,7 @@ body {
 .pest-theme .pestilence-hero .ash {
   width: 15px;
   height: 15px;
-  background: radial-gradient(circle, rgba(100, 255, 100, 0.5) 0%, transparent 80%);
+  background: radial-gradient(circle, rgba(255, 100, 216, 0.5) 0%, transparent 80%);
   animation-name: flutterAsh;
   animation-iteration-count: infinite;
   animation-duration: 8s;
@@ -1539,38 +1595,141 @@ body {
   max-width: 900px;
   margin: 4rem auto;
   padding: 2rem;
-  background: #1d2c1d;
-  border: 2px solid #2b5e3a;
+  background: #2c1d29;
+  border: 2px solid #5e0250;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
   border-radius: 16px;
 }
 .pest-theme .pestilence-content h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #8ef2a3;
+  color: #f28edb;
 }
 .pest-theme .pestilence-content p {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Times New Roman", sans-serif;
   line-height: 1.7;
   font-size: 1.05rem;
   color: white;
   margin-bottom: 1.5rem;
+  margin: 0 auto;
 }
 .pest-theme .back-link {
   display: block;
   margin: 2rem auto 0;
   width: fit-content;
   text-decoration: none;
-  color: #c5ffd0;
+  color: #ffc5ff;
   font-size: 1rem;
-  border: 2px solid #8ef2a3;
+  border: 2px solid #f28edb;
   padding: 0.6rem 1.5rem;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 .pest-theme .back-link:hover {
-  background: #8ef2a3;
-  color: #1d2c1d;
+  background: #f28edb;
+  color: #2c1d29;
+}
+
+@media (max-width: 600px) {
+  .pest-theme .pestilence-hero {
+    padding: 4rem 1rem;
+  }
+  .pest-theme .pestilence-hero h1 {
+    font-size: 2.5rem;
+  }
+  .pest-theme .pestilence-hero .subtitle {
+    font-size: 1rem;
+    text-align: center;
+    flex-direction: column;
+  }
+  .pest-theme .pestilence-content {
+    padding: 1.5rem;
+    margin: 2rem 1rem;
+  }
+  .pest-theme .pestilence-content h2 {
+    font-size: 1.8rem;
+  }
+  .pest-theme .pestilence-content p {
+    font-size: 0.95rem;
+  }
+  .pest-theme .back-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+  .pest-theme .pestilence-hero {
+    padding: 5rem 1.5rem;
+  }
+  .pest-theme .pestilence-hero h1 {
+    font-size: 3.2rem;
+  }
+  .pest-theme .pestilence-hero .subtitle {
+    font-size: 1.1rem;
+  }
+  .pest-theme .pestilence-content {
+    padding: 2rem;
+    margin: 3rem 2rem;
+  }
+  .pest-theme .pestilence-content h2 {
+    font-size: 2.2rem;
+  }
+  .pest-theme .pestilence-content p {
+    font-size: 1rem;
+  }
+  .pest-theme .back-link {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 400px) {
+  .pest-theme .pestilence-hero {
+    padding: 3rem 1rem;
+  }
+  .pest-theme .pestilence-hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .pest-theme .pestilence-hero .subtitle {
+    font-size: 0.9rem;
+    text-align: center;
+    flex-direction: column;
+  }
+  .pest-theme .pestilence-content {
+    padding: 1rem;
+    margin: 1.5rem 0.5rem;
+  }
+  .pest-theme .pestilence-content h2 {
+    font-size: 1.5rem;
+  }
+  .pest-theme .pestilence-content p {
+    font-size: 0.9rem;
+  }
+  .pest-theme .back-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+  }
+  .pest-theme .smoke,
+  .pest-theme .ash {
+    display: none;
+  }
+}
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-on-scroll.visible {
+  animation: floatIn 0.8s ease forwards;
 }
 
 .famine-page {
@@ -1635,7 +1794,7 @@ body {
   color: #f5e7c4;
 }
 .famine-page .famine-content p {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Times New Roman", sans-serif;
   line-height: 1.7;
   font-size: 1.05rem;
   color: white;
@@ -1656,6 +1815,25 @@ body {
 .famine-page .back-link:hover {
   background: #f5e7c4;
   color: #2c221a;
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-on-scroll.visible {
+  animation: floatIn 0.8s ease forwards;
 }
 
 .death-page {

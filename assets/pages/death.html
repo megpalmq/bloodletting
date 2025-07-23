@@ -32,7 +32,7 @@
     </nav>
     <div class="death-page">
       <div class="death-hero">
-        <h1>Death Faction</h1>
+        <h1 class="reveal-on-scroll">Death Faction</h1>
         <div class="smoke-ash">
           <div
             class="particle smoke"
@@ -66,22 +66,22 @@
       </div>
 
       <section class="death-content">
-        <h2>The Inevitable End</h2>
-        <p>
+        <h2 class="reveal-on-scroll">The Inevitable End</h2>
+        <p class="reveal-on-scroll">
           The Death faction operates with quiet certainty. They don't rush. They
           don't panic. They simply wait — and eventually, they win. Death brings
           the long game to life.
         </p>
 
         <h2>Signature Strategy</h2>
-        <p>
+        <p class="reveal-on-scroll">
           Death manipulates the discard pile, revives the fallen, and punishes
           opponents for every loss. Each card is a reminder: all things must
           end.
         </p>
 
         <h2>Card Traits</h2>
-        <p>
+        <p class="reveal-on-scroll">
           ☠️ <strong>Resurrection</strong><br />
           🌒 <strong>Graveyard Mechanics</strong><br />
           🕯️ <strong>Delayed Triggers</strong>
@@ -130,15 +130,17 @@
         </div>
 
         <div class="footer-col feedback">
+          <h4>Already played Bloodletting? We'd Love your Feedback!</h4>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
             target="_blank"
             class="feedback-btn"
-            >Give Feedback</a
+            >Playtest Review Form</a
           >
         </div>
       </div>
     </footer>
+    <script src="/js/app.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const cards = document.querySelectorAll(".faction-card");

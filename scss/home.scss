@@ -123,8 +123,8 @@ body {
   flex-direction: row;
 
   img {
-    width: 50%;
-    height: 100vh;
+    width: 100%;
+    height: 90vh;
     object-fit: cover;
     filter: brightness(0.8);
     position: relative;
@@ -146,9 +146,11 @@ body {
     padding: 1rem;
     color: $light;
     animation: fadeInUp 2s ease-out;
-    max-width: 90%;
+    max-width: 85%;
     margin: 0 auto;
     right: 130px;
+    background-color: rgb(11, 20, 18, 0.7);
+    padding: 20px;
 
     h1 {
       font-size: 4rem;
@@ -160,7 +162,6 @@ body {
     h2 {
       font-size: 1.2rem;
       color: $accent;
-      text-shadow: 0 0 6px $accent;
     }
 
     .buy-button {
@@ -277,6 +278,36 @@ body {
       font-size: 0.9rem;
     }
   }
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 1rem 0.5rem;
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 0.95rem;
+      }
+
+      .buy-button {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .hero-title {
+      font-size: 1.7rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .hero-description {
+      font-size: 0.88rem;
+    }
+  }
 
   @media (max-width: 480px) {
     .hero-content h1 {
@@ -309,7 +340,7 @@ body {
   z-index: 100;
   display: flex;
   width: 100%;
-
+  animation: fadeInUp 2s ease-out;
   h2 {
     font-size: 4.5rem;
     color: $light;
@@ -327,7 +358,7 @@ body {
     max-width: 700px;
     margin: 0 auto 2rem;
     line-height: 1.6;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Times New Roman", Times, serif;
     margin-right: 100px;
   }
 
@@ -362,7 +393,7 @@ body {
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -527,22 +558,22 @@ body {
     }
 
     .description {
-      font-size: 1rem;
+      font-size: 1.1rem;
       text-align: center;
       color: lighten($light, 20%);
       margin-bottom: 1.5rem;
       padding: 0 1rem;
       line-height: 1.4;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Times New Roman", Times, serif;
     }
 
     img {
       position: absolute;
-      margin-top: 200px;
+      margin-top: 300px;
       left: 50%;
       transform: translateX(-50%);
       width: 260px;
-      height: auto;
+      height: 250px;
       z-index: 3;
       filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
     }
@@ -579,8 +610,8 @@ body {
     }
 
     &.death {
-      border-color: rgba(255, 0, 100, 0.4);
-      box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
+      border-color: rgba(43, 0, 255, 0.4);
+      box-shadow: 0 0 20px rgba(43, 0, 255, 0.4);
     }
 
     &.war {
@@ -589,8 +620,8 @@ body {
     }
 
     &.pestilence {
-      border-color: rgba(120, 255, 100, 0.4);
-      box-shadow: 0 0 20px rgba(120, 255, 100, 0.3);
+      border-color: rgba(255, 100, 227, 0.4);
+      box-shadow: 0 0 20px, rgba(255, 100, 227, 0.4);
     }
 
     &.famine {
@@ -720,7 +751,7 @@ body {
     margin: 10px;
 
     a {
-      color: #e36d6d;
+      color: #fe5353;
       text-decoration: none;
 
       &:hover {
@@ -732,8 +763,8 @@ body {
   .feedback-btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #1ce8f7;
-    color: #fff;
+    background-color: #98e1db;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
     border-radius: 6px;
@@ -812,5 +843,25 @@ body {
   }
   to {
     transform: translateX(20%) scale(1.6);
+  }
+}
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.visible {
+    animation: floatIn 0.8s ease forwards;
   }
 }
