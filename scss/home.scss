@@ -697,13 +697,14 @@ body {
     .region {
       margin: 0 auto;
       height: auto;
-      min-height: 380px; // make card taller overall
+      min-height: 380px;
       padding: 2rem 1rem;
 
       img {
         width: 200px;
-        padding: 50px;
-        margin-top: 120px;
+        padding: 30px;
+        margin-top: 170px;
+        object-fit: contain;
       }
 
       h3 {

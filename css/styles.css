@@ -631,8 +631,9 @@ body {
   }
   .regions .region img {
     width: 200px;
-    padding: 50px;
-    margin-top: 120px;
+    padding: 30px;
+    margin-top: 170px;
+    object-fit: contain;
   }
   .regions .region h3 {
     font-size: 1.7rem;
