@@ -144,7 +144,7 @@ body {
   padding: 1rem;
   color: #f0f0f0;
   animation: fadeInUp 2s ease-out;
-  max-width: 85%;
+  min-width: 600px;
   margin: 0 auto;
   right: 130px;
   background-color: rgba(11, 20, 18, 0.7);
