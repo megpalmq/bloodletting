@@ -219,7 +219,8 @@ body {
 @media (max-width: 1000px) {
   .hero {
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 2rem 2rem;
+    height: auto;
   }
   .hero img {
     position: absolute;
@@ -227,9 +228,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.5;
-    object-fit: cover;
-    filter: brightness(0.5);
+    opacity: 1;
+    object-fit: contain;
+    filter: brightness(0.8);
     z-index: 0;
   }
   .hero .hero-content {
@@ -237,6 +238,9 @@ body {
     right: 0;
     z-index: 2;
     padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
   }
   .hero .hero-content h1 {
     font-size: 2rem;
@@ -256,11 +260,14 @@ body {
   }
   .hero .hero-description {
     font-size: 0.9rem;
+    margin: 1rem 0;
   }
 }
 @media (max-width: 768px) {
   .hero .hero-content {
-    padding: 1rem 0.5rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
   .hero .hero-content h1 {
     font-size: 1.8rem;
@@ -283,8 +290,20 @@ body {
   }
 }
 @media (max-width: 480px) {
+  .hero .hero-content {
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
   .hero .hero-content h1 {
     font-size: 1.6rem;
+  }
+  .hero .hero-content h2 {
+    font-size: 0.9rem;
+  }
+  .hero .hero-content .buy-button {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
   }
   .hero .hero-title {
     font-size: 1.5rem;
@@ -294,10 +313,6 @@ body {
   }
   .hero .hero-description {
     font-size: 0.85rem;
-  }
-  .hero .buy-button {
-    font-size: 0.85rem;
-    padding: 0.6rem 1.2rem;
   }
 }
 
@@ -359,7 +374,6 @@ body {
   .learn-about {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
   .learn-about h2 {
     font-size: 3rem;
@@ -1264,7 +1278,7 @@ body {
   perspective: 1500px;
   cursor: pointer;
   overflow-x: visible;
-  left: -80px;
+  right: 50px;
 }
 .factions-stack .faction-icon {
   width: 64px;
@@ -1366,10 +1380,13 @@ body {
 @media (max-width: 1024px) {
   .factions-stack {
     width: 100%;
+    margin: 0 auto;
+    justify-content: center;
   }
   .factions-stack .faction-card {
-    width: 240px;
-    height: 360px;
+    width: 250px;
+    height: 400px;
+    padding: 1.2rem;
   }
   .factions-stack .faction-card h2 {
     font-size: 1.8rem;
@@ -1379,9 +1396,15 @@ body {
   }
 }
 @media (max-width: 768px) {
+  .factions-stack {
+    margin-left: auto;
+    margin-right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .factions-stack .faction-card {
-    width: 200px;
-    height: 320px;
+    width: 250px;
+    height: 400px;
     padding: 1.5rem;
   }
   .factions-stack .faction-card h2 {
@@ -1392,9 +1415,15 @@ body {
   }
 }
 @media (max-width: 480px) {
+  .factions-stack {
+    margin-left: auto;
+    margin-right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .factions-stack .faction-card {
-    width: 180px;
-    height: 300px;
+    width: 250px;
+    height: 400px;
     padding: 1.2rem;
   }
   .factions-stack .faction-card h2 {
