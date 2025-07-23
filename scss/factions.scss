@@ -89,25 +89,25 @@ $paper-texture: url("https://www.transparenttextures.com/patterns/paper-fibers.p
   .faction-card:nth-child(1) {
     z-index: 1;
     transform: translateX(-50%) rotate(-6deg);
-    border: 2px solid #d031cd;
+    border: 2px solid #6b1818;
   }
 
   .faction-card:nth-child(2) {
     z-index: 2;
     transform: translateX(-50%) rotate(-2deg);
-    border: 2px solid #997f08;
+    border: 2px solid #2a0899;
   }
 
   .faction-card:nth-child(3) {
     z-index: 3;
     transform: translateX(-50%) rotate(2deg);
-    border: 2px solid #2e186b;
+    border: 2px solid #997f08;
   }
 
   .faction-card:nth-child(4) {
     z-index: 4;
     transform: translateX(-50%) rotate(6deg);
-    border: 2px solid #6b1818;
+    border: 2px solid #b11ba5;
   }
 
   // Hover spread and focus ONLY on desktop (min-width 769px)
