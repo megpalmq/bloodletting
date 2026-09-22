@@ -1,554 +1,656 @@
-// Variables for colors & fonts
-$bg-gradient-start: #0b0f1f;
-$bg-gradient-end: #000000;
-$accent-glow: #00ffe7;
-$highlight1: #76fff9;
-$highlight2: #f1f1f1;
-$highlight3: #76fff9;
-$text-light: #f1f1f1;
-$font-title: "Cinzel", serif;
-$font-body: "Times New Roman", Times, serif;
+// ========================================
+// RULES PAGE REDESIGN
+// ========================================
+
+$rules-ink: #100d0c;
+$rules-ink-soft: #191412;
+$rules-panel: #211a17;
+$rules-paper: #eee7da;
+$rules-paper-dark: #ddd3c2;
+$rules-green: #63cdb1;
+$rules-green-dark: #397f6c;
+$rules-rust: #d65d35;
+$rules-muted: #a99c90;
+$rules-line: rgba($rules-ink, 0.15);
+$rules-dark-line: rgba($rules-paper, 0.15);
+
+$rules-title: "Cinzel", Georgia, serif;
+$rules-body: "DM Sans", sans-serif;
 
 .how-to-play-page {
-  min-height: 100vh;
-  padding: 3rem 2rem 5rem;
-  background: linear-gradient(135deg, $bg-gradient-start, $bg-gradient-end);
-  color: $text-light;
-  font-family: $font-body;
-  overflow-x: hidden;
+  position: relative;
+  overflow: hidden;
+  padding-top: 0;
+  background: $rules-paper;
+  color: $rules-ink;
+  font-family: $rules-body;
 
-  // Subtle animated particle background (dots)
+  // Subtle paper grid
   &::before {
     content: "";
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: particleMove 60s linear infinite;
-
+    position: absolute;
     z-index: 0;
+    inset: 0 0 auto;
+    height: 850px;
+    opacity: 0.4;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba($rules-ink, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($rules-ink, 0.055) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
 
-  // Page Header
-  header {
-    text-align: center;
-    margin-bottom: 4rem;
+  // ========================================
+  // HERO
+  // ========================================
+
+  > header {
     position: relative;
-    z-index: 10;
-    h1 {
-      font-family: $font-title;
-      font-size: 5rem;
-      font-weight: 900;
-      margin-top: 100px;
-      background: linear-gradient(90deg, $highlight1, $highlight2, $highlight3);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 8px $highlight1, 0 0 20px $highlight2,
-        0 0 30px $highlight3;
-      animation: titleGlow 3s ease-in-out infinite alternate;
-      user-select: none;
+    z-index: 1;
+    width: min(1380px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding-top: clamp(9rem, 18vh, 13rem);
+
+    &::before {
+      content: "Chapter 01 / The field manual";
+      display: block;
+      margin-bottom: 2rem;
+      color: $rules-green-dark;
+      font-family: $rules-body;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
-    // Optional sparkle burst behind the title
-    &::after {
+    h1 {
+      max-width: 970px;
+      margin: 0;
+      color: $rules-ink;
+      font-family: $rules-title;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 600;
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+      text-transform: uppercase;
+      transform: translateY(var(--parallax-y, 0));
+
+      &::after {
+        content: ".";
+        color: $rules-green-dark;
+      }
+    }
+  }
+
+  .yap {
+    position: relative;
+    z-index: 1;
+    width: min(1380px, calc(100% - 2.5rem));
+    max-width: none;
+    margin: clamp(3rem, 6vw, 5rem) auto 0;
+    padding-left: min(48%, 630px);
+    color: #514a44;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    line-height: 1.75;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.7rem;
+      left: 0;
+      width: min(40%, 500px);
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        $rules-green-dark,
+        rgba($rules-green-dark, 0.08)
+      );
+    }
+  }
+
+  // ========================================
+  // GAME FACTS
+  // ========================================
+
+  .rules-facts {
+    position: relative;
+    z-index: 1;
+    width: min(1380px, calc(100% - 2.5rem));
+    margin: clamp(4rem, 8vw, 7rem) auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid $rules-line;
+    border-bottom: 1px solid $rules-line;
+    transform: translateY(var(--parallax-y, 0));
+
+    > div {
+      min-height: 135px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid $rules-line;
+
+      &:first-child {
+        border-left: 0;
+      }
+
+      strong {
+        color: $rules-ink;
+        font-family: $rules-title;
+        font-size: clamp(1.6rem, 3vw, 2.6rem);
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      span {
+        margin-top: 0.7rem;
+        color: #71675e;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // ========================================
+  // PHASE NAVIGATION
+  // ========================================
+
+  .phase-nav {
+    position: sticky;
+    z-index: 15;
+    top: 0;
+    width: 100%;
+    margin-top: clamp(5rem, 10vw, 9rem);
+    padding: 0 clamp(1.25rem, 5vw, 5rem);
+    display: flex;
+    align-items: stretch;
+    overflow-x: auto;
+    background: rgba($rules-ink, 0.96);
+    border-top: 1px solid $rules-dark-line;
+    border-bottom: 1px solid $rules-dark-line;
+    backdrop-filter: blur(16px);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__label {
+      min-width: 145px;
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      align-items: center;
+      color: $rules-green;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    a {
+      position: relative;
+      min-width: max-content;
+      padding: 1.35rem 1.4rem;
+      display: flex;
+      align-items: center;
+      border-left: 1px solid $rules-dark-line;
+      color: rgba($rules-paper, 0.52);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition:
+        color 0.25s ease,
+        background 0.25s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: $rules-green;
+        transform: scaleX(0);
+        transition: transform 0.25s ease;
+      }
+
+      &:hover,
+      &.active {
+        background: rgba(white, 0.04);
+        color: $rules-paper;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  // ========================================
+  // TIMELINE
+  // ========================================
+
+  .timeline {
+    position: relative;
+    width: min(1250px, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding: clamp(6rem, 11vw, 10rem) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background: $rules-ink;
+
+    // Creates a full-width dark background
+    box-shadow: 0 0 0 100vmax $rules-ink;
+    clip-path: inset(0 -100vmax);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 8rem;
+      bottom: 8rem;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(
+        transparent,
+        rgba($rules-green, 0.55) 10%,
+        rgba($rules-green, 0.25) 90%,
+        transparent
+      );
+      transform: translateX(-50%);
+    }
+  }
+
+  // ========================================
+  // PHASE CARDS
+  // ========================================
+
+  .step {
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    --depth-z: 0px;
+    --parallax-y: 0px;
+
+    position: relative;
+    width: calc(50% - 3rem);
+    min-height: 410px;
+    padding: clamp(1.6rem, 3vw, 2.7rem);
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 1.2rem;
+    overflow: visible;
+    border: 1px solid $rules-dark-line;
+    background:
+      linear-gradient(145deg, rgba($rules-green, 0.055), transparent 42%),
+      $rules-ink-soft;
+    box-shadow: 0 35px 80px rgba(black, 0.3);
+    opacity: 0;
+    transform: perspective(1000px) translateY(calc(32px + var(--parallax-y)))
+      translateZ(var(--depth-z)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transition:
+      opacity 0.75s ease,
+      transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+    scroll-margin-top: 100px;
+
+    &:nth-child(even) {
+      margin-left: auto;
+    }
+
+    // Timeline connector
+    &::before {
       content: "";
       position: absolute;
       top: 50%;
-      left: 50%;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.2),
-        transparent 60%
-      );
-      transform: translate(-50%, -50%);
-      filter: blur(15px);
-      z-index: -1;
-      animation: pulseGlow 4s ease-in-out infinite;
-      border-radius: 50%;
+      width: 3rem;
+      height: 1px;
+      background: rgba($rules-green, 0.45);
     }
-  }
-  .yap {
-    font-size: 1.2rem;
-    width: 50%;
-    margin: 0 auto;
-    font-family: $font-body;
-    text-align: center;
-    padding-bottom: 200px;
-  }
-  .objective {
-    background-color: #00ffe7;
-    width: 70%;
-    color: #000000;
-  }
-  // Timeline container - vertical glowing line in center
-  .timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    z-index: 10;
 
-    &::before {
+    &:nth-child(odd)::before {
+      right: -3rem;
+    }
+
+    &:nth-child(even)::before {
+      left: -3rem;
+    }
+
+    // Timeline dot
+    &::after {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 6px;
-      background: linear-gradient(
-        180deg,
-        $accent-glow,
-        transparent 40%,
-        $accent-glow 80%
-      );
-      box-shadow: 0 0 12px $accent-glow, 0 0 25px $accent-glow;
-      border-radius: 4px;
-      filter: drop-shadow(0 0 6px $accent-glow);
-      z-index: -1;
+      top: calc(50% - 5px);
+      width: 10px;
+      height: 10px;
+      border: 2px solid $rules-ink;
+      background: $rules-green;
+      box-shadow: 0 0 0 1px rgba($rules-green, 0.6);
+      transform: rotate(45deg);
     }
-  }
 
-  // Each Step - alternating left & right
-  .step {
-    position: relative;
-    width: 45%;
-    right: 0;
-    margin: 4rem 0;
-    padding: 2.5rem 3rem;
-    background: rgba(255, 255, 255, 0.07);
-    border-radius: 2rem 1rem 2rem 1rem;
-    backdrop-filter: blur(14px);
-    box-shadow: 0 0 25px rgba(0, 255, 230, 0.25),
-      inset 0 0 15px rgba(255, 255, 255, 0.8);
-    color: $text-light;
-    font-family: $font-body;
-    transition: transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    &:nth-child(odd)::after {
+      right: calc(-3rem - 5px);
+    }
+
+    &:nth-child(even)::after {
+      left: calc(-3rem - 5px);
+    }
+
     &.visible {
       opacity: 1;
-      transform: translateY(0);
-    }
-    // Floating glow orb (timeline point)
-    &::before {
-      content: "";
-      position: absolute;
-      top: 2rem;
-      width: 24px;
-      height: 24px;
-      background: $accent-glow;
-      border-radius: 50%;
-      box-shadow: 0 0 10px $accent-glow, 0 0 18px rgba(0, 255, 230, 0.8);
-      filter: drop-shadow(0 0 8px $accent-glow);
-      z-index: 10;
-      margin: 0 auto;
-      animation: pulseGlow 2.5s ease-in-out infinite;
-    }
-    .icon {
-      font-size: 60px;
+      transform: perspective(1000px) translateY(var(--parallax-y))
+        translateZ(var(--depth-z)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
     }
 
-    // Odd steps on left side
-    &:nth-child(odd) {
-      margin-left: 18px;
-      margin-right: auto;
-      border-radius: 2rem 1rem 1rem 2rem;
-
-      &::before {
-        left: 100%;
-        transform: translateX(50%);
-      }
-    }
-
-    // Even steps on right side
-    &:nth-child(even) {
-      margin-left: auto;
-      margin-right: 18px;
-      border-radius: 1rem 2rem 2rem 1rem;
-
-      &::before {
-        right: 100%;
-        transform: translateX(-55%);
-      }
-    }
-
-    // Hover effect - slight scale & glow intensifies
     &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 35px rgba(0, 255, 230, 0.5),
-        inset 0 0 22px rgba(255, 255, 255, 0.15);
-      cursor: default;
-
-      &::before {
-        animation-duration: 1.5s;
-        box-shadow: 0 0 18px $accent-glow, 0 0 30px rgba(0, 255, 230, 1);
-      }
-
-      .icon {
-        transform: translateY(-10px);
-        filter: drop-shadow(0 0 10px $accent-glow);
-      }
+      border-color: rgba($rules-green, 0.55);
+      box-shadow:
+        0 40px 90px rgba(black, 0.45),
+        0 0 40px rgba($rules-green, 0.05);
     }
 
-    // Step number big, faded behind text
     .step-number {
-      position: absolute;
-      top: -300px;
-      right: 10%;
-      font-size: 30rem;
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.8);
-      user-select: none;
-      font-family: $font-title;
-
-      &:nth-child(odd) & {
-        margin-left: 100px;
-      }
-      &:nth-child(even) & {
-        right: -3rem;
-      }
+      grid-column: 1;
+      grid-row: 1 / 3;
+      color: rgba($rules-paper, 0.12);
+      font-family: $rules-title;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 0.9;
     }
 
-    .two,
-    .three,
-    .five {
-      right: -5%;
-      font-size: 27rem;
-    }
-
-    // Step icon - floating with glow
     .icon {
-      font-size: 80px;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 10px rgba(0, 255, 230, 0.7));
-      transition: transform 0.3s ease;
-      will-change: transform;
+      grid-column: 2;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 1.2rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba($rules-green, 0.45);
+      color: $rules-green;
+      font-size: 1rem;
     }
 
     h3 {
-      font-family: $font-title;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px $accent-glow;
-      user-select: none;
-      margin-top: 50px;
+      grid-column: 2;
+      margin: 0 0 1.5rem;
+      color: $rules-paper;
+      font-family: $rules-title;
+      font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      color: lighten($text-light, 10%);
-      padding-right: 1rem;
-      user-select: text;
+    > p,
+    > ol {
+      grid-column: 2;
+    }
+
+    > p {
+      margin: 0 0 1rem;
+      color: $rules-muted;
+      line-height: 1.7;
+    }
+
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: rule-item;
+
+      li {
+        position: relative;
+        margin-bottom: 0.8rem;
+        padding: 0 0 0.8rem 2rem;
+        border-bottom: 1px solid rgba($rules-paper, 0.08);
+        color: $rules-muted;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        counter-increment: rule-item;
+
+        &::before {
+          content: counter(rule-item, decimal-leading-zero);
+          position: absolute;
+          top: 0.15rem;
+          left: 0;
+          color: $rules-green;
+          font-family: $rules-body;
+          font-size: 0.6rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+          border-bottom: 0;
+        }
+
+        ol {
+          margin-top: 0.8rem;
+
+          li {
+            padding-left: 1.5rem;
+            color: rgba($rules-muted, 0.75);
+
+            &::before {
+              content: "↳";
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
     }
   }
 
+  // ========================================
+  // FULL RULEBOOK CTA
+  // ========================================
+
   .start-game-wrapper {
+    position: relative;
+    z-index: 1;
+    padding: clamp(6rem, 10vw, 9rem) 1.25rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    text-align: center;
+    background: $rules-paper;
+
     a {
       text-decoration: none;
     }
   }
 
   .start-game-cta {
-    padding: 1rem 3rem;
-    font-size: 1.5rem;
-    font-family: $font-title;
-    border-radius: 30px;
-    border: none;
-    background: linear-gradient(45deg, $highlight2, $highlight3);
-    color: $bg-gradient-end;
-    box-shadow: 0 0 25px $highlight3, 0 0 45px $highlight2;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    min-width: min(460px, calc(100vw - 2.5rem));
+    padding: 1.3rem 1.6rem;
+    border: 1px solid $rules-ink;
+    background: transparent;
+    color: $rules-ink;
+    font-family: $rules-body;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-transform: uppercase;
+    transition:
+      color 0.25s ease,
+      background 0.25s ease,
+      transform 0.25s ease;
+
+    &::after {
+      content: "↗";
+      margin-left: 1.2rem;
+      color: $rules-green-dark;
+    }
 
     &:hover {
-      background: linear-gradient(45deg, $highlight3, $highlight2);
-      box-shadow: 0 0 50px $highlight3, 0 0 80px $highlight2;
-      transform: scale(1.1);
+      background: $rules-ink;
+      color: $rules-paper;
+      transform: translateY(-3px);
     }
   }
 }
 
-// ANIMATIONS
-@keyframes particleMove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 50px 50px;
-    margin: 0 auto;
-  }
-}
+// ========================================
+// TABLET
+// ========================================
 
-@keyframes titleGlow {
-  0% {
-    text-shadow: 0 0 8px $highlight1, 0 0 20px $highlight2, 0 0 30px $highlight3;
-  }
-  100% {
-    text-shadow: 0 0 14px $highlight3, 0 0 30px $highlight1,
-      0 0 45px $highlight2;
-  }
-}
-
-@keyframes pulseGlow {
-  0%,
-  100% {
-    box-shadow: 0 0 10px $accent-glow, 0 0 18px rgba(0, 255, 230, 0.8);
-  }
-  50% {
-    box-shadow: 0 0 18px $accent-glow, 0 0 30px rgba(0, 255, 230, 1);
-  }
-}
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .how-to-play-page {
-    padding: 2.5rem 1.5rem 4rem;
-    header {
-      h1 {
-        font-size: 4rem;
-        margin-top: 80px;
-      }
-      &::after {
-        width: 140px;
-        height: 140px;
-      }
-    }
     .yap {
-      width: 70%;
-      padding-bottom: 150px;
-    }
-    .objective {
-      width: 80%;
-    }
-    .timeline {
-      max-width: 700px;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      &::before {
-        width: 5px;
-      }
-    }
-    .step {
-      width: 48%;
-      margin: 3rem 0;
-      padding: 2rem 2.5rem;
-      &::before {
-        width: 20px;
-        height: 20px;
-      }
-      .icon {
-        font-size: 55px;
-        margin-bottom: 0.8rem;
-      }
-      h3 {
-        font-size: 1.7rem;
-        margin-top: 40px;
-      }
-      p {
-        font-size: 1rem;
-        padding-right: 0.8rem;
-      }
-      .step-number {
-        font-size: 20rem;
-        top: -250px;
-        right: 8%;
-      }
-      .two,
-      .three,
-      .five {
-        font-size: 18rem;
-        right: -4%;
-      }
-    }
-    .start-game-cta {
-      margin-top: 4rem;
-      button {
-        padding: 0.9rem 2.5rem;
-        font-size: 1.3rem;
-        border-radius: 25px;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .how-to-play-page {
-    padding: 2rem 1rem 3rem;
-    header {
-      h1 {
-        font-size: 3rem;
-        margin-top: 60px;
-      }
-      &::after {
-        width: 120px;
-        height: 120px;
-      }
-    }
-    .yap {
-      width: 90%;
-      padding-bottom: 120px;
-    }
-    .objective {
-      width: 90%;
-    }
-    .timeline {
-      max-width: 600px;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      &::before {
-        width: 4px;
-      }
-    }
-    .step {
-      width: 90%; /* or a fixed max-width like max-width: 400px; */
-      margin: 2.5rem auto;
-      padding: 1.8rem 2rem;
-      justify-content: center;
+      max-width: 720px;
+      padding-left: 0;
 
       &::before {
-        width: 18px;
-        height: 18px;
+        display: block;
+        position: static;
+        width: 58px;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .timeline {
+      &::before {
+        left: 20px;
+      }
+    }
+
+    .step {
+      width: calc(100% - 52px);
+      margin-left: 52px !important;
+
+      &::before {
         top: 50%;
-        transform: translateY(-50%);
-        left: 50% !important;
         right: auto !important;
+        left: -32px !important;
+        width: 32px;
       }
-      &:nth-child(odd)::before,
-      &:nth-child(even)::before {
+
+      &::after {
+        right: auto !important;
+        left: -37px !important;
+      }
+    }
+  }
+}
+
+// ========================================
+// MOBILE
+// ========================================
+
+@media (max-width: 600px) {
+  .how-to-play-page {
+    > header {
+      padding-top: 8rem;
+
+      h1 {
+        font-size: clamp(3.5rem, 18vw, 5.2rem);
+      }
+    }
+
+    .yap {
+      margin-top: 3rem;
+      font-size: 1rem;
+    }
+
+    .rules-facts {
+      grid-template-columns: repeat(2, 1fr);
+
+      > div {
+        min-height: 105px;
+        padding: 1.25rem;
+
+        &:nth-child(3) {
+          border-left: 0;
+          border-top: 1px solid $rules-line;
+        }
+
+        &:nth-child(4) {
+          border-top: 1px solid $rules-line;
+        }
+      }
+    }
+
+    .phase-nav {
+      padding: 0;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 1rem;
+
+      &__label {
+        min-width: 120px;
+        padding-left: 1rem;
+        scroll-snap-align: start;
+      }
+
+      a {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        scroll-snap-align: start;
+      }
+    }
+
+    .timeline {
+      width: calc(100% - 2.5rem);
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+
+      &::before {
         display: none;
       }
-      &:nth-child(odd)::before {
-        margin: 0 auto;
-      }
-      &:nth-child(even)::before {
-        margin: 0 auto;
-      }
-      .icon {
-        font-size: 50px;
-        margin-bottom: 0.6rem;
-      }
-      h3 {
-        font-size: 1.5rem;
-        margin-top: 30px;
-        width: 50%;
-      }
-      p {
-        font-size: 0.95rem;
-        padding-right: 0;
-        width: 70%;
-      }
-      .step-number {
-        font-size: 10rem;
-        margin-left: 300px;
-        left: 0;
-        margin-top: 270px;
-      }
     }
-  }
-  .start-game-cta {
-    margin-top: 3rem;
-    button {
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
-      border-radius: 22px;
+
+    .step {
+      width: 100%;
+      min-height: 0;
+      margin-left: 0 !important;
+      padding: 1.5rem;
+      grid-template-columns: 42px 1fr;
+      column-gap: 1rem;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      .step-number {
+        font-size: 2.5rem;
+      }
+
+      h3 {
+        font-size: 1.45rem;
+      }
+
+      ol li {
+        padding-left: 1.7rem;
+        font-size: 0.88rem;
+      }
     }
   }
 }
-@media (max-width: 480px) {
-  .how-to-play-page {
-    padding: 2rem 1rem 3rem;
-    header {
-      h1 {
-        font-size: 3rem;
-        margin-top: 60px;
-      }
-      &::after {
-        width: 120px;
-        height: 120px;
-      }
-    }
-    .yap {
-      width: 90%;
-      padding-bottom: 120px;
-    }
-    .objective {
-      width: 90%;
-    }
-    .timeline {
-      max-width: 600px;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      &::before {
-        width: 4px;
-      }
-    }
-    .step {
-      width: 90%; /* or a fixed max-width like max-width: 400px; */
-      margin: 2.5rem auto;
-      padding: 1.8rem 2rem;
-      justify-content: center;
 
-      &::before {
-        width: 18px;
-        height: 18px;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 50% !important;
-        right: auto !important;
-      }
-      &:nth-child(odd)::before,
-      &:nth-child(even)::before {
-        display: none;
-      }
-      &:nth-child(odd)::before {
-        margin: 0 auto;
-      }
-      &:nth-child(even)::before {
-        margin: 0 auto;
-      }
-      .icon {
-        font-size: 50px;
-        margin-bottom: 0.6rem;
-      }
-      h3 {
-        font-size: 1.5rem;
-        margin-top: 30px;
-        width: 100%;
-      }
-      p {
-        font-size: 0.95rem;
-        padding-right: 0;
-        width: 100%;
-      }
-      .step-number {
-        font-size: 10rem;
-        margin-left: 230px;
-        left: 0;
-        opacity: 0.4;
-        margin-top: 250px;
-      }
+// ========================================
+// ACCESSIBILITY
+// ========================================
+
+@media (prefers-reduced-motion: reduce) {
+  .how-to-play-page {
+    .step {
+      opacity: 1;
+      transform: none !important;
+      transition: none;
     }
-  }
-  .start-game-cta {
-    margin-top: 3rem;
-    button {
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
-      border-radius: 22px;
+
+    header h1,
+    .rules-facts {
+      transform: none !important;
     }
   }
 }

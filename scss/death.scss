@@ -1,114 +1,847 @@
-$death-bg-dark: #0a0a0f;
-$death-bg-mid: #1c1c2a;
-$death-purple: #5e5a7a;
-$death-purple-dark: #3a364f;
-$death-purple-light: #aaa3e6;
-$death-text-light: #e0ddf5;
-$death-accent: #d1cfff;
-$font-title: "Cinzel", serif;
-$font-body: "Open Sans", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap");
+
+$death-black: #0b0b11;
+$death-black-soft: #11121b;
+$death-panel: #171827;
+$death-blue: #657bd8;
+$death-blue-bright: #91a7ff;
+$death-violet: #a58adf;
+$death-bone: #ebe9f2;
+$death-muted: #9b9cac;
+$death-line: rgba($death-bone, 0.15);
+
+$death-title: "Cinzlel", serif;
+$death-body: "DM Sans", sans-serif;
+
+$death-padding: clamp(1.25rem, 5vw, 5rem);
+
 .death-page {
-  background: radial-gradient(#1a1925, $death-bg-dark);
-  background-image: url("https://www.transparenttextures.com/patterns/noise-pattern-with-crosslines.png");
-  color: $death-text-light;
-  font-family: $font-title;
+  position: relative;
+  overflow: hidden;
+  background: $death-black;
+  color: $death-bone;
+  font-family: $death-body;
 
-  .death-hero {
-    position: relative;
-    background: linear-gradient(135deg, #2b2640, #3a335b);
-    color: $death-text-light;
-    padding: 6rem 2rem;
-    overflow: hidden;
+  &::before {
+    content: "";
+    position: fixed;
+    z-index: 30;
+    inset: 0;
+    opacity: 0.15;
+    pointer-events: none;
+    background-image: url("assets/images/deathback.png");
+  }
+}
 
-    h1 {
-      font-family: $font-title;
-      font-size: 4rem;
-      text-align: center;
-      text-shadow: 0 0 10px $death-purple-light, 0 0 20px $death-accent;
+.death-section {
+  width: min(1380px, 100%);
+  margin: 0 auto;
+  padding-right: $death-padding;
+  padding-left: $death-padding;
+}
+
+// ========================================
+// HERO
+// ========================================
+
+.death-hero {
+  position: relative;
+  min-height: min(860px, 100vh);
+  padding: clamp(9rem, 18vh, 12rem) $death-padding 8rem;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid $death-line;
+  background:
+    linear-gradient(
+      90deg,
+      rgba($death-black, 0.98),
+      rgba($death-black, 0.72) 45%,
+      rgba($death-black, 0.2)
+    ),
+    radial-gradient(
+      circle at 75% 45%,
+      rgba($death-blue, 0.34),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #0a0a11, #17172c 52%, #08080d);
+
+  // Death logo watermark
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: 5%;
+    width: min(570px, 58vw);
+    height: min(570px, 58vw);
+    opacity: 0.13;
+    background: url("/assets/images/DeathlogoBlue.png") center / contain
+      no-repeat;
+    filter: grayscale(0.15) drop-shadow(0 0 55px rgba($death-blue, 0.5));
+    transform: translateY(-50%);
+  }
+
+  // Ground fog
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: -25%;
+    left: 0;
+    height: 65%;
+    opacity: 0.5;
+    background: radial-gradient(
+      ellipse at center,
+      rgba($death-blue, 0.22),
+      transparent 67%
+    );
+    filter: blur(35px);
+  }
+}
+
+.death-hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(730px, 75vw);
+
+  h1 {
+    margin: 0.35rem 0 0 -0.06em;
+    color: $death-bone;
+    font-family: $death-title;
+    font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+
+    span {
+      color: $death-blue-bright;
     }
+  }
+}
 
-    .smoke-ash {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
+.death-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #c4c5d4;
+  font-family: $death-title;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
 
-    .particle {
-      position: absolute;
-      background: radial-gradient(
-        circle,
-        rgba(200, 200, 255, 0.1) 0%,
-        transparent 70%
-      );
-      border-radius: 50%;
-      animation-timing-function: ease-out;
-      opacity: 0.8;
-    }
+  &__line {
+    width: 56px;
+    height: 1px;
+    background: $death-blue-bright;
+  }
+}
 
-    .smoke {
-      width: 80px;
-      height: 80px;
-      animation-name: riseSmoke;
-      animation-iteration-count: infinite;
-      animation-duration: 14s;
-    }
+.death-hero__kicker {
+  margin: 1.4rem 0 0.8rem;
+  color: $death-blue-bright;
+  font-family: $death-title;
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
 
-    .ash {
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(
-        circle,
-        rgba(180, 180, 255, 0.4) 0%,
-        transparent 80%
-      );
-      animation-name: flutterAsh;
-      animation-iteration-count: infinite;
-      animation-duration: 9s;
+.death-hero__description {
+  max-width: 590px;
+  color: rgba($death-bone, 0.72);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.75;
+}
+
+.death-hero__actions {
+  margin-top: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.death-button {
+  min-width: 225px;
+  padding: 1rem 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $death-blue;
+  color: white;
+  font-family: $death-title;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: $death-blue-bright;
+    transform: translateY(-3px);
+  }
+}
+
+.death-text-link {
+  color: $death-bone;
+  font-family: $death-title;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  span {
+    margin-left: 0.5rem;
+    color: $death-blue-bright;
+  }
+}
+
+.death-hero__index {
+  position: absolute;
+  top: 50%;
+  right: $death-padding;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba($death-bone, 0.45);
+  font-family: $death-title;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%);
+
+  &::after {
+    content: "";
+    width: 1px;
+    height: 75px;
+    background: rgba($death-bone, 0.2);
+  }
+}
+
+.death-stats {
+  position: absolute;
+  right: $death-padding;
+  bottom: 0;
+  display: flex;
+  border: 1px solid $death-line;
+  border-bottom: 0;
+  background: rgba($death-black, 0.58);
+  backdrop-filter: blur(14px);
+
+  div {
+    min-width: 115px;
+    padding: 1rem 1.15rem;
+    border-left: 1px solid $death-line;
+
+    &:first-child {
+      border-left: 0;
     }
   }
 
-  .death-content {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 2rem;
-    background: $death-bg-mid;
-    border: 2px solid $death-purple-dark;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-    border-radius: 16px;
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: $death-purple-light;
-    }
-
-    p {
-      font-family: $font-body;
-      line-height: 1.7;
-      font-size: 1.05rem;
-      color: lighten($death-text-light, 10%);
-      margin-bottom: 1.5rem;
-    }
-  }
-
-  .back-link {
+  span {
     display: block;
-    margin: 2rem auto 0;
-    width: fit-content;
+    margin-bottom: 0.35rem;
+    color: $death-muted;
+    font-size: 0.55rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: white;
+    font-family: $death-title;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+}
+
+// Floating spectral orbs
+
+.death-orb {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid rgba($death-blue-bright, 0.4);
+  border-radius: 50%;
+  box-shadow:
+    0 0 18px rgba($death-blue, 0.35),
+    inset 0 0 15px rgba($death-violet, 0.22);
+  animation: deathFloat 7s ease-in-out infinite;
+
+  &--one {
+    top: 25%;
+    right: 19%;
+    width: 22px;
+    height: 22px;
+  }
+
+  &--two {
+    top: 62%;
+    right: 35%;
+    width: 13px;
+    height: 13px;
+    animation-delay: -2s;
+  }
+
+  &--three {
+    top: 38%;
+    right: 8%;
+    width: 31px;
+    height: 31px;
+    animation-delay: -4s;
+  }
+}
+
+// ========================================
+// SHARED SECTION HEADINGS
+// ========================================
+
+.death-section__number {
+  padding-top: 0.55rem;
+  color: $death-blue-bright;
+  font-family: $death-title;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 72px;
+    margin: 1.2rem 0 0 0.35rem;
+    background: linear-gradient($death-blue-bright, transparent);
+  }
+}
+
+.death-label {
+  margin: 0;
+  color: $death-blue-bright;
+  font-family: $death-title;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.death-section__heading {
+  h2 {
+    margin: 1.3rem 0;
+    color: $death-bone;
+    font-family: $death-title;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+  }
+}
+
+// ========================================
+// OVERVIEW
+// ========================================
+
+.death-overview {
+  min-height: 790px;
+  padding-top: clamp(7rem, 13vw, 11rem);
+  padding-bottom: clamp(6rem, 11vw, 9rem);
+  display: grid;
+  grid-template-columns:
+    70px
+    minmax(270px, 0.9fr)
+    minmax(300px, 1.1fr);
+  gap: clamp(2rem, 5vw, 7rem);
+  align-items: start;
+}
+
+.death-overview__copy {
+  max-width: 610px;
+  padding-top: 2.6rem;
+  color: $death-muted;
+  font-size: 1rem;
+  line-height: 1.85;
+
+  .lead {
+    color: $death-bone;
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    line-height: 1.45;
+  }
+}
+
+.death-quote {
+  grid-column: 2 / -1;
+  position: relative;
+  margin: 4rem 0 0;
+  padding: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  border: 1px solid $death-line;
+  background: linear-gradient(
+    120deg,
+    rgba($death-blue, 0.12),
+    rgba(white, 0.015)
+  );
+
+  &::after {
+    content: "DEATH";
+    position: absolute;
+    right: -1rem;
+    bottom: -2.5rem;
+    color: rgba(white, 0.025);
+    font-family: $death-title;
+    font-size: clamp(4rem, 9vw, 8rem);
+    font-weight: 700;
+  }
+
+  &__mark {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    color: $death-blue-bright;
+    font-family: Georgia, serif;
+    font-size: 6rem;
+    line-height: 1;
+    opacity: 0.45;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 1rem;
+    color: $death-bone;
+    font-family: $death-title;
+    font-size: clamp(1.3rem, 2.8vw, 2.3rem);
+    letter-spacing: -0.04em;
+  }
+
+  cite {
+    position: relative;
+    z-index: 1;
+    color: $death-muted;
+    font-size: 0.68rem;
+    font-style: normal;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+}
+
+// ========================================
+// STRATEGY
+// ========================================
+
+.death-strategy {
+  position: relative;
+  overflow: hidden;
+  background: $death-bone;
+  color: $death-black;
+}
+
+.death-strategy__inner {
+  min-height: 700px;
+  padding-top: clamp(6rem, 10vw, 9rem);
+  padding-bottom: clamp(6rem, 10vw, 9rem);
+  display: grid;
+  grid-template-columns:
+    70px
+    minmax(280px, 1fr)
+    minmax(300px, 0.9fr);
+  gap: clamp(2rem, 5vw, 7rem);
+
+  .death-section__number,
+  .death-label {
+    color: #5368bd;
+  }
+
+  .death-section__number::after {
+    background: linear-gradient(#5368bd, transparent);
+  }
+
+  .death-section__heading h2 {
+    color: $death-black;
+  }
+}
+
+.death-strategy__copy {
+  padding-top: 2.7rem;
+  line-height: 1.8;
+
+  > p {
+    margin-bottom: 2.5rem;
+    color: #565461;
+  }
+}
+
+.death-strategy__list {
+  margin: 0 0 3rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 1rem;
+    border-top: 1px solid rgba($death-black, 0.14);
+    color: $death-black;
+    font-weight: 500;
+
+    &:last-child {
+      border-bottom: 1px solid rgba($death-black, 0.14);
+    }
+
+    span {
+      color: #5368bd;
+      font-family: $death-title;
+      font-size: 0.58rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.death-meter {
+  margin-top: 1.35rem;
+
+  &__meta {
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: $death-title;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  &__track {
+    height: 3px;
+    background: rgba($death-black, 0.15);
+
+    span {
+      display: block;
+      width: var(--meter-width);
+      height: 100%;
+      background: $death-blue;
+    }
+  }
+}
+
+// ========================================
+// TRAITS
+// ========================================
+
+.death-traits {
+  padding-top: clamp(7rem, 12vw, 10rem);
+  padding-bottom: clamp(7rem, 12vw, 10rem);
+}
+
+.death-traits__heading {
+  max-width: 780px;
+
+  h2 {
+    margin: 1.3rem 0;
+    color: $death-bone;
+    font-family: $death-title;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+  }
+
+  > p:last-child {
+    max-width: 580px;
+    color: $death-muted;
+    line-height: 1.7;
+  }
+}
+
+.death-trait-grid {
+  margin-top: 4.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid $death-line;
+  background: $death-line;
+}
+
+.death-trait-card {
+  min-height: 410px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  background: $death-black;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    z-index: 1;
+    background: $death-panel;
+    transform: translateY(-8px);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    color: #737486;
+    font-family: $death-title;
+    font-size: 0.62rem;
+    font-weight: 600;
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid $death-line;
+    color: $death-blue-bright;
+  }
+
+  &__content {
+    margin-top: auto;
+  }
+
+  h3 {
+    margin: 0 0 1.3rem;
+    color: $death-bone;
+    font-family: $death-title;
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  p {
+    min-height: 80px;
+    color: $death-muted;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  &__tag {
+    display: inline-block;
+    padding-top: 0.75rem;
+    border-top: 1px solid $death-blue;
+    color: #c9c9d7;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+
+// ========================================
+// FACTION NAVIGATION
+// ========================================
+
+.death-faction-nav {
+  min-height: 190px;
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  border-top: 1px solid $death-line;
+  border-bottom: 1px solid $death-line;
+
+  &__link {
+    padding: 2.2rem $death-padding;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: $death-bone;
     text-decoration: none;
-    color: $death-accent;
-    font-size: 1rem;
-    border: 2px solid $death-purple-light;
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: background 0.2s ease;
 
     &:hover {
-      background: $death-purple-light;
-      color: $death-bg-mid;
+      background: rgba(white, 0.025);
     }
+
+    > span:first-child {
+      color: $death-blue-bright;
+      font-size: 1.4rem;
+    }
+
+    small {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: $death-muted;
+      font-family: $death-title;
+      font-size: 0.55rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    > span:nth-child(2) {
+      font-family: $death-title;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    &--next {
+      justify-content: flex-end;
+      text-align: right;
+
+      > span:last-child {
+        color: $death-blue-bright;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  &__seal {
+    display: grid;
+    place-items: center;
+    border-right: 1px solid $death-line;
+    border-left: 1px solid $death-line;
+
+    img {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 16px rgba($death-blue, 0.35));
+    }
+  }
+}
+
+// ========================================
+// MOBILE
+// ========================================
+
+@media (max-width: 900px) {
+  .death-hero {
+    min-height: 800px;
+    padding-bottom: 11rem;
+    align-items: flex-end;
+
+    &::before {
+      top: 24%;
+      right: -12%;
+      width: 82vw;
+      height: 82vw;
+    }
+  }
+
+  .death-hero__content {
+    width: 100%;
+  }
+
+  .death-hero__index {
+    display: none;
+  }
+
+  .death-stats {
+    right: auto;
+    left: $death-padding;
+  }
+
+  .death-overview,
+  .death-strategy__inner {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .death-overview__copy,
+  .death-strategy__copy {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .death-quote {
+    grid-column: 2;
+  }
+
+  .death-trait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .death-trait-card {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 580px) {
+  .death-hero {
+    min-height: 760px;
+    padding-bottom: 10rem;
+  }
+
+  .death-hero__content h1 {
+    font-size: clamp(3.4rem, 17vw, 5.5rem);
+  }
+
+  .death-hero__actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .death-stats {
+    width: calc(100% - 2 * #{$death-padding});
+
+    div {
+      min-width: 0;
+      flex: 1;
+      padding: 0.8rem;
+    }
+  }
+
+  .death-overview,
+  .death-strategy__inner {
+    display: block;
+  }
+
+  .death-section__number {
+    display: none;
+  }
+
+  .death-overview__copy,
+  .death-strategy__copy {
+    margin-top: 2rem;
+  }
+
+  .death-quote {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .death-faction-nav {
+    grid-template-columns: 1fr 1fr;
+
+    &__seal {
+      display: none;
+    }
+
+    &__link {
+      padding: 2rem 1.25rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .death-page {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes deathFloat {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: translateY(-20px);
   }
 }

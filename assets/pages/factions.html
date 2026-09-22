@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -34,6 +34,19 @@
       </ul>
     </nav>
     <div class="back">
+      <div class="faction-intro">
+        <span class="faction-intro__eyebrow"
+          >Chapter 02 / Choose your apocalypse</span
+        >
+        <h1>Four powers.<br /><em>One throne.</em></h1>
+        <p>
+          Move through the kingdom and find the faction that changes the way you
+          play.
+        </p>
+        <span class="faction-intro__scroll"
+          >Scroll to reveal the factions <i class="fa-solid fa-arrow-down"></i
+        ></span>
+      </div>
       <div class="factions-stack">
         <div class="faction-card" data-faction="war">
           <img
@@ -42,10 +55,7 @@
             alt="war logo"
           />
           <h2>War</h2>
-          <p>
-            Fanatical crusaders who dominate through brute force and aggressive
-            tactics.
-          </p>
+          <p>Believe in the blood as they do, and all will be made clear.</p>
           <a href="/assets/pages/war.html">
             <button>View</button>
           </a>
@@ -57,10 +67,7 @@
             alt="death logo"
           />
           <h2>Death</h2>
-          <p>
-            Necromancers who raise the dead and manipulate the battlefield from
-            the shadows.
-          </p>
+          <p>Tip the balance to the side of demise.</p>
           <a href="/assets/pages/death.html">
             <button>View</button>
           </a>
@@ -72,7 +79,7 @@
             alt="Famine logo"
           />
           <h2>Famine</h2>
-          <p>A devourer of resources, starving out all who oppose it.</p>
+          <p>Devour until there is nothing left.</p>
           <a href="/assets/pages/famine.html">
             <button>View</button>
           </a>
@@ -84,12 +91,23 @@
             alt="pestilence logo"
           />
           <h2>Pestilence</h2>
-          <p>
-            A rotting force that spreads sickness and weakness across the land.
-          </p>
+          <p>When everyone is one, conflict will cease for all.</p>
           <a href="/assets/pages/pest.html">
             <button>View</button>
           </a>
+        </div>
+        <div class="mobile-card-controls">
+          <button type="button" class="card-arrow card-arrow--prev">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <p>Swipe or use arrows</p>
+
+          <button type="button" class="card-arrow card-arrow--next">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -146,125 +164,289 @@
     </footer>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".faction-card");
+        const back = document.querySelector(".back");
+        const stack = document.querySelector(".factions-stack");
+        const cards = [...document.querySelectorAll(".faction-card")];
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".navbar ul");
+
+        if (!back || !stack || !cards.length) return;
+
+        const factionColors = ["#ff6741", "#65aee8", "#e8c85b", "#72d6a0"];
+
         let activeIndex = 0;
-
-        function isMobile() {
-          return window.innerWidth <= 768;
-        }
-
-        function updateCards() {
-          if (isMobile()) {
-            cards.forEach((card, i) => {
-              card.classList.remove("active", "tilted-left", "tilted-right");
-              if (i < activeIndex) card.classList.add("tilted-left");
-              else if (i > activeIndex) card.classList.add("tilted-right");
-              else card.classList.add("active");
-
-              // Set z-index so active card is on top
-              card.style.zIndex =
-                i === activeIndex ? 10 : 4 - Math.abs(i - activeIndex);
-
-              if (i === activeIndex) {
-                card.style.transform =
-                  "translateX(-50%) rotate(0deg) scale(1.1)";
-              } else if (i < activeIndex) {
-                card.style.transform =
-                  "translateX(calc(-50% - 60px)) rotate(-8deg)";
-              } else {
-                card.style.transform =
-                  "translateX(calc(-50% + 60px)) rotate(8deg)";
-              }
-            });
-          } else {
-            // On desktop: remove all inline styles so CSS hover works
-            cards.forEach((card) => {
-              card.style.zIndex = "";
-              card.style.transform = "";
-              card.classList.remove("active", "tilted-left", "tilted-right");
-            });
-          }
-        }
-
-        // Swipe vars
+        let frame = null;
         let touchStartX = 0;
-        let touchEndX = 0;
+        let touchStartY = 0;
 
-        function handleSwipe() {
-          const deltaX = touchEndX - touchStartX;
-          if (Math.abs(deltaX) > 50) {
-            if (deltaX < 0) {
-              activeIndex = (activeIndex + 1) % cards.length;
-            } else {
-              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-            }
-            updateCards();
-          }
-        }
+        const isCompact = () => window.innerWidth <= 900;
 
-        function handleTap() {
-          if (!isMobile()) return;
-          activeIndex = (activeIndex + 1) % cards.length;
-          updateCards();
-        }
+        // ------------------------------------
+        // Progress indicator
+        // ------------------------------------
 
-        function addMobileListeners() {
-          if (!isMobile()) return;
+        const progress = document.createElement("div");
+        progress.className = "faction-progress";
 
-          document.addEventListener("touchstart", touchStartHandler);
-          document.addEventListener("touchend", touchEndHandler);
-          cards.forEach((card) => {
-            card.addEventListener("click", handleTap);
+        progress.innerHTML = `
+      <div class="faction-progress__count">
+        <strong>01</strong> / 04
+      </div>
+
+      <div class="faction-progress__dots">
+        ${cards
+          .map(
+            (_, index) => `
+              <button
+                type="button"
+                data-index="${index}"
+                style="--dot-color: ${factionColors[index]}"
+                aria-label="Show faction ${index + 1}"
+              >
+                <span>Faction ${index + 1}</span>
+              </button>
+            `,
+          )
+          .join("")}
+      </div>
+    `;
+
+        stack.appendChild(progress);
+
+        const count = progress.querySelector(".faction-progress__count strong");
+
+        const dots = [
+          ...progress.querySelectorAll(".faction-progress__dots button"),
+        ];
+
+        function updateProgress() {
+          count.textContent = String(activeIndex + 1).padStart(2, "0");
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === activeIndex);
+            dot.setAttribute(
+              "aria-current",
+              index === activeIndex ? "true" : "false",
+            );
           });
         }
 
-        function removeMobileListeners() {
-          document.removeEventListener("touchstart", touchStartHandler);
-          document.removeEventListener("touchend", touchEndHandler);
-          cards.forEach((card) => {
-            card.removeEventListener("click", handleTap);
+        // ------------------------------------
+        // Desktop 3D scroll scene
+        // ------------------------------------
+
+        function updateDesktopScene() {
+          const bounds = back.getBoundingClientRect();
+          const travel = Math.max(1, back.offsetHeight - window.innerHeight);
+          const progressValue = Math.max(0, Math.min(1, -bounds.top / travel));
+
+          const focus = progressValue * (cards.length - 1);
+
+          activeIndex = Math.max(
+            0,
+            Math.min(cards.length - 1, Math.round(focus)),
+          );
+
+          cards.forEach((card, index) => {
+            const distance = index - focus;
+            const absoluteDistance = Math.abs(distance);
+            const angle = distance * 1.08;
+
+            const x = Math.sin(angle) * 235;
+            const y = distance * 205 + Math.sin(angle) * 55;
+            const z = Math.cos(angle) * 290 - absoluteDistance * 95;
+
+            const rotateY = angle * 29;
+            const rotateZ = distance * 7;
+            const scale = Math.max(0.68, 1 - absoluteDistance * 0.115);
+
+            const opacity = Math.max(0.16, 1 - absoluteDistance * 0.3);
+
+            card.style.zIndex = String(100 - Math.round(absoluteDistance * 12));
+
+            card.style.opacity = opacity;
+
+            card.style.transform = `
+          translate3d(
+            calc(-50% + ${x}px),
+            calc(-50% + ${y}px),
+            ${z}px
+          )
+          rotateY(${rotateY}deg)
+          rotateZ(${rotateZ}deg)
+          scale(${scale})
+        `;
+
+            card.classList.toggle("is-focused", index === activeIndex);
           });
+
+          updateProgress();
         }
 
-        function touchStartHandler(e) {
-          touchStartX = e.changedTouches[0].screenX;
+        // ------------------------------------
+        // Mobile card stack
+        // ------------------------------------
+
+        function updateMobileScene() {
+          cards.forEach((card, index) => {
+            const distance = index - activeIndex;
+            const absoluteDistance = Math.abs(distance);
+
+            card.style.zIndex = String(100 - absoluteDistance);
+
+            card.style.opacity =
+              absoluteDistance > 2
+                ? "0"
+                : String(Math.max(0.22, 1 - absoluteDistance * 0.32));
+
+            const x = distance * 55;
+            const y = absoluteDistance * 18;
+            const z = -absoluteDistance * 90;
+            const rotation = distance * 7;
+            const scale = 1 - absoluteDistance * 0.08;
+
+            card.style.transform = `
+          translate3d(
+            calc(-50% + ${x}px),
+            calc(-50% + ${y}px),
+            ${z}px
+          )
+          rotateY(${rotation}deg)
+          rotateZ(${rotation * 0.45}deg)
+          scale(${scale})
+        `;
+
+            card.classList.toggle("is-focused", index === activeIndex);
+          });
+
+          updateProgress();
         }
 
-        function touchEndHandler(e) {
-          touchEndX = e.changedTouches[0].screenX;
-          handleSwipe();
-        }
-
-        // Initialize
-        updateCards();
-        addMobileListeners();
-
-        window.addEventListener("resize", () => {
-          if (isMobile()) {
-            addMobileListeners();
+        function updateScene() {
+          if (isCompact()) {
+            updateMobileScene();
           } else {
-            removeMobileListeners();
-            updateCards(); // reset styles for desktop hover
+            updateDesktopScene();
           }
+        }
+
+        function requestSceneUpdate() {
+          if (frame) return;
+
+          frame = requestAnimationFrame(() => {
+            frame = null;
+            updateScene();
+          });
+        }
+
+        // ------------------------------------
+        // Progress navigation
+        // ------------------------------------
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            activeIndex = index;
+
+            if (isCompact()) {
+              updateMobileScene();
+              return;
+            }
+
+            const travel = back.offsetHeight - window.innerHeight;
+
+            const target =
+              back.offsetTop + travel * (index / (cards.length - 1));
+
+            window.scrollTo({
+              top: target,
+              behavior: "smooth",
+            });
+          });
         });
+
+        // ------------------------------------
+        // Mobile swipe
+        // ------------------------------------
+
+        stack.addEventListener(
+          "touchstart",
+          (event) => {
+            touchStartX = event.changedTouches[0].screenX;
+            touchStartY = event.changedTouches[0].screenY;
+          },
+          { passive: true },
+        );
+
+        stack.addEventListener(
+          "touchend",
+          (event) => {
+            if (!isCompact()) return;
+
+            const deltaX = event.changedTouches[0].screenX - touchStartX;
+
+            const deltaY = event.changedTouches[0].screenY - touchStartY;
+
+            // Ignore vertical page scrolling
+            if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) {
+              return;
+            }
+
+            if (deltaX < 0) {
+              activeIndex = Math.min(cards.length - 1, activeIndex + 1);
+            } else {
+              activeIndex = Math.max(0, activeIndex - 1);
+            }
+
+            updateMobileScene();
+          },
+          { passive: true },
+        );
+
+        // Clicking a visible background card selects it
+        cards.forEach((card, index) => {
+          card.addEventListener("click", (event) => {
+            if (!isCompact()) return;
+
+            // Let the View link behave normally
+            if (event.target.closest("a")) return;
+
+            if (index !== activeIndex) {
+              activeIndex = index;
+              updateMobileScene();
+            }
+          });
+        });
+
+        window.addEventListener("scroll", requestSceneUpdate, {
+          passive: true,
+        });
+
+        window.addEventListener("resize", requestSceneUpdate);
+
+        hamburger?.addEventListener("click", () => {
+          navMenu?.classList.toggle("active");
+        });
+        const previousButton = document.querySelector(".card-arrow--prev");
+        const nextButton = document.querySelector(".card-arrow--next");
+
+        function updateMobileButtons() {
+          if (!previousButton || !nextButton) return;
+
+          previousButton.disabled = activeIndex === 0;
+          nextButton.disabled = activeIndex === cards.length - 1;
+        }
+        previousButton?.addEventListener("click", () => {
+          activeIndex = Math.max(0, activeIndex - 1);
+          updateMobileScene();
+        });
+
+        nextButton?.addEventListener("click", () => {
+          activeIndex = Math.min(cards.length - 1, activeIndex + 1);
+          updateMobileScene();
+        });
+
+        updateScene();
       });
-
-      const hero = document.querySelector(".hero");
-      if (hero) {
-        window.addEventListener("scroll", () => {
-          const scrolled = window.scrollY;
-          hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
-        });
-      }
-
-      const hamburger = document.querySelector(".hamburger");
-      const navMenu = document.querySelector(".navbar ul");
-
-      if (hamburger && navMenu) {
-        hamburger.addEventListener("click", () => {
-          navMenu.classList.toggle("active");
-        });
-      }
     </script>
   </body>
 </html>

@@ -1,167 +1,1134 @@
-// Variables
-$bg-dark: #0e0a07;
-$bg-mid: #1a110c;
-$rust-color: #8b4513;
-$rust-dark: #5c3317;
-$rust-light: #e2703a;
-$text-light: #f8e3c7;
-$text-accent: #ffd8a8;
-$font-title: "Cinzel", serif;
-$font-body: "Open Sans", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap");
+
+// ========================================
+// VARIABLES
+// ========================================
+
+$black: #100d0c;
+$black-soft: #171210;
+$panel: #211816;
+$orange: #f05a28;
+$orange-bright: #ff7547;
+$bone: #f1e8dc;
+$muted: #ad9f92;
+$line: rgba($bone, 0.16);
+
+$title-font: "Cinzel", serif;
+$body-font: "DM Sans", sans-serif;
+
+$page-padding: clamp(1.25rem, 5vw, 5rem);
+
+// ========================================
+// BASE
+// ========================================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: $black;
+  color: $bone;
+  font-family: $body-font;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+// ========================================
+// NAVIGATION
+// ========================================
+
+.navbar {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 82px;
+  padding: 0 $page-padding;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(white, 0.13);
+  background: linear-gradient(to bottom, rgba($black, 0.72), transparent);
+
+  .logo {
+    position: relative;
+    padding-left: 48px;
+
+    &::before {
+      content: "W";
+      position: absolute;
+      top: 50%;
+      left: 3px;
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba($bone, 0.45);
+      color: $orange-bright;
+      font-family: $title-font;
+      font-size: 0.65rem;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    a {
+      color: $bone !important;
+      font-family: $title-font;
+      font-size: clamp(0.58rem, 1vw, 0.72rem);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    list-style: none;
+
+    a {
+      position: relative;
+      padding: 0.7rem 0;
+      color: rgba($bone, 0.72);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background: $orange;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.25s ease;
+      }
+
+      &:hover {
+        color: white;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    color: $bone;
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+}
+
+// ========================================
+// WAR PAGE
+// ========================================
 
 .war-page {
-  background: radial-gradient(#2b1c17, $bg-dark);
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-  color: $text-light;
-  font-family: $font-title;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 20%, rgba($orange, 0.08), transparent 32%),
+    $black;
+  color: $bone;
 
-  .war-hero {
+  // Page grain
+  &::before {
+    content: "";
+    position: fixed;
+    z-index: 30;
+    inset: 0;
+    opacity: 0.15;
+    pointer-events: none;
+    background-image: url("/assets/images/warback.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+// ========================================
+// HERO
+// ========================================
+
+.war-hero {
+  position: relative;
+  min-height: min(860px, 100vh);
+  padding: clamp(9rem, 19vh, 13rem) $page-padding 8rem;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  font-family: $title-font;
+  overflow: hidden;
+  border-bottom: 1px solid $line;
+
+  // Hero artwork
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -3;
+    inset: -3%;
+    background:
+      linear-gradient(
+        90deg,
+        rgba($black, 0.98) 0%,
+        rgba($black, 0.78) 34%,
+        rgba($black, 0.2) 70%,
+        rgba($black, 0.42) 100%
+      ),
+      linear-gradient(0deg, $black 0%, transparent 42%),
+      url("/assets/images/war-hero.png") center / cover no-repeat;
+    animation: heroReveal 8s ease-out both;
+  }
+
+  // Ember-colored atmosphere
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background: radial-gradient(
+      circle at 67% 67%,
+      rgba($orange, 0.18),
+      transparent 34%
+    );
+    pointer-events: none;
+  }
+
+  h1 {
     position: relative;
-    background: linear-gradient(
-      135deg,
-      #3a0e00,
-      #6b1f00
-    ); // dark fiery background
-    color: #fff;
-    padding: 6rem 2rem;
-    overflow: hidden;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0;
+    color: $bone;
+    font-family: Cinzel, serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 600;
+    line-height: 0.92;
+    letter-spacing: -0.075em;
+    text-shadow: none;
+    text-transform: uppercase;
+    animation: contentReveal 0.9s 0.2s ease both;
 
-    h1 {
-      font-family: "Cinzel", serif;
-      font-size: 4rem;
-      text-align: center;
-      text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6f00, 0 0 30px #ff8c00;
-    }
-
-    // Smoke and ash container
-    .smoke-ash {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; // so it doesn’t block clicks
-      overflow: visible;
-    }
-
-    // Particle style
-    .particle {
-      position: absolute;
-      background: radial-gradient(
-        circle,
-        rgba(200, 200, 200, 0.15) 0%,
-        transparent 70%
-      );
-      border-radius: 50%;
-      animation-timing-function: ease-out;
-      opacity: 0.8;
+    // Small label above the title
+    &::before {
+      content: "Faction dossier  —  01 / 04";
+      display: block;
+      margin-bottom: 1.7rem;
+      color: $orange-bright;
+      font-family: $title-font;
+      font-size: clamp(0.62rem, 1vw, 0.72rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
     }
 
-    // Smoke particles (big, slow rising)
-    .smoke {
-      width: 80px;
-      height: 80px;
-      animation-name: riseSmoke;
-      animation-iteration-count: infinite;
-      animation-duration: 12s;
-    }
-
-    // Ash particles (small, fluttering)
-    .ash {
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(
-        circle,
-        rgba(150, 150, 150, 0.5) 0%,
-        transparent 80%
-      );
-      animation-name: flutterAsh;
-      animation-iteration-count: infinite;
-      animation-duration: 8s;
-    }
-  }
-
-  @keyframes riseSmoke {
-    0% {
-      transform: translateY(100%) scale(0.5);
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.6;
-    }
-    100% {
-      transform: translateY(-150%) scale(1.2);
-      opacity: 0;
-    }
-  }
-
-  @keyframes flutterAsh {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translate(10px, -10px) rotate(15deg);
-      opacity: 0.3;
-    }
-    100% {
-      transform: translate(0, -20px) rotate(-15deg);
-      opacity: 0;
+    // Orange punctuation
+    &::after {
+      content: ".";
+      color: $orange;
     }
   }
 }
 
-// Flame flicker animation
-@keyframes flameFlicker {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: translateY(0) scale(1);
+// ========================================
+// SMOKE AND ASH
+// ========================================
+
+.smoke-ash {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
   }
-  50% {
-    opacity: 0.6;
-    transform: translateY(-5px) scale(1.03);
+
+  .smoke {
+    width: clamp(100px, 14vw, 180px);
+    height: clamp(100px, 14vw, 180px);
+    opacity: 0;
+    background: radial-gradient(
+      circle,
+      rgba(210, 190, 175, 0.14),
+      rgba(80, 65, 60, 0.06) 45%,
+      transparent 72%
+    );
+    filter: blur(9px);
+    animation: riseSmoke 13s ease-out infinite;
+  }
+
+  .ash {
+    width: 4px;
+    height: 4px;
+    opacity: 0;
+    background: $orange-bright;
+    box-shadow:
+      0 0 6px rgba($orange-bright, 0.9),
+      0 0 14px rgba($orange, 0.7);
+    animation: flutterAsh 7s ease-out infinite;
   }
 }
 
-.war-content {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 2rem;
-  background: $bg-mid;
-  border: 2px solid $rust-dark;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-  border-radius: 16px;
+// ========================================
+// CONTENT
+// ========================================
 
+$war-black: #100d0c;
+$war-black-soft: #191311;
+$war-panel: #211816;
+$war-orange: #f05a28;
+$war-orange-bright: #ff7547;
+$war-bone: #f1e8dc;
+$war-muted: #ad9f92;
+$war-line: rgba($war-bone, 0.16);
+$war-title: "Cinzel", serif;
+$war-body: "DM Sans", sans-serif;
+
+.war-section {
+  width: min(1380px, 100%);
+  margin: 0 auto;
+  padding-right: clamp(1.25rem, 5vw, 5rem);
+  padding-left: clamp(1.25rem, 5vw, 5rem);
+}
+
+.section-number {
+  padding-top: 0.55rem;
+  color: $war-orange;
+  font-family: $war-title;
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.14em;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 72px;
+    margin: 1.2rem 0 0 0.35rem;
+    background: linear-gradient($war-orange, transparent);
+  }
+}
+
+.section-label {
+  margin: 0;
+  color: $war-orange-bright;
+  font-family: $war-title;
+  font-size: 0.64rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-heading {
   h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: $rust-light;
+    margin: 1.3rem 0;
+    color: $war-bone;
+    font-family: $war-title;
+    font-size: clamp(2.5rem, 5vw, 5.2rem);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+  }
+}
+
+// ========================================
+// OVERVIEW
+// ========================================
+
+.war-overview {
+  min-height: 790px;
+  padding-top: clamp(7rem, 13vw, 11rem);
+  padding-bottom: clamp(6rem, 11vw, 9rem);
+  display: grid;
+  grid-template-columns:
+    70px
+    minmax(260px, 0.9fr)
+    minmax(300px, 1.1fr);
+  gap: clamp(2rem, 5vw, 7rem);
+  align-items: start;
+  background: $war-black;
+}
+
+.overview-copy {
+  max-width: 610px;
+  padding-top: 2.6rem;
+  color: $war-muted;
+  font-family: $war-body;
+  font-size: 1rem;
+  line-height: 1.85;
+
+  .lead {
+    margin-bottom: 1.5rem;
+    color: $war-bone;
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    line-height: 1.45;
+  }
+}
+
+.war-quote {
+  grid-column: 2 / -1;
+  position: relative;
+  margin: 4rem 0 0;
+  padding: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  border: 1px solid $war-line;
+  background: linear-gradient(
+    120deg,
+    rgba($war-orange, 0.09),
+    rgba(white, 0.015)
+  );
+
+  &::after {
+    content: "WAR";
+    position: absolute;
+    right: -1rem;
+    bottom: -2.5rem;
+    color: rgba(white, 0.025);
+    font-family: $war-title;
+    font-size: clamp(5rem, 10vw, 9rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .quote-mark {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    color: $war-orange;
+    font-family: Georgia, serif;
+    font-size: 6rem;
+    line-height: 1;
+    opacity: 0.5;
   }
 
   p {
-    font-family: $font-body;
-    line-height: 1.7;
-    font-size: 1.05rem;
-    color: lighten($text-light, 10%);
-    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    margin: 0 0 1rem;
+    color: $war-bone;
+    font-family: $war-title;
+    font-size: clamp(1.35rem, 2.8vw, 2.4rem);
+    line-height: 1.35;
+    letter-spacing: -0.04em;
+  }
+
+  cite {
+    position: relative;
+    z-index: 1;
+    color: $war-muted;
+    font-family: $war-body;
+    font-size: 0.7rem;
+    font-style: normal;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
   }
 }
 
-.back-link {
-  display: block;
-  margin: 2rem auto 0;
-  width: fit-content;
-  text-decoration: none;
-  color: $text-accent;
-  font-size: 1rem;
-  border: 2px solid $rust-light;
-  padding: 0.6rem 1.5rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+// ========================================
+// STRATEGY
+// ========================================
+
+.war-strategy {
+  position: relative;
+  overflow: hidden;
+  background: $war-bone;
+  color: $war-black;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20% auto -20% 51%;
+    width: 1px;
+    background: rgba($war-black, 0.1);
+    transform: rotate(18deg);
+  }
+
+  .section-number {
+    color: #b63b17;
+
+    &::after {
+      background: linear-gradient(#b63b17, transparent);
+    }
+  }
+
+  .section-label {
+    color: #b63b17;
+  }
+
+  .section-heading h2 {
+    color: $war-black;
+  }
+}
+
+.strategy-inner {
+  min-height: 720px;
+  padding-top: clamp(6rem, 10vw, 9rem);
+  padding-bottom: clamp(6rem, 10vw, 9rem);
+  display: grid;
+  grid-template-columns:
+    70px
+    minmax(280px, 1fr)
+    minmax(300px, 0.9fr);
+  gap: clamp(2rem, 5vw, 7rem);
+}
+
+.strategy-copy {
+  position: relative;
+  z-index: 1;
+  padding-top: 2.7rem;
+  font-family: $war-body;
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  > p {
+    max-width: 570px;
+    margin-bottom: 2.5rem;
+    color: #594f49;
+  }
+}
+
+.strategy-list {
+  margin: 0 0 3.5rem;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 1rem;
+    align-items: center;
+    border-top: 1px solid rgba($war-black, 0.14);
+    color: $war-black;
+    font-weight: 500;
+
+    &:last-child {
+      border-bottom: 1px solid rgba($war-black, 0.14);
+    }
+  }
+
+  .strategy-icon {
+    color: #b63b17;
+    font-family: $war-title;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+}
+
+.tactic-meter {
+  margin-top: 1.45rem;
+
+  .meter-meta {
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    color: $war-black;
+    font-family: $war-title;
+    font-size: 0.63rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .meter-track {
+    height: 3px;
+    overflow: hidden;
+    background: rgba($war-black, 0.15);
+
+    span {
+      display: block;
+      width: var(--meter-width);
+      height: 100%;
+      background: $war-orange;
+      transform-origin: left;
+      animation: meterReveal 1.2s ease both;
+    }
+  }
+}
+
+// ========================================
+// TRAITS
+// ========================================
+
+.war-traits {
+  padding-top: clamp(7rem, 12vw, 10rem);
+  padding-bottom: clamp(7rem, 12vw, 10rem);
+  background: $war-black;
+}
+
+.traits-heading {
+  max-width: 780px;
+
+  h2 {
+    margin: 1.3rem 0;
+    color: $war-bone;
+    font-family: $war-title;
+    font-size: clamp(2.5rem, 5vw, 5.2rem);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+  }
+
+  > p:last-child {
+    max-width: 570px;
+    color: $war-muted;
+    font-family: $war-body;
+    line-height: 1.7;
+  }
+}
+
+.trait-grid {
+  margin-top: 4.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid $war-line;
+  background: $war-line;
+}
+
+.trait-card {
+  min-height: 410px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  background: $war-black;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
 
   &:hover {
-    background: $rust-light;
-    color: $bg-mid;
+    z-index: 1;
+    background: #1d1513;
+    transform: translateY(-8px);
+  }
+
+  .trait-topline {
+    display: flex;
+    justify-content: space-between;
+    color: #796b61;
+    font-family: $war-title;
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+
+  .trait-symbol {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid $war-line;
+    color: $war-orange-bright;
+    font-size: 1.1rem;
+  }
+
+  .trait-content {
+    margin-top: auto;
+  }
+
+  h3 {
+    margin: 0 0 1.3rem;
+    color: $war-bone;
+    font-family: $war-title;
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+  }
+
+  p {
+    min-height: 78px;
+    margin-bottom: 1rem;
+    color: $war-muted;
+    font-family: $war-body;
+    font-size: 0.93rem;
+    line-height: 1.65;
+  }
+
+  .trait-tag {
+    display: inline-block;
+    padding-top: 0.75rem;
+    border-top: 1px solid $war-orange;
+    color: #d8cabd;
+    font-family: $war-body;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+
+.war-traits {
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 4rem;
+    padding: 1rem 1.3rem;
+    border: 1px solid rgba($war-bone, 0.3);
+    color: $war-bone;
+    font-family: $war-title;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease,
+      border-color 0.25s ease,
+      background 0.25s ease;
+
+    i {
+      color: $war-orange;
+      transition: transform 0.25s ease;
+    }
+
+    &:hover {
+      border-color: $war-orange;
+      background: $war-orange;
+      color: white;
+      transform: translateY(-3px);
+
+      i {
+        color: white;
+        transform: translateX(-4px);
+      }
+    }
+  }
+}
+
+@keyframes meterReveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// ========================================
+// TABLET
+// ========================================
+
+@media (max-width: 900px) {
+  .war-overview,
+  .strategy-inner {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .overview-copy,
+  .strategy-copy {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .war-quote {
+    grid-column: 2;
+    padding: 2.5rem;
+  }
+
+  .trait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trait-card {
+    min-height: 330px;
+  }
+}
+
+// ========================================
+// MOBILE
+// ========================================
+
+@media (max-width: 580px) {
+  .war-overview,
+  .strategy-inner {
+    display: block;
+  }
+
+  .section-number {
+    display: none;
+  }
+
+  .section-heading h2,
+  .traits-heading h2 {
+    font-size: clamp(2.25rem, 11vw, 3.4rem);
+  }
+
+  .overview-copy,
+  .strategy-copy {
+    margin-top: 2rem;
+  }
+
+  .war-quote {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+
+    .quote-mark {
+      left: 0.8rem;
+    }
+  }
+
+  .strategy-list {
+    li {
+      grid-template-columns: 34px 1fr;
+    }
+  }
+
+  .trait-grid {
+    margin-top: 3rem;
+  }
+}
+
+// ========================================
+// ACCESSIBILITY
+// ========================================
+
+@media (prefers-reduced-motion: reduce) {
+  .meter-track span {
+    animation: none;
+  }
+
+  .trait-card,
+  .back-link {
+    transition: none;
+  }
+}
+// ========================================
+// FOOTER
+// ========================================
+
+footer {
+  position: relative;
+  padding: clamp(4rem, 8vw, 6rem) $page-padding 2rem;
+  border-top: 1px solid $line;
+  background: #0b0908;
+
+  .footer-columns {
+    width: min(1400px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .footer-col {
+    color: $muted;
+    font-size: 0.78rem;
+    line-height: 1.7;
+
+    p {
+      margin: 0 0 0.75rem;
+      color: $orange-bright;
+      font-family: $title-font;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: $muted;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $bone;
+      }
+    }
+  }
+
+  .copyright {
+    color: rgba($muted, 0.7);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .feedback-btn {
+    display: inline-flex;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid rgba($bone, 0.28);
+    color: $bone !important;
+    font-family: $title-font;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      border-color: $orange;
+      background: $orange;
+      color: white !important;
+    }
+  }
+}
+
+// ========================================
+// ANIMATIONS
+// ========================================
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes contentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes riseSmoke {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.5);
+  }
+
+  45% {
+    opacity: 0.42;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-430px) scale(1.8);
+  }
+}
+
+@keyframes flutterAsh {
+  0% {
+    opacity: 0;
+    transform: translate(0, 30px) rotate(0deg);
+  }
+
+  20% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(45px, -370px) rotate(260deg);
+  }
+}
+
+// ========================================
+// TABLET
+// ========================================
+
+@media (max-width: 900px) {
+  .navbar {
+    min-height: 72px;
+
+    .hamburger {
+      position: relative;
+      z-index: 22;
+      display: block;
+    }
+
+    ul {
+      position: absolute;
+      top: 72px;
+      right: 0;
+      left: 0;
+      padding: 2rem $page-padding;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      background: rgba($black, 0.98);
+      border-bottom: 1px solid $line;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      a {
+        font-family: $title-font;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .war-hero {
+    min-height: 780px;
+    padding-bottom: 8rem;
+    align-items: flex-end;
+
+    &::before {
+      background:
+        linear-gradient(90deg, rgba($black, 0.93), rgba($black, 0.25)),
+        linear-gradient(0deg, $black, transparent 55%),
+        url("/assets/images/war-hero.png") 68% center / cover no-repeat;
+    }
+  }
+
+  .war-content {
+    grid-template-columns: 1fr;
+
+    h2,
+    > p,
+    .back-link {
+      grid-column: 1;
+    }
+
+    h2 {
+      padding-bottom: 1rem;
+    }
+
+    > p {
+      padding-top: 0;
+      padding-bottom: 3.5rem;
+      border-top: 0;
+    }
+
+    .back-link {
+      margin-top: 0;
+    }
+  }
+
+  footer {
+    .footer-columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// ========================================
+// MOBILE
+// ========================================
+
+@media (max-width: 560px) {
+  .navbar {
+    .logo {
+      padding-left: 43px;
+
+      a {
+        font-size: 0.55rem;
+      }
+    }
+  }
+
+  .war-hero {
+    min-height: 700px;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+
+    h1 {
+      font-size: clamp(3.6rem, 19vw, 5.5rem);
+
+      &::before {
+        max-width: 220px;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .war-content {
+    width: calc(100% - 2.5rem);
+    padding-top: 6.5rem;
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    > p {
+      strong {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  }
+
+  footer {
+    .footer-columns {
+      grid-template-columns: 1fr;
+    }
+
+    .feedback-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// ========================================
+// REDUCED MOTION
+// ========================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

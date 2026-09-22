@@ -12,3 +12,8 @@
 # project
 /css/styles.css.map
 .prepros
+
+# local image backups + optimizer reports
+/.image-originals
+/scripts/_out.txt
+/scripts/_report.txt

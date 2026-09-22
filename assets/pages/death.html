@@ -35,66 +35,273 @@
       </ul>
     </nav>
     <div class="death-page">
-      <div class="death-hero">
-        <h1 class="reveal-on-scroll">Death Faction</h1>
-        <div class="smoke-ash">
-          <div
-            class="particle smoke"
-            style="top: 90%; left: 20%; animation-delay: 0s"
-          ></div>
-          <div
-            class="particle smoke"
-            style="top: 95%; left: 50%; animation-delay: 4s"
-          ></div>
-          <div
-            class="particle smoke"
-            style="top: 92%; left: 75%; animation-delay: 7s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 80%; left: 25%; animation-delay: 1s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 85%; left: 40%; animation-delay: 3s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 78%; left: 65%; animation-delay: 5s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 83%; left: 85%; animation-delay: 2s"
-          ></div>
-        </div>
+     <section class="death-hero">
+    <div class="death-orb death-orb--one"></div>
+    <div class="death-orb death-orb--two"></div>
+    <div class="death-orb death-orb--three"></div>
+
+    <div class="death-hero__content">
+      <div class="death-eyebrow">
+        <span>Faction dossier</span>
+        <span class="death-eyebrow__line"></span>
+        <span>02 / 04</span>
       </div>
 
-      <section class="death-content">
-        <h2 class="reveal-on-scroll">The Inevitable End</h2>
-        <p class="reveal-on-scroll">
-          The Death faction operates with quiet certainty. They don't rush. They
-          don't panic. They simply wait — and eventually, they win. Death brings
-          the long game to life.
-        </p>
+      <h1>Death<span>.</span></h1>
 
-        <h2>Signature Strategy</h2>
-        <p class="reveal-on-scroll">
-          Death manipulates the discard pile, revives the fallen, and punishes
-          opponents for every loss. Each card is a reminder: all things must
-          end.
-        </p>
+      <p class="death-hero__kicker">Everything returns.</p>
 
-        <h2>Card Traits</h2>
-        <p class="reveal-on-scroll">
-          ☠️ <strong>Resurrection</strong><br />
-          🌒 <strong>Graveyard Mechanics</strong><br />
-          🕯️ <strong>Delayed Triggers</strong>
-        </p>
+      <p class="death-hero__description">
+        A patient force that turns every fallen unit, discarded card, and
+        delayed consequence into an inevitable victory.
+      </p>
 
-        <a href="/assets/pages/factions.html" class="back-link">
-          <i class="fa-solid fa-arrow-left"></i> Back to Factions
+      <div class="death-hero__actions">
+        <a href="#death-overview" class="death-button">
+          Enter the graveyard
+          <span aria-hidden="true">↓</span>
         </a>
-      </section>
+
+        <a href="#death-traits" class="death-text-link">
+          View card traits
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="death-hero__index" aria-hidden="true">
+      <span>WCG—F02</span>
+      <span>BEYOND THE VEIL</span>
+    </div>
+
+    <div class="death-stats" aria-label="Death faction profile">
+      <div>
+        <span>Control</span>
+        <strong>09</strong>
+      </div>
+
+      <div>
+        <span>Recovery</span>
+        <strong>08</strong>
+      </div>
+
+      <div>
+        <span>Tempo</span>
+        <strong>05</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="death-overview" class="death-overview death-section">
+    <div class="death-section__number" aria-hidden="true">01</div>
+
+    <div class="death-section__heading">
+      <p class="death-label">Faction overview</p>
+
+      <h2>
+        The inevitable<br />
+        end.
+      </h2>
+    </div>
+
+    <div class="death-overview__copy">
+      <p class="lead">
+        Death does not rush. Death does not panic. It waits—and eventually,
+        everything falls into its hands.
+      </p>
+
+      <p>
+        While other factions fight for immediate control, Death prepares for
+        the long game. Fallen units become resources, discarded cards become
+        opportunities, and every apparent loss advances the final plan.
+      </p>
+    </div>
+
+    <blockquote class="death-quote">
+      <span class="death-quote__mark" aria-hidden="true">“</span>
+      <p>Every ending leaves something behind.</p>
+      <cite>— Keeper of the Final Gate</cite>
+    </blockquote>
+  </section>
+
+  <!-- STRATEGY -->
+  <section id="death-strategy" class="death-strategy">
+    <div class="death-strategy__inner death-section">
+      <div class="death-section__number" aria-hidden="true">02</div>
+
+      <div class="death-section__heading">
+        <p class="death-label">Signature strategy</p>
+
+        <h2>
+          Lose the battle.<br />
+          Claim the fallen.
+        </h2>
+      </div>
+
+      <div class="death-strategy__copy">
+        <p>
+          Manipulate the discard pile, revive defeated units, and punish
+          opponents for every loss. Death grows stronger as the battlefield
+          empties.
+        </p>
+
+        <ul class="death-strategy__list">
+          <li>
+            <span>01</span>
+            Reclaim powerful units from the discard pile
+          </li>
+
+          <li>
+            <span>02</span>
+            Turn enemy losses into new resources
+          </li>
+
+          <li>
+            <span>03</span>
+            Prepare delayed effects that resolve at the perfect moment
+          </li>
+        </ul>
+
+        <div class="death-meter">
+          <div class="death-meter__meta">
+            <span>Control</span>
+            <span>88%</span>
+          </div>
+
+          <div class="death-meter__track">
+            <span style="--meter-width: 88%"></span>
+          </div>
+        </div>
+
+        <div class="death-meter">
+          <div class="death-meter__meta">
+            <span>Resurrection</span>
+            <span>81%</span>
+          </div>
+
+          <div class="death-meter__track">
+            <span style="--meter-width: 81%"></span>
+          </div>
+        </div>
+
+        <div class="death-meter">
+          <div class="death-meter__meta">
+            <span>Speed</span>
+            <span>46%</span>
+          </div>
+
+          <div class="death-meter__track">
+            <span style="--meter-width: 46%"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAITS -->
+  <section id="death-traits" class="death-traits death-section">
+    <header class="death-traits__heading">
+      <p class="death-label">Core mechanics</p>
+      <h2>Nothing stays buried.</h2>
+
+      <p>
+        Death uses the discard pile as a second hand, creating value from cards
+        and units that other factions have already lost.
+      </p>
+    </header>
+
+    <div class="death-trait-grid">
+      <article class="death-trait-card">
+        <div class="death-trait-card__top">
+          <span>01</span>
+          <span class="death-trait-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-skull"></i>
+          </span>
+        </div>
+
+        <div class="death-trait-card__content">
+          <h3>Resurrection</h3>
+
+          <p>
+            Return fallen units to play and force opponents to defeat the same
+            threats more than once.
+          </p>
+
+          <span class="death-trait-card__tag">Recovery</span>
+        </div>
+      </article>
+
+      <article class="death-trait-card">
+        <div class="death-trait-card__top">
+          <span>02</span>
+          <span class="death-trait-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-moon"></i>
+          </span>
+        </div>
+
+        <div class="death-trait-card__content">
+          <h3>Graveyard mechanics</h3>
+
+          <p>
+            Treat the discard pile as an active resource for abilities,
+            summons, and strategic combinations.
+          </p>
+
+          <span class="death-trait-card__tag">Recursion</span>
+        </div>
+      </article>
+
+      <article class="death-trait-card">
+        <div class="death-trait-card__top">
+          <span>03</span>
+          <span class="death-trait-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-hourglass-half"></i>
+          </span>
+        </div>
+
+        <div class="death-trait-card__content">
+          <h3>Delayed triggers</h3>
+
+          <p>
+            Prepare effects now that resolve later, forcing opponents to play
+            around threats they cannot yet stop.
+          </p>
+
+          <span class="death-trait-card__tag">Inevitable</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FACTION NAVIGATION -->
+  <section class="death-faction-nav">
+    <a href="/assets/pages/factions.html" class="death-faction-nav__link">
+      <span aria-hidden="true">←</span>
+
+      <span>
+        <small>Return to</small>
+        All factions
+      </span>
+    </a>
+
+    <div class="death-faction-nav__seal" aria-hidden="true">
+      <img src="/assets/images/DeathlogoBlue.png" alt="" />
+    </div>
+
+    <a
+      href="/assets/pages/famine.html"
+      class="death-faction-nav__link death-faction-nav__link--next"
+    >
+      <span>
+        <small>Next faction</small>
+        Famine
+      </span>
+
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</div>
     </div>
 
     <footer>
