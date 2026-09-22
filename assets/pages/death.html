@@ -352,61 +352,129 @@ Swarm opponents with hoards of units          </li>
           </div>
         </div>
       </footer>
-    <script src="/js/app.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".faction-card");
-        let activeIndex = 0;
+      <script>
+      const steps = document.querySelectorAll(".step");
 
-        function updateCards() {
-          cards.forEach((card, i) => {
-            card.classList.remove("active", "tilted-left", "tilted-right");
-            if (i < activeIndex) card.classList.add("tilted-left");
-            else if (i > activeIndex) card.classList.add("tilted-right");
-            else card.classList.add("active");
-          });
-        }
-
-        // Swipe support for mobile
-        let touchStartX = 0;
-        document.addEventListener("touchstart", (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener("touchend", (e) => {
-          const deltaX = e.changedTouches[0].screenX - touchStartX;
-          if (Math.abs(deltaX) > 50) {
-            if (deltaX < 0) {
-              activeIndex = (activeIndex + 1) % cards.length;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
             } else {
-              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-            }
-            updateCards();
-          }
-        });
-
-        // Click on desktop to advance
-        document
-          .querySelector(".factions-stack")
-          .addEventListener("click", () => {
-            if (window.innerWidth > 768) {
-              activeIndex = (activeIndex + 1) % cards.length;
-              updateCards();
+              entry.target.classList.remove("visible"); // optional if you want it to float *again* on re-entry
             }
           });
+        },
+        {
+          threshold: 0.2,
+        },
+      );
 
-        updateCards(); // initial load
+      steps.forEach((step) => {
+        observer.observe(step);
       });
 
-      // Hamburger Menu
-      document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".navbar ul");
+      const phaseLinks = document.querySelectorAll(".phase-nav a");
+      const phaseObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              phaseLinks.forEach((link) => {
+                link.classList.toggle(
+                  "active",
+                  link.getAttribute("href") === `#${entry.target.id}`,
+                );
+              });
+            }
+          });
+        },
+        { rootMargin: "-28% 0px -58% 0px", threshold: 0 },
+      );
 
-        hamburger?.addEventListener("click", () => {
+      steps.forEach((step) => phaseObserver.observe(step));
+
+      const rulesPage = document.querySelector(".how-to-play-page");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      let parallaxFrame = null;
+
+      function updateRulesParallax() {
+        parallaxFrame = null;
+        if (prefersReducedMotion.matches || !rulesPage) return;
+
+        const viewportCenter = window.innerHeight / 2;
+        steps.forEach((step, index) => {
+          const bounds = step.getBoundingClientRect();
+          const distance = bounds.top + bounds.height / 2 - viewportCenter;
+          const shift = Math.max(-18, Math.min(18, distance * -0.025));
+          const depth = Math.max(
+            -12,
+            Math.min(34, 34 - Math.abs(distance) * 0.035),
+          );
+          step.style.setProperty(
+            "--parallax-y",
+            `${shift + (index % 2 ? 2 : -2)}px`,
+          );
+          step.style.setProperty("--depth-z", `${depth}px`);
+        });
+
+        const title = rulesPage.querySelector("header h1");
+        const facts = rulesPage.querySelector(".rules-facts");
+        if (title)
+          title.style.setProperty(
+            "--parallax-y",
+            `${window.scrollY * -0.08}px`,
+          );
+        if (facts)
+          facts.style.setProperty(
+            "--parallax-y",
+            `${window.scrollY * -0.035}px`,
+          );
+      }
+
+      function requestRulesParallax() {
+        if (!parallaxFrame)
+          parallaxFrame = window.requestAnimationFrame(updateRulesParallax);
+      }
+
+      window.addEventListener("scroll", requestRulesParallax, {
+        passive: true,
+      });
+      window.addEventListener("resize", requestRulesParallax);
+      prefersReducedMotion.addEventListener("change", requestRulesParallax);
+      requestRulesParallax();
+
+      steps.forEach((step) => {
+        step.addEventListener("pointermove", (event) => {
+          if (prefersReducedMotion.matches || event.pointerType === "touch")
+            return;
+          const bounds = step.getBoundingClientRect();
+          const rotateX =
+            ((event.clientY - bounds.top) / bounds.height - 0.5) * -5;
+          const rotateY =
+            ((event.clientX - bounds.left) / bounds.width - 0.5) * 5;
+          step.style.setProperty("--tilt-x", `${rotateX}deg`);
+          step.style.setProperty("--tilt-y", `${rotateY}deg`);
+        });
+
+        step.addEventListener("pointerleave", () => {
+          step.style.setProperty("--tilt-x", "0deg");
+          step.style.setProperty("--tilt-y", "0deg");
+          step.style.setProperty("--depth-z", "0px");
+        });
+      });
+
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".navbar ul");
+
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
           navMenu.classList.toggle("active");
         });
-      });
+      }
     </script>
+    <script src="/js/app.js"></script>
+    
   </body>
 </html>

@@ -90,7 +90,7 @@ body {
   color: #5df2d6;
   text-shadow: 0 0 5px #5df2d6;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navbar .hamburger {
     display: flex;
     font-size: 40px;
@@ -114,7 +114,7 @@ body {
   .navbar ul li a {
     font-size: 1.2rem;
   }
-}
+} */
 
 .hero {
   height: 100vh;
@@ -1336,39 +1336,191 @@ body.intro-active {
   height: 40px;
   justify-content: center;
   width: 40px;
+  padding-left:9px;
+  padding-top:5px
 }
-
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navbar {
     min-height: 60px;
     padding: 0.7rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
   }
+
+  
   .navbar .hamburger {
-    display: flex;
-    margin-left: auto;
-  }
-  .navbar ul {
-    background: rgba(11, 10, 9, 0.98);
-    border: 1px solid rgba(93, 242, 214, 0.32);
-    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.3);
-    display: none;
-    gap: 0.35rem;
-    left: 1rem;
-    margin: 0;
-    padding: 0.75rem 1rem;
-    position: absolute;
-    right: 1rem;
-    top: calc(100% + 0.5rem);
-  }
-  .navbar ul.active {
+    position: relative;
+    z-index: 3000;
+
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    margin-left: auto;
+    padding: 0;
+
+    background: rgba(11, 10, 9, 1);
+    border: 1px solid rgba(93, 242, 214, 0.4);
+
+    cursor: pointer;
+
+    gap: 5px;
   }
-  .navbar ul li a {
-    padding: 0.75rem 0.25rem;
+
+  .navbar .hamburger span {
+    width: 19px;
+    height: 2px;
+    background: #5df2d6;
+
+    transition: transform 250ms ease, opacity 200ms ease;
   }
+
+  .navbar .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+ 
+  .navbar::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 300ms ease,
+    visibility 300ms ease;
+
+  z-index: 2500;
 }
+  .navbar.menu-open::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+ 
+  .navbar ul {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: min(80vw, 340px);
+
+    margin: 0;
+    padding: 6rem 1.5rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    
+
+    border-left: 1px solid rgba(93, 242, 214, 0.25);
+    
+    box-shadow:
+      -20px 0 50px rgba(0, 0, 0, 0.5);
+
+    transform: translateX(100%);
+    visibility: hidden;
+
+    transition:
+      transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 350ms ease;
+      
+
+    z-index: 2600;
+  }
+
+  .navbar ul.active {
+    transform: translateX(0);
+    visibility: visible;
+    
+  }
+
+ 
+  .navbar ul::before {
+    content: "NAVIGATION";
+
+    display: block;
+
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+
+    border-bottom: 1px solid rgba(93, 242, 214, 0.18);
+
+    color: #5df2d6;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+  }
+
+
+  .navbar ul li {
+    width: 100%;
+  }
+
+  .navbar ul li a {
+    display: block;
+    width: 100%;
+
+    padding: 1rem 0.75rem;
+
+    color: #aaa092;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    border-left: 2px solid transparent;
+
+    transition:
+      color 180ms ease,
+      background 180ms ease,
+      border-color 180ms ease,
+      padding-left 180ms ease;
+  }
+
+  .navbar ul li a:hover,
+  .navbar ul li a.active {
+    color: #5df2d6;
+    background: rgba(93, 242, 214, 0.06);
+    border-left-color: #5df2d6;
+    padding-left: 1rem;
+  }
+
+  
+  .navbar ul li a::before {
+    display: none;
+  }
+} */
+
+
 .how-to-play-page {
   position: relative;
   overflow: hidden;

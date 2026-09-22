@@ -20,7 +20,7 @@ if (introScreen) {
       return;
     }
 
-    window.setTimeout(finishIntro, 2500);
+    window.setTimeout(finishIntro, 500);
   };
 
   heroArt.onerror = finishIntro;
