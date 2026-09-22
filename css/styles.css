@@ -2506,7 +2506,7 @@ a {
   opacity: 0.15;
   pointer-events: none;
   background-image: url("/assets/images/warback.png");
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -3134,7 +3134,7 @@ footer .feedback-btn {
   display: inline-flex;
   padding: 0.9rem 1.1rem;
   border: 1px solid rgba(241, 232, 220, 0.28);
-  color: #f1e8dc !important;
+  color: #000000 !important;
   font-family: "Cinzel", serif;
   font-size: 0.6rem;
   letter-spacing: 0.1em;
@@ -3144,7 +3144,7 @@ footer .feedback-btn {
 footer .feedback-btn:hover {
   border-color: #f05a28;
   background: #f05a28;
-  color: white !important;
+  color: rgb(255, 255, 255) !important;
 }
 
 @keyframes heroReveal {
@@ -3321,7 +3321,7 @@ footer .feedback-btn:hover {
   opacity: 0.15;
   pointer-events: none;
   background-image: url("/assets/images/pestback.png");
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -3889,6 +3889,9 @@ footer .feedback-btn:hover {
   object-fit: contain;
   filter: drop-shadow(0 0 16px rgba(204, 51, 168, 0.4));
 }
+.pest-faction-nav__seal span #text {
+  font-family: "Cinzel", serif;
+}
 
 @media (max-width: 900px) {
   .pest-hero {
@@ -4018,7 +4021,7 @@ footer .feedback-btn:hover {
 .famine-page {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 75% 20%, rgba(214, 168, 92, 0.08), transparent 32%), black;
+  background: radial-gradient(circle at 75% 20%, rgba(241, 230, 207, 0.08), transparent 32%), black;
   color: #f1e6cf;
 }
 .famine-page::before {
@@ -4029,7 +4032,7 @@ footer .feedback-btn:hover {
   opacity: 0.15;
   pointer-events: none;
   background-image: url("/assets/images/famineback.png");
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }

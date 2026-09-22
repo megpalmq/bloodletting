@@ -46,7 +46,8 @@ $pest-padding: clamp(1.25rem, 5vw, 5rem);
     opacity: 0.15;
     pointer-events: none;
     background-image: url("/assets/images/pestback.png");
-    background-size: 100% 100%;
+    background-size: cover;
+
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -1033,7 +1034,7 @@ $pest-padding: clamp(1.25rem, 5vw, 5rem);
 
       color: $pest-muted;
 
-      font-family: $pest-title;
+      font-family: "Cinzel", serif;
 
       font-size: 0.55rem;
 
@@ -1081,6 +1082,9 @@ $pest-padding: clamp(1.25rem, 5vw, 5rem);
       object-fit: contain;
 
       filter: drop-shadow(0 0 16px rgba($pest-pink, 0.4));
+    }
+    span #text {
+      font-family: $pest-title;
     }
   }
 }
