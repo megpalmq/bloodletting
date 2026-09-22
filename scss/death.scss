@@ -10,7 +10,7 @@ $death-bone: #ebe9f2;
 $death-muted: #9b9cac;
 $death-line: rgba($death-bone, 0.15);
 
-$death-title: "Cinzlel", serif;
+$death-title: "Cinzel", serif;
 $death-body: "DM Sans", sans-serif;
 
 $death-padding: clamp(1.25rem, 5vw, 5rem);
@@ -29,7 +29,10 @@ $death-padding: clamp(1.25rem, 5vw, 5rem);
     inset: 0;
     opacity: 0.15;
     pointer-events: none;
-    background-image: url("assets/images/deathback.png");
+    background-image: url("/assets/images/deathback.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 

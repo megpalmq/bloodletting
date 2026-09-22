@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Bloodletting - Famine Faction</title>
 
     <!-- Font Awesome -->
@@ -13,90 +14,315 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <!-- Main Styles -->
     <link rel="stylesheet" href="/css/styles.css" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
   </head>
+
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
       <div class="logo">
-        <a href="/" style="text-decoration: none; color: #00ffe7"
-          >Witless Crusade Games</a
-        >
+        <a href="/" style="text-decoration: none; color: #00ffe7">
+          Witless Crusade Games
+        </a>
       </div>
-      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+
+      <div class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/assets/pages/rules.html">How to Play</a></li>
-        <li><a href="/assets/pages/factions.html">Factions</a></li>
+        <li>
+          <a href="/assets/pages/rules.html">How to Play</a>
+        </li>
+        <li>
+          <a href="/assets/pages/factions.html">Factions</a>
+        </li>
       </ul>
     </nav>
 
+    <!-- FAMINE PAGE -->
     <div class="famine-page">
-      <div class="famine-hero">
-        <h1 class="reveal-on-scroll">Famine Faction</h1>
-        <div class="smoke-ash">
-          <div
-            class="particle smoke"
-            style="top: 90%; left: 20%; animation-delay: 0s"
-          ></div>
-          <div
-            class="particle smoke"
-            style="top: 95%; left: 50%; animation-delay: 4s"
-          ></div>
-          <div
-            class="particle smoke"
-            style="top: 92%; left: 75%; animation-delay: 7s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 80%; left: 25%; animation-delay: 1s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 85%; left: 40%; animation-delay: 3s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 78%; left: 65%; animation-delay: 5s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 83%; left: 85%; animation-delay: 2s"
-          ></div>
+      <!-- HERO -->
+      <section class="famine-hero">
+        <div class="famine-orb famine-orb--one"></div>
+        <div class="famine-orb famine-orb--two"></div>
+        <div class="famine-orb famine-orb--three"></div>
+
+        <div class="famine-hero__content">
+          <div class="famine-eyebrow">
+            <span>Faction dossier</span>
+            <span class="famine-eyebrow__line"></span>
+            <span>03 / 04</span>
+          </div>
+
+          <h1>Famine<span>.</span></h1>
+
+          <p class="famine-hero__kicker">The Slow Collapse</p>
+
+          <p class="famine-hero__description">
+            A relentless force that drains resources, restricts options, and
+            slowly starves the battlefield of everything it needs to survive.
+          </p>
+
+          <div class="famine-hero__actions">
+            <a href="#famine-overview" class="famine-button">
+              Enter the wasteland
+              <span aria-hidden="true">↓</span>
+            </a>
+
+            <a href="#famine-traits" class="famine-text-link">
+              View card traits
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <section class="famine-content">
-        <h2 class="reveal-on-scroll">Harbingers of Despair</h2>
-        <p class="reveal-on-scroll">
-          The Famine faction strikes at the soul—draining resources, limiting
-          options, and leaving foes gasping. They are not fast, but they are
-          inevitable. Slowly starving enemies of hope and strength.
-        </p>
+        <div class="famine-hero__index" aria-hidden="true">
+          <span>WCG—F03</span>
+          <span>THE WITHERED LAND</span>
+        </div>
 
-        <h2 class="reveal-on-scroll">Signature Strategy</h2>
-        <p class="reveal-on-scroll">
-          Famine limits your opponent's ability to act—reducing draw power,
-          limiting actions, and forcing sacrifices.
-        </p>
+        <div class="famine-stats" aria-label="Famine faction profile">
+          <div>
+            <span>Resource Control</span>
+            <strong>09</strong>
+          </div>
 
-        <h2>Card Traits</h2>
-        <p class="reveal-on-scroll">
-          🥀 <strong>Resource Drain</strong><br />
-          🦴 <strong>Starvation Counters</strong><br />
-          🕳️ <strong>Deck Disruption</strong>
-        </p>
+          <div>
+            <span>Disruption</span>
+            <strong>08</strong>
+          </div>
 
-        <a href="/assets/pages/factions.html" class="back-link">
-          <i class="fa-solid fa-arrow-left"></i> Back to Factions
+          <div>
+            <span>Tempo</span>
+            <strong>04</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section id="famine-overview" class="famine-overview famine-section">
+        <div class="famine-section__number" aria-hidden="true">01</div>
+
+        <div class="famine-section__heading">
+          <p class="famine-label">Faction overview</p>
+
+          <h2>
+            Nothing<br />
+            remains.
+          </h2>
+        </div>
+
+        <div class="famine-overview__copy">
+          <p class="lead">
+            Famine does not need to defeat the enemy quickly. It only needs to
+            make survival more difficult with every turn.
+          </p>
+
+          <p>
+            The Horseman of Famine; a lone beast, battling not only its own mind
+            for control over its cravings, but also the entire kingdom from
+            their unwavering fear of its nature and appearance
+          </p>
+        </div>
+
+        <blockquote class="famine-quote">
+          <span class="famine-quote__mark" aria-hidden="true"> “ </span>
+
+          <p>Hunger makes every choice a desperate one.</p>
+
+          <cite> — Keeper of the Empty Granary </cite>
+        </blockquote>
+      </section>
+
+      <!-- STRATEGY -->
+      <section id="famine-strategy" class="famine-strategy">
+        <div class="famine-strategy__inner famine-section">
+          <div class="famine-section__number" aria-hidden="true">02</div>
+
+          <div class="famine-section__heading">
+            <p class="famine-label">Signature strategy</p>
+
+            <h2>
+              Starve the field.<br />
+              Break their will.
+            </h2>
+          </div>
+
+          <div class="famine-strategy__copy">
+            <p>
+              Famine limits your opponent's ability to act by reducing
+              resources, limiting draws, and forcing difficult sacrifices. The
+              longer the battle continues, the fewer options remain.
+            </p>
+
+            <ul class="famine-strategy__list">
+              <li>
+                <span>01</span>
+                Isolate enemies and strike when they least expect it
+              </li>
+
+              <li>
+                <span>02</span>
+                Frighten, scare, horrify
+              </li>
+
+              <li>
+                <span>03</span>
+                Evolve into more beastly forms of Famine itself
+              </li>
+            </ul>
+
+            <div class="famine-meter">
+              <div class="famine-meter__meta">
+                <span>Resource Drain</span>
+                <span>92%</span>
+              </div>
+
+              <div class="famine-meter__track">
+                <span style="--meter-width: 92%"></span>
+              </div>
+            </div>
+
+            <div class="famine-meter">
+              <div class="famine-meter__meta">
+                <span>Disruption</span>
+                <span>84%</span>
+              </div>
+
+              <div class="famine-meter__track">
+                <span style="--meter-width: 84%"></span>
+              </div>
+            </div>
+
+            <div class="famine-meter">
+              <div class="famine-meter__meta">
+                <span>Speed</span>
+                <span>38%</span>
+              </div>
+
+              <div class="famine-meter__track">
+                <span style="--meter-width: 38%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD TRAITS -->
+      <section id="famine-traits" class="famine-traits famine-section">
+        <header class="famine-traits__heading">
+          <p class="famine-label">Card Traits</p>
+
+          <h2>Scarcity is a weapon.</h2>
+
+          <p>
+            Famine turns limited resources into battlefield pressure, forcing
+            opponents to sacrifice options while steadily reducing their ability
+            to respond.
+          </p>
+        </header>
+
+        <div class="famine-trait-grid">
+          <!-- TRAIT 1 -->
+          <article class="famine-trait-card">
+            <div class="famine-trait-card__top">
+              <span>01</span>
+
+              <span class="famine-trait-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-battery-quarter"></i>
+              </span>
+            </div>
+
+            <div class="famine-trait-card__content">
+              <h3>Unpredictable</h3>
+
+              <p>Move in unpredictable fashions.</p>
+
+              <span class="famine-trait-card__tag"> Depletion </span>
+            </div>
+          </article>
+
+          <!-- TRAIT 2 -->
+          <article class="famine-trait-card">
+            <div class="famine-trait-card__top">
+              <span>02</span>
+
+              <span class="famine-trait-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-ban"></i>
+              </span>
+            </div>
+
+            <div class="famine-trait-card__content">
+              <h3>Devour</h3>
+
+              <p>Devour opponents cards</p>
+
+              <span class="famine-trait-card__tag"> Attrition </span>
+            </div>
+          </article>
+
+          <!-- TRAIT 3 -->
+          <article class="famine-trait-card">
+            <div class="famine-trait-card__top">
+              <span>03</span>
+
+              <span class="famine-trait-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-hourglass-end"></i>
+              </span>
+            </div>
+
+            <div class="famine-trait-card__content">
+              <h3>Terror</h3>
+
+              <p>Send enemy units fleeing in terror</p>
+
+              <span class="famine-trait-card__tag"> Desperation </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FACTION NAVIGATION -->
+      <section class="famine-faction-nav">
+        <a href="/assets/pages/death.html" class="famine-faction-nav__link">
+          <span aria-hidden="true"> ← </span>
+
+          <span>
+            <small> Previous faction </small>
+
+            Death
+          </span>
+        </a>
+
+        <div class="famine-faction-nav__seal" aria-hidden="true">
+          <img src="/assets/images/famineLogoYellow.png" alt="" />
+        </div>
+
+        <a
+          href="/assets/pages/pest.html"
+          class="famine-faction-nav__link famine-faction-nav__link--next"
+        >
+          <span>
+            <small> Next faction </small>
+
+            Pestilence
+          </span>
+
+          <span aria-hidden="true"> → </span>
         </a>
       </section>
     </div>
 
+    <!-- FOOTER -->
     <footer>
       <div class="footer-columns">
         <div class="footer-col copyright">
@@ -105,104 +331,58 @@
 
         <div class="footer-col creators">
           <p>Game Creators:</p>
+
           <ul>
             <li>
               <a
                 href="https://www.linkedin.com/in/donovan-jennings/"
                 target="_blank"
-                >Donovan Jennings</a
               >
+                Donovan Jennings
+              </a>
             </li>
+
             <li>
               <a
                 href="https://www.linkedin.com/in/samarth-patel-22861a186/"
                 target="_blank"
-                >Sam Patel</a
               >
+                Sam Patel
+              </a>
             </li>
+
             <li>
               <a
                 href="https://www.linkedin.com/in/jonathanshaw2/"
                 target="_blank"
-                >Jonathan Shaw</a
               >
+                Jonathan Shaw
+              </a>
             </li>
           </ul>
         </div>
 
         <div class="footer-col web-designer">
-          Web Designer + Developer: <br />
-          <a href="https://www.linkedin.com/in/megan-palmquist/" target="_blank"
-            >Megan Palmquist</a
-          >
+          Web Designer + Developer:
+          <br />
+
+          <a href="https://www.mspstudios.co/" target="_blank"> MSP Studios </a>
         </div>
 
         <div class="footer-col feedback">
           <h4>Already played Bloodletting? We'd Love your Feedback!</h4>
+
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdiDv1Mp-aJzOOs0aAVWgVIShjJOwy_ZcX2IA-xQMH-WMtfAQ/viewform?pli=1"
             target="_blank"
             class="feedback-btn"
-            >Playtest Review Form</a
           >
+            Playtest Review Form
+          </a>
         </div>
       </div>
     </footer>
+
     <script src="/js/app.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".faction-card");
-        let activeIndex = 0;
-
-        function updateCards() {
-          cards.forEach((card, i) => {
-            card.classList.remove("active", "tilted-left", "tilted-right");
-            if (i < activeIndex) card.classList.add("tilted-left");
-            else if (i > activeIndex) card.classList.add("tilted-right");
-            else card.classList.add("active");
-          });
-        }
-
-        // Swipe support for mobile
-        let touchStartX = 0;
-        document.addEventListener("touchstart", (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener("touchend", (e) => {
-          const deltaX = e.changedTouches[0].screenX - touchStartX;
-          if (Math.abs(deltaX) > 50) {
-            if (deltaX < 0) {
-              activeIndex = (activeIndex + 1) % cards.length;
-            } else {
-              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-            }
-            updateCards();
-          }
-        });
-
-        // Click on desktop to advance
-        document
-          .querySelector(".factions-stack")
-          .addEventListener("click", () => {
-            if (window.innerWidth > 768) {
-              activeIndex = (activeIndex + 1) % cards.length;
-              updateCards();
-            }
-          });
-
-        updateCards(); // initial load
-      });
-
-      // Hamburger Menu
-      document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".navbar ul");
-
-        hamburger?.addEventListener("click", () => {
-          navMenu.classList.toggle("active");
-        });
-      });
-    </script>
   </body>
 </html>

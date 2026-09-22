@@ -3,21 +3,36 @@
 // ========================================
 // VARIABLES
 // ========================================
+$death-black: #0b0b11;
+$death-black-soft: #11121b;
+$death-panel: #171827;
+$death-blue: #657bd8;
+$death-blue-bright: #91a7ff;
+$death-violet: #a58adf;
+$death-bone: #ebe9f2;
+$death-muted: #9b9cac;
+$death-line: rgba($death-bone, 0.15);
 
 $black: #100d0c;
 $black-soft: #171210;
 $panel: #211816;
+$death-muted: #9b9cac;
 $orange: #f05a28;
+$death-blue-bright: #91a7ff;
 $orange-bright: #ff7547;
+$death-title: "Cinzel", serif;
+$death-line: rgba(RED, 0.15);
 $bone: #f1e8dc;
 $muted: #ad9f92;
 $line: rgba($bone, 0.16);
+$death-bone: #ebe9f2;
 
 $title-font: "Cinzel", serif;
 $body-font: "DM Sans", sans-serif;
 
 $page-padding: clamp(1.25rem, 5vw, 5rem);
 
+$death-padding: clamp(1.25rem, 5vw, 5rem);
 // ========================================
 // BASE
 // ========================================
@@ -727,6 +742,74 @@ $war-body: "DM Sans", sans-serif;
         color: white;
         transform: translateX(-4px);
       }
+    }
+  }
+}
+
+.war-faction-nav {
+  min-height: 190px;
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
+
+  &__link {
+    padding: 2.2rem $death-padding;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: $death-bone;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(white, 0.025);
+    }
+
+    > span:first-child {
+      color: $death-blue-bright;
+      font-size: 1.4rem;
+    }
+
+    small {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: $death-muted;
+      font-family: $death-title;
+      font-size: 0.55rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    > span:nth-child(2) {
+      font-family: $death-title;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    &--next {
+      justify-content: flex-end;
+      text-align: right;
+
+      > span:last-child {
+        color: $death-blue-bright;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  &__seal {
+    display: grid;
+    place-items: center;
+    border-right: 1px solid $death-line;
+    border-left: 1px solid $death-line;
+
+    img {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 16px rgba($death-blue, 0.35));
     }
   }
 }

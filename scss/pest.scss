@@ -1,253 +1,1284 @@
-$pest-bg-dark: #0b0f0b;
-$pest-bg-mid: #2c1d29;
-$pest-green: #cc33a8;
-$pest-green-dark: #5e0250;
-$pest-green-light: #f28edb;
-$pest-text-light: #fce2fc;
-$pest-text-accent: #ffc5ff;
-$font-title: "Cinzel", serif;
-$font-body: "Times New Roman", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap");
 
-.pest-theme {
-  background: radial-gradient(#2a1a28, $pest-bg-dark);
-  background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
-  color: $pest-text-light;
-  font-family: $font-title;
+// ==================================================
+// PESTILENCE THEME
+// ==================================================
 
-  .pestilence-hero {
-    position: relative;
-    background: linear-gradient(135deg, #390f3d, #4d2645);
-    color: #fac5ff;
-    padding: 6rem 2rem;
-    overflow: hidden;
+$pest-black: #0b0f0b;
+$pest-black-soft: #141013;
+$pest-panel: #211720;
 
-    h1 {
-      font-family: $font-title;
-      font-size: 4rem;
-      text-align: center;
-      text-shadow: 0 0 10px $pest-green-light, 0 0 20px $pest-green,
-        0 0 30px $pest-green-dark;
+$pest-purple: #641754;
+$pest-purple-dark: #3b0d32;
+
+$pest-pink: #cc33a8;
+$pest-pink-bright: #f28edb;
+$pest-pink-soft: #ffc5ff;
+
+$pest-bone: #f5e8f2;
+$pest-muted: #aa96a6;
+
+$pest-line: rgba($pest-bone, 0.15);
+
+$pest-title: "Cinzel", serif;
+$pest-body: "DM Sans", sans-serif;
+
+$pest-padding: clamp(1.25rem, 5vw, 5rem);
+
+// ==================================================
+// PAGE
+// ==================================================
+
+.pest-page {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 20%, rgba($pest-pink, 0.08), transparent 32%),
+    $pest-black;
+  color: $pest-bone;
+
+  // Page grain
+  &::before {
+    content: "";
+    position: fixed;
+    z-index: 30;
+    inset: 0;
+    opacity: 0.15;
+    pointer-events: none;
+    background-image: url("/assets/images/pestback.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+// ==================================================
+// SHARED SECTION
+// ==================================================
+
+.pest-section {
+  width: min(1380px, 100%);
+  margin: 0 auto;
+
+  padding-right: $pest-padding;
+  padding-left: $pest-padding;
+}
+
+// ==================================================
+// HERO
+// ==================================================
+
+.pest-hero {
+  position: relative;
+
+  min-height: min(860px, 100vh);
+
+  padding: clamp(9rem, 18vh, 12rem) $pest-padding 8rem;
+
+  display: flex;
+  align-items: center;
+
+  isolation: isolate;
+  overflow: hidden;
+
+  border-bottom: 1px solid $pest-line;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba($pest-black, 0.98),
+      rgba($pest-black, 0.74) 45%,
+      rgba($pest-black, 0.16)
+    ),
+    radial-gradient(circle at 75% 45%, rgba($pest-pink, 0.28), transparent 34%),
+    linear-gradient(135deg, #090c09, #261522 52%, #090809);
+
+  // Pestilence logo watermark
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    top: 50%;
+    right: 5%;
+
+    width: min(570px, 58vw);
+    height: min(570px, 58vw);
+
+    opacity: 0.14;
+
+    background: url("/assets/images/Pestilencelogo.png") center / contain
+      no-repeat;
+
+    filter: grayscale(0.2) drop-shadow(0 0 55px rgba($pest-pink, 0.45));
+
+    transform: translateY(-50%);
+  }
+
+  // Ground haze
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    right: 0;
+    bottom: -25%;
+    left: 0;
+
+    height: 65%;
+
+    opacity: 0.5;
+
+    background: radial-gradient(
+      ellipse at center,
+      rgba($pest-pink, 0.18),
+      transparent 67%
+    );
+
+    filter: blur(35px);
+  }
+}
+
+// ==================================================
+// HERO CONTENT
+// ==================================================
+
+.pest-hero__content {
+  position: relative;
+  z-index: 2;
+
+  width: min(730px, 75vw);
+
+  h1 {
+    margin: 0.35rem 0 0 -0.06em;
+
+    color: $pest-bone;
+
+    font-family: $pest-title;
+
+    font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+
+    font-weight: 600;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.075em;
+
+    text-transform: uppercase;
+
+    span {
+      color: $pest-pink-bright;
     }
-    .subtitle {
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      font-size: 1.3rem;
-    }
-    .smoke-ash {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
+  }
+}
 
-    .particle {
-      position: absolute;
-      background: radial-gradient(
-        circle,
-        rgba(255, 150, 255, 0.15) 0%,
-        transparent 70%
-      );
-      border-radius: 50%;
-      animation-timing-function: ease-out;
-      opacity: 0.8;
-    }
+// ==================================================
+// EYEBROW
+// ==================================================
 
-    .smoke {
-      width: 80px;
-      height: 80px;
-      animation-name: riseSmoke;
-      animation-iteration-count: infinite;
-      animation-duration: 12s;
-    }
+.pest-eyebrow {
+  display: flex;
+  align-items: center;
 
-    .ash {
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(
-        circle,
-        rgba(255, 100, 216, 0.5) 0%,
-        transparent 80%
-      );
-      animation-name: flutterAsh;
-      animation-iteration-count: infinite;
-      animation-duration: 8s;
+  gap: 0.85rem;
+
+  color: #c5b3c1;
+
+  font-family: $pest-title;
+
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  &__line {
+    width: 56px;
+    height: 1px;
+
+    background: $pest-pink-bright;
+  }
+}
+
+// ==================================================
+// HERO KICKER
+// ==================================================
+
+.pest-hero__kicker {
+  margin: 1.4rem 0 0.8rem;
+
+  color: $pest-pink-bright;
+
+  font-family: $pest-title;
+
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+// ==================================================
+// HERO DESCRIPTION
+// ==================================================
+
+.pest-hero__description {
+  max-width: 590px;
+
+  color: rgba($pest-bone, 0.72);
+
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+
+  line-height: 1.75;
+}
+
+// ==================================================
+// HERO ACTIONS
+// ==================================================
+
+.pest-hero__actions {
+  margin-top: 2.2rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+// ==================================================
+// PRIMARY BUTTON
+// ==================================================
+
+.pest-button {
+  min-width: 225px;
+
+  padding: 1rem 1.2rem;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  background: $pest-pink;
+
+  color: white;
+
+  font-family: $pest-title;
+
+  font-size: 0.64rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    background: $pest-pink-bright;
+
+    color: $pest-black;
+
+    transform: translateY(-3px);
+  }
+}
+
+// ==================================================
+// SECONDARY LINK
+// ==================================================
+
+.pest-text-link {
+  color: $pest-bone;
+
+  font-family: $pest-title;
+
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.09em;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+
+  span {
+    margin-left: 0.5rem;
+
+    color: $pest-pink-bright;
+  }
+}
+
+// ==================================================
+// HERO INDEX
+// ==================================================
+
+.pest-hero__index {
+  position: absolute;
+
+  top: 50%;
+  right: $pest-padding;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  color: rgba($pest-bone, 0.45);
+
+  font-family: $pest-title;
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.18em;
+
+  writing-mode: vertical-rl;
+
+  transform: translateY(-50%);
+
+  &::after {
+    content: "";
+
+    width: 1px;
+    height: 75px;
+
+    background: rgba($pest-bone, 0.2);
+  }
+}
+
+// ==================================================
+// HERO STATS
+// ==================================================
+
+.pest-stats {
+  position: absolute;
+
+  right: $pest-padding;
+  bottom: 0;
+
+  display: flex;
+
+  border: 1px solid $pest-line;
+
+  border-bottom: 0;
+
+  background: rgba($pest-black, 0.62);
+
+  backdrop-filter: blur(14px);
+
+  div {
+    min-width: 115px;
+
+    padding: 1rem 1.15rem;
+
+    border-left: 1px solid $pest-line;
+
+    &:first-child {
+      border-left: 0;
     }
   }
 
-  .pestilence-content {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 2rem;
-    background: $pest-bg-mid;
-    border: 2px solid $pest-green-dark;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-    border-radius: 16px;
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: $pest-green-light;
-    }
-
-    p {
-      font-family: $font-body;
-      line-height: 1.7;
-      font-size: 1.05rem;
-      color: lighten($pest-text-light, 10%);
-      margin-bottom: 1.5rem;
-      margin: 0 auto;
-    }
-  }
-
-  .back-link {
+  span {
     display: block;
-    margin: 2rem auto 0;
-    width: fit-content;
+
+    margin-bottom: 0.35rem;
+
+    color: $pest-muted;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: $pest-pink-bright;
+
+    font-family: $pest-title;
+
+    font-size: 1.15rem;
+
+    font-weight: 500;
+  }
+}
+
+// ==================================================
+// PESTILENCE ORBS
+// ==================================================
+
+.pest-orb {
+  position: absolute;
+
+  z-index: 1;
+
+  border: 1px solid rgba($pest-pink-bright, 0.4);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 18px rgba($pest-pink, 0.35),
+    inset 0 0 15px rgba($pest-purple, 0.22);
+
+  animation: pestFloat 7s ease-in-out infinite;
+
+  &--one {
+    top: 25%;
+    right: 19%;
+
+    width: 22px;
+    height: 22px;
+  }
+
+  &--two {
+    top: 62%;
+    right: 35%;
+
+    width: 13px;
+    height: 13px;
+
+    animation-delay: -2s;
+  }
+
+  &--three {
+    top: 38%;
+    right: 8%;
+
+    width: 31px;
+    height: 31px;
+
+    animation-delay: -4s;
+  }
+}
+
+// ==================================================
+// SECTION NUMBER
+// ==================================================
+
+.pest-section__number {
+  padding-top: 0.55rem;
+
+  color: $pest-pink-bright;
+
+  font-family: $pest-title;
+
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+
+  &::after {
+    content: "";
+
+    display: block;
+
+    width: 1px;
+    height: 72px;
+
+    margin: 1.2rem 0 0 0.35rem;
+
+    background: linear-gradient($pest-pink-bright, transparent);
+  }
+}
+
+// ==================================================
+// LABEL
+// ==================================================
+
+.pest-label {
+  margin: 0;
+
+  color: $pest-pink-bright;
+
+  font-family: $pest-title;
+
+  font-size: 0.62rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+// ==================================================
+// SECTION HEADING
+// ==================================================
+
+.pest-section__heading {
+  h2 {
+    margin: 1.3rem 0;
+
+    color: $pest-bone;
+
+    font-family: $pest-title;
+
+    font-size: clamp(2.5rem, 5vw, 5rem);
+
+    font-weight: 500;
+
+    line-height: 1.03;
+
+    letter-spacing: -0.065em;
+
+    text-transform: uppercase;
+  }
+}
+
+// ==================================================
+// OVERVIEW
+// ==================================================
+
+.pest-overview {
+  min-height: 790px;
+
+  padding-top: clamp(7rem, 13vw, 11rem);
+
+  padding-bottom: clamp(6rem, 11vw, 9rem);
+
+  display: grid;
+
+  grid-template-columns:
+    70px
+    minmax(270px, 0.9fr)
+    minmax(300px, 1.1fr);
+
+  gap: clamp(2rem, 5vw, 7rem);
+
+  align-items: start;
+}
+
+// ==================================================
+// OVERVIEW COPY
+// ==================================================
+
+.pest-overview__copy {
+  max-width: 610px;
+
+  padding-top: 2.6rem;
+
+  color: $pest-muted;
+
+  font-size: 1rem;
+
+  line-height: 1.85;
+
+  .lead {
+    color: $pest-bone;
+
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+
+    line-height: 1.45;
+  }
+}
+
+// ==================================================
+// QUOTE
+// ==================================================
+
+.pest-quote {
+  grid-column: 2 / -1;
+
+  position: relative;
+
+  margin: 4rem 0 0;
+
+  padding: clamp(2rem, 5vw, 4rem);
+
+  overflow: hidden;
+
+  border: 1px solid $pest-line;
+
+  background: linear-gradient(
+    120deg,
+    rgba($pest-pink, 0.11),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  &::after {
+    content: "PESTILENCE";
+
+    position: absolute;
+
+    right: -1rem;
+    bottom: -2.5rem;
+
+    color: rgba(255, 255, 255, 0.025);
+
+    font-family: $pest-title;
+
+    font-size: clamp(4rem, 9vw, 8rem);
+
+    font-weight: 700;
+  }
+
+  &__mark {
+    position: absolute;
+
+    top: 1rem;
+    left: 1.5rem;
+
+    color: $pest-pink-bright;
+
+    font-family: Georgia, serif;
+
+    font-size: 6rem;
+
+    line-height: 1;
+
+    opacity: 0.45;
+  }
+
+  p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 1rem;
+
+    color: $pest-bone;
+
+    font-family: $pest-title;
+
+    font-size: clamp(1.3rem, 2.8vw, 2.3rem);
+
+    letter-spacing: -0.04em;
+  }
+
+  cite {
+    position: relative;
+    z-index: 1;
+
+    color: $pest-muted;
+
+    font-size: 0.68rem;
+
+    font-style: normal;
+
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+  }
+}
+
+// ==================================================
+// STRATEGY
+// ==================================================
+
+.pest-strategy {
+  position: relative;
+
+  overflow: hidden;
+
+  background: $pest-bone;
+
+  color: $pest-black;
+}
+
+// ==================================================
+// STRATEGY INNER
+// ==================================================
+
+.pest-strategy__inner {
+  min-height: 700px;
+
+  padding-top: clamp(6rem, 10vw, 9rem);
+
+  padding-bottom: clamp(6rem, 10vw, 9rem);
+
+  display: grid;
+
+  grid-template-columns:
+    70px
+    minmax(280px, 1fr)
+    minmax(300px, 0.9fr);
+
+  gap: clamp(2rem, 5vw, 7rem);
+
+  .pest-section__number,
+  .pest-label {
+    color: $pest-purple;
+  }
+
+  .pest-section__number::after {
+    background: linear-gradient($pest-purple, transparent);
+  }
+
+  .pest-section__heading h2 {
+    color: $pest-black;
+  }
+}
+
+// ==================================================
+// STRATEGY COPY
+// ==================================================
+
+.pest-strategy__copy {
+  padding-top: 2.7rem;
+
+  line-height: 1.8;
+
+  > p {
+    margin-bottom: 2.5rem;
+
+    color: #5a4e57;
+  }
+}
+
+// ==================================================
+// STRATEGY LIST
+// ==================================================
+
+.pest-strategy__list {
+  margin: 0 0 3rem;
+
+  padding: 0;
+
+  list-style: none;
+
+  li {
+    padding: 1rem 0;
+
+    display: grid;
+
+    grid-template-columns: 42px 1fr;
+
+    gap: 1rem;
+
+    border-top: 1px solid rgba($pest-black, 0.14);
+
+    color: $pest-black;
+
+    font-weight: 500;
+
+    &:last-child {
+      border-bottom: 1px solid rgba($pest-black, 0.14);
+    }
+
+    span {
+      color: $pest-purple;
+
+      font-family: $pest-title;
+
+      font-size: 0.58rem;
+
+      font-weight: 600;
+    }
+  }
+}
+
+// ==================================================
+// METERS
+// ==================================================
+
+.pest-meter {
+  margin-top: 1.35rem;
+
+  &__meta {
+    margin-bottom: 0.6rem;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: $pest-title;
+
+    font-size: 0.6rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+  }
+
+  &__track {
+    height: 3px;
+
+    background: rgba($pest-black, 0.15);
+
+    span {
+      display: block;
+
+      width: var(--meter-width);
+
+      height: 100%;
+
+      background: $pest-purple;
+    }
+  }
+}
+
+// ==================================================
+// TRAITS
+// ==================================================
+
+.pest-traits {
+  padding-top: clamp(7rem, 12vw, 10rem);
+
+  padding-bottom: clamp(7rem, 12vw, 10rem);
+}
+
+// ==================================================
+// TRAIT HEADING
+// ==================================================
+
+.pest-traits__heading {
+  max-width: 780px;
+
+  h2 {
+    margin: 1.3rem 0;
+
+    color: $pest-bone;
+
+    font-family: $pest-title;
+
+    font-size: clamp(2.5rem, 5vw, 5rem);
+
+    font-weight: 500;
+
+    line-height: 1.03;
+
+    letter-spacing: -0.065em;
+
+    text-transform: uppercase;
+  }
+
+  > p:last-child {
+    max-width: 580px;
+
+    color: $pest-muted;
+
+    line-height: 1.7;
+  }
+}
+
+// ==================================================
+// TRAIT GRID
+// ==================================================
+
+.pest-trait-grid {
+  margin-top: 4.5rem;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 1px;
+
+  border: 1px solid $pest-line;
+
+  background: $pest-line;
+}
+
+// ==================================================
+// TRAIT CARDS
+// ==================================================
+
+.pest-trait-card {
+  min-height: 410px;
+
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: $pest-black;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    z-index: 1;
+
+    background: $pest-panel;
+
+    transform: translateY(-8px);
+  }
+
+  &__top {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #806f7a;
+
+    font-family: $pest-title;
+
+    font-size: 0.62rem;
+
+    font-weight: 600;
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid $pest-line;
+
+    color: $pest-pink-bright;
+  }
+
+  &__content {
+    margin-top: auto;
+  }
+
+  h3 {
+    margin: 0 0 1.3rem;
+
+    color: $pest-bone;
+
+    font-family: $pest-title;
+
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.035em;
+
+    text-transform: uppercase;
+  }
+
+  p {
+    min-height: 80px;
+
+    color: $pest-muted;
+
+    font-size: 0.92rem;
+
+    line-height: 1.65;
+  }
+
+  &__tag {
+    display: inline-block;
+
+    padding-top: 0.75rem;
+
+    border-top: 1px solid $pest-pink;
+
+    color: #d3c2d0;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+  }
+}
+
+// ==================================================
+// FACTION NAVIGATION
+// ==================================================
+
+.pest-faction-nav {
+  min-height: 190px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 130px 1fr;
+
+  border-top: 1px solid $pest-line;
+
+  border-bottom: 1px solid $pest-line;
+
+  &__link {
+    padding: 2.2rem $pest-padding;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 1.2rem;
+
+    color: $pest-bone;
+
     text-decoration: none;
-    color: $pest-text-accent;
-    font-size: 1rem;
-    border: 2px solid $pest-green-light;
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+
+    transition: background 0.2s ease;
 
     &:hover {
-      background: $pest-green-light;
-      color: $pest-bg-mid;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    > span:first-child {
+      color: $pest-pink-bright;
+
+      font-size: 1.4rem;
+    }
+
+    small {
+      display: block;
+
+      margin-bottom: 0.45rem;
+
+      color: $pest-muted;
+
+      font-family: $pest-title;
+
+      font-size: 0.55rem;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+    }
+
+    > span:nth-child(2) {
+      font-family: $pest-title;
+
+      font-size: 0.82rem;
+
+      letter-spacing: 0.05em;
+
+      text-transform: uppercase;
+    }
+
+    &--next {
+      justify-content: flex-end;
+
+      text-align: right;
+
+      > span:last-child {
+        color: $pest-pink-bright;
+
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  &__seal {
+    display: grid;
+
+    place-items: center;
+
+    border-right: 1px solid $pest-line;
+
+    border-left: 1px solid $pest-line;
+
+    img {
+      width: 75px;
+      height: 75px;
+
+      object-fit: contain;
+
+      filter: drop-shadow(0 0 16px rgba($pest-pink, 0.4));
     }
   }
 }
-// Small devices (phones)
-@media (max-width: 600px) {
-  .pest-theme {
-    .pestilence-hero {
-      padding: 4rem 1rem;
 
-      h1 {
-        font-size: 2.5rem;
-      }
+// ==================================================
+// MOBILE
+// ==================================================
 
-      .subtitle {
-        font-size: 1rem;
-        text-align: center;
-        flex-direction: column;
-      }
+@media (max-width: 900px) {
+  .pest-hero {
+    min-height: 800px;
+
+    padding-bottom: 11rem;
+
+    align-items: flex-end;
+
+    &::before {
+      top: 24%;
+
+      right: -12%;
+
+      width: 82vw;
+      height: 82vw;
     }
+  }
 
-    .pestilence-content {
-      padding: 1.5rem;
-      margin: 2rem 1rem;
+  .pest-hero__content {
+    width: 100%;
+  }
 
-      h2 {
-        font-size: 1.8rem;
-      }
+  .pest-hero__index {
+    display: none;
+  }
 
-      p {
-        font-size: 0.95rem;
-      }
-    }
+  .pest-stats {
+    right: auto;
 
-    .back-link {
-      font-size: 0.9rem;
-      padding: 0.5rem 1.2rem;
-    }
+    left: $pest-padding;
+  }
+
+  .pest-overview,
+  .pest-strategy__inner {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .pest-overview__copy,
+  .pest-strategy__copy {
+    grid-column: 2;
+
+    padding-top: 0;
+  }
+
+  .pest-quote {
+    grid-column: 2;
+  }
+
+  .pest-trait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pest-trait-card {
+    min-height: 330px;
   }
 }
 
-// Medium devices (tablets)
-@media (min-width: 601px) and (max-width: 1024px) {
-  .pest-theme {
-    .pestilence-hero {
-      padding: 5rem 1.5rem;
+// ==================================================
+// SMALL MOBILE
+// ==================================================
 
-      h1 {
-        font-size: 3.2rem;
-      }
+@media (max-width: 580px) {
+  .pest-hero {
+    min-height: 760px;
 
-      .subtitle {
-        font-size: 1.1rem;
-      }
-    }
+    padding-bottom: 10rem;
+  }
 
-    .pestilence-content {
-      padding: 2rem;
-      margin: 3rem 2rem;
+  .pest-hero__content h1 {
+    font-size: clamp(2.6rem, 13vw, 4.5rem);
 
-      h2 {
-        font-size: 2.2rem;
-      }
+    line-height: 0.98;
 
-      p {
-        font-size: 1rem;
-      }
-    }
+    letter-spacing: -0.06em;
+  }
 
-    .back-link {
-      font-size: 0.95rem;
+  .pest-hero__actions {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 1.3rem;
+  }
+
+  .pest-stats {
+    width: calc(100% - 2 * #{$pest-padding});
+
+    div {
+      min-width: 0;
+
+      flex: 1;
+
+      padding: 0.8rem;
     }
   }
-}
-@media (max-width: 400px) {
-  .pest-theme {
-    .pestilence-hero {
-      padding: 3rem 1rem;
 
-      h1 {
-        font-size: 2rem;
-        line-height: 1.2;
-      }
+  .pest-overview,
+  .pest-strategy__inner {
+    display: block;
+  }
 
-      .subtitle {
-        font-size: 0.9rem;
-        text-align: center;
-        flex-direction: column;
-      }
-    }
+  .pest-section__number {
+    display: none;
+  }
 
-    .pestilence-content {
-      padding: 1rem;
-      margin: 1.5rem 0.5rem;
+  .pest-overview__copy,
+  .pest-strategy__copy {
+    margin-top: 2rem;
+  }
 
-      h2 {
-        font-size: 1.5rem;
-      }
+  .pest-quote {
+    margin-top: 3rem;
 
-      p {
-        font-size: 0.9rem;
-      }
-    }
+    padding: 2rem 1.5rem;
+  }
 
-    .back-link {
-      font-size: 0.85rem;
-      padding: 0.4rem 1rem;
-    }
+  .pest-faction-nav {
+    grid-template-columns: 1fr 1fr;
 
-    .smoke,
-    .ash {
+    &__seal {
       display: none;
     }
+
+    &__link {
+      padding: 2rem 1.25rem;
+    }
   }
 }
-@keyframes floatIn {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
+
+// ==================================================
+// EXTRA SMALL MOBILE
+// ==================================================
+
+@media (max-width: 400px) {
+  .pest-hero__content h1 {
+    font-size: 2.25rem;
   }
+
+  .pest-hero {
+    min-height: 720px;
+  }
+
+  .pest-stats {
+    div {
+      padding: 0.65rem;
+    }
+
+    span {
+      font-size: 0.48rem;
+    }
+
+    strong {
+      font-size: 1rem;
+    }
+  }
+}
+
+// ==================================================
+// REDUCED MOTION
+// ==================================================
+
+@media (prefers-reduced-motion: reduce) {
+  .pest-page {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+
+      animation-iteration-count: 1 !important;
+
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+// ==================================================
+// PEST FLOAT
+// ==================================================
+
+@keyframes pestFloat {
+  0%,
   100% {
-    opacity: 1;
+    opacity: 0.35;
+
     transform: translateY(0);
   }
-}
 
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  50% {
+    opacity: 0.85;
 
-  &.visible {
-    animation: floatIn 0.8s ease forwards;
+    transform: translateY(-20px);
   }
 }

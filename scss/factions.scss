@@ -128,7 +128,7 @@ $faction-body: "DM Sans", sans-serif;
     margin: 2rem 0 0;
     color: $faction-muted;
     font-family: $faction-body;
-    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    font-size: clamp(1.2rem, 1.3vw, 1.6rem);
     line-height: 1.75;
   }
 
@@ -140,7 +140,7 @@ $faction-body: "DM Sans", sans-serif;
     gap: 0.9rem;
     color: $faction-green;
     font-family: $faction-title;
-    font-size: 0.58rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -207,7 +207,7 @@ $faction-body: "DM Sans", sans-serif;
 // ========================================
 
 .faction-card {
-  --accent: #{$faction-green};
+  --accent: #{pink};
   --accent-rgb: 112, 225, 193;
 
   position: absolute;
@@ -251,8 +251,8 @@ $faction-body: "DM Sans", sans-serif;
   }
 
   &[data-faction="pestilence"] {
-    --accent: #72d6a0;
-    --accent-rgb: 114, 214, 160;
+    --accent: #d672d6;
+    --accent-rgb: 214, 114, 214;
   }
 
   // Faction-colored corner glow
@@ -326,7 +326,7 @@ $faction-body: "DM Sans", sans-serif;
     margin: auto 0 1rem;
     color: $faction-bone;
     font-family: $faction-title;
-    font-size: clamp(2.2rem, 4vw, 3.7rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.06em;

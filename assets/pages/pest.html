@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bloodletting - Pestilence Factions</title>
+
+    <title>Bloodletting - Pestilence Faction</title>
 
     <!-- Font Awesome -->
     <link
@@ -13,89 +14,329 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <!-- Main Styles -->
-    <link rel="stylesheet" href="/css/styles.css" />
   </head>
+
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
       <div class="logo">
-        <a href="/" style="text-decoration: none; color: #00ffe7"
-          >Witless Crusade Games</a
-        >
+        <a href="/" style="text-decoration: none; color: #00ffe7">
+          Witless Crusade Games
+        </a>
       </div>
-      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+
+      <div class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/assets/pages/rules.html">How to Play</a></li>
-        <li><a href="/assets/pages/factions.html">Factions</a></li>
+        <li>
+          <a href="/assets/pages/rules.html">How to Play</a>
+        </li>
+        <li>
+          <a href="/assets/pages/factions.html">Factions</a>
+        </li>
       </ul>
     </nav>
-    <div class="pest-theme">
-      <div class="pestilence-hero">
-        <h1>Pestilence</h1>
-        <p class="subtitle">Decay. Disease. Despair.</p>
-        <div class="smoke-ash">
-          <div
-            class="particle smoke"
-            style="top: 90%; left: 20%; animation-delay: 0s"
-          ></div>
-          <div
-            class="particle smoke"
-            style="top: 95%; left: 50%; animation-delay: 4s"
-          ></div>
-          <div
-            class="particle smoke"
-            style="top: 92%; left: 75%; animation-delay: 7s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 80%; left: 25%; animation-delay: 1s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 85%; left: 40%; animation-delay: 3s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 78%; left: 65%; animation-delay: 5s"
-          ></div>
-          <div
-            class="particle ash"
-            style="top: 83%; left: 85%; animation-delay: 2s"
-          ></div>
+
+    <!-- PESTILENCE PAGE -->
+    <div class="pest-page">
+      <!-- ======================================
+           HERO
+      ======================================= -->
+      <section class="pest-hero">
+        <div class="pest-orb pest-orb--one"></div>
+        <div class="pest-orb pest-orb--two"></div>
+        <div class="pest-orb pest-orb--three"></div>
+
+        <div class="pest-hero__content">
+          <div class="pest-eyebrow">
+            <span>Faction dossier</span>
+            <span class="pest-eyebrow__line"></span>
+            <span>04 / 04</span>
+          </div>
+
+          <h1>Pestilence<span>.</span></h1>
+
+          <p class="pest-hero__kicker">Masters of Decay</p>
+
+          <p class="pest-hero__description">
+            A spreading corruption that weakens everything it touches, infecting
+            the battlefield until resistance itself begins to collapse.
+          </p>
+
+          <div class="pest-hero__actions">
+            <a href="#pest-overview" class="pest-button">
+              Enter the infection
+              <span aria-hidden="true">↓</span>
+            </a>
+
+            <a href="#pest-traits" class="pest-text-link">
+              View card traits
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <section class="pestilence-content">
-        <h2 class="reveal-on-scroll">The Masters of Decay</h2>
-        <p class="reveal-on-scroll">
-          This faction thrives where others wither. Pestilence spreads like a
-          sickness—slow, painful, and inescapable. Their cards weaken opponents
-          turn by turn, stacking debuffs and infecting strategies.
-        </p>
+        <div class="pest-hero__index" aria-hidden="true">
+          <span>WCG—F04</span>
+          <span>THE ROTTING VEIL</span>
+        </div>
 
-        <h2 class="reveal-on-scroll">Signature Strategy</h2>
-        <p class="reveal-on-scroll">
-          Focused on slow-burn tactics, Pestilence cards infect the enemy and
-          hinder progress. They win by surviving while others rot.
-        </p>
+        <div class="pest-stats" aria-label="Pestilence faction profile">
+          <div>
+            <span>Infection</span>
+            <strong>09</strong>
+          </div>
 
-        <h2 class="reveal-on-scroll">Card Traits</h2>
-        <p class="reveal-on-scroll">
-          🦠 <strong>Poison Over Time</strong><br />
-          💀 <strong>Decay Mechanics</strong><br />
-          🧬 <strong>Contagion Spread</strong>
-        </p>
+          <div>
+            <span>Control</span>
+            <strong>08</strong>
+          </div>
 
-        <a href="/assets/pages/factions.html" class="back-link">
-          <i class="fa-solid fa-arrow-left"></i> Back to Factions
+          <div>
+            <span>Tempo</span>
+            <strong>06</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================
+           OVERVIEW
+      ======================================= -->
+      <section id="pest-overview" class="pest-overview pest-section">
+        <div class="pest-section__number" aria-hidden="true">01</div>
+
+        <div class="pest-section__heading">
+          <p class="pest-label">Faction overview</p>
+
+          <h2>
+            Everything<br />
+            decays.
+          </h2>
+        </div>
+
+        <div class="pest-overview__copy">
+          <p class="lead">
+            Pestilence does not destroy its enemies all at once. It infects
+            them—and lets time finish the work.
+          </p>
+
+          <p>
+            The Horsemen of Pestilence; a fungal hive mind that takes over
+            living beings and uses their blood to grow. It refuses to stop until
+            it cannot spread further.
+          </p>
+        </div>
+
+        <blockquote class="pest-quote">
+          <span class="pest-quote__mark" aria-hidden="true"> “ </span>
+
+          <p>What spreads cannot always be contained.</p>
+
+          <cite> — Keeper of the Rotting Veil </cite>
+        </blockquote>
+      </section>
+
+      <!-- ======================================
+           STRATEGY
+      ======================================= -->
+      <section id="pest-strategy" class="pest-strategy">
+        <div class="pest-strategy__inner pest-section">
+          <div class="pest-section__number" aria-hidden="true">02</div>
+
+          <div class="pest-section__heading">
+            <p class="pest-label">Signature strategy</p>
+
+            <h2>
+              Infect the weak.<br />
+              Spread the rot.
+            </h2>
+          </div>
+
+          <div class="pest-strategy__copy">
+            <p>
+              Pestilence focuses on slow-burn pressure. Infect enemy units,
+              stack debilitating effects, and allow contagion to spread across
+              the battlefield while opponents struggle to recover.
+            </p>
+
+            <ul class="pest-strategy__list">
+              <li>
+                <span>01</span>
+                Use the environment you control to your advantage
+              </li>
+
+              <li>
+                <span>02</span>
+                Take over more land before your opponents realize it's too late
+              </li>
+
+              <li>
+                <span>03</span>
+                Keep units together for synergized abilities
+              </li>
+            </ul>
+
+            <!-- METER 1 -->
+            <div class="pest-meter">
+              <div class="pest-meter__meta">
+                <span>Infection</span>
+                <span>94%</span>
+              </div>
+
+              <div class="pest-meter__track">
+                <span style="--meter-width: 94%"></span>
+              </div>
+            </div>
+
+            <!-- METER 2 -->
+            <div class="pest-meter">
+              <div class="pest-meter__meta">
+                <span>Debuff</span>
+                <span>87%</span>
+              </div>
+
+              <div class="pest-meter__track">
+                <span style="--meter-width: 87%"></span>
+              </div>
+            </div>
+
+            <!-- METER 3 -->
+            <div class="pest-meter">
+              <div class="pest-meter__meta">
+                <span>Speed</span>
+                <span>58%</span>
+              </div>
+
+              <div class="pest-meter__track">
+                <span style="--meter-width: 58%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================
+           CARD TRAITS
+      ======================================= -->
+      <section id="pest-traits" class="pest-traits pest-section">
+        <header class="pest-traits__heading">
+          <p class="pest-label">Card Traits</p>
+
+          <h2>The sickness spreads.</h2>
+
+          <p>
+            Pestilence turns time into a weapon. Its cards accumulate effects,
+            spread corruption, and steadily reduce an opponent's ability to
+            recover.
+          </p>
+        </header>
+
+        <div class="pest-trait-grid">
+          <!-- TRAIT 1 -->
+          <article class="pest-trait-card">
+            <div class="pest-trait-card__top">
+              <span>01</span>
+
+              <span class="pest-trait-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-virus"></i>
+              </span>
+            </div>
+
+            <div class="pest-trait-card__content">
+              <h3>Taunt</h3>
+
+              <p>Taunt and attack opponents using the environment</p>
+
+              <span class="pest-trait-card__tag"> Poison </span>
+            </div>
+          </article>
+
+          <!-- TRAIT 2 -->
+          <article class="pest-trait-card">
+            <div class="pest-trait-card__top">
+              <span>02</span>
+
+              <span class="pest-trait-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-skull-crossbones"></i>
+              </span>
+            </div>
+
+            <div class="pest-trait-card__content">
+              <h3>Resummon</h3>
+
+              <p>Resummon units anywhere you control</p>
+
+              <span class="pest-trait-card__tag"> Attrition </span>
+            </div>
+          </article>
+
+          <!-- TRAIT 3 -->
+          <article class="pest-trait-card">
+            <div class="pest-trait-card__top">
+              <span>03</span>
+
+              <span class="pest-trait-card__icon" aria-hidden="true">
+                <i class="fa-solid fa-biohazard"></i>
+              </span>
+            </div>
+
+            <div class="pest-trait-card__content">
+              <h3>Contagion</h3>
+
+              <p>Weaken opponents attacks through plague</p>
+
+              <span class="pest-trait-card__tag"> Spread </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ======================================
+           FACTION NAVIGATION
+      ======================================= -->
+      <section class="pest-faction-nav">
+        <a href="/assets/pages/famine.html" class="pest-faction-nav__link">
+          <span aria-hidden="true"> ← </span>
+
+          <span>
+            <small> Previous faction </small>
+
+            Famine
+          </span>
+        </a>
+
+        <div class="pest-faction-nav__seal" aria-hidden="true">
+          <img src="/assets/images/Pestilencelogo.png" alt="" />
+        </div>
+
+        <a
+          href="/assets/pages/factions.html"
+          class="pest-faction-nav__link pest-faction-nav__link--next"
+        >
+          <span>
+            <small> Return to </small>
+
+            All Factions
+          </span>
+
+          <span aria-hidden="true"> → </span>
         </a>
       </section>
     </div>
+
+    <!-- ======================================
+         FOOTER
+    ======================================= -->
     <footer>
       <div class="footer-columns">
         <div class="footer-col copyright">
@@ -104,104 +345,58 @@
 
         <div class="footer-col creators">
           <p>Game Creators:</p>
+
           <ul>
             <li>
               <a
                 href="https://www.linkedin.com/in/donovan-jennings/"
                 target="_blank"
-                >Donovan Jennings</a
               >
+                Donovan Jennings
+              </a>
             </li>
+
             <li>
               <a
                 href="https://www.linkedin.com/in/samarth-patel-22861a186/"
                 target="_blank"
-                >Sam Patel</a
               >
+                Sam Patel
+              </a>
             </li>
+
             <li>
               <a
                 href="https://www.linkedin.com/in/jonathanshaw2/"
                 target="_blank"
-                >Jonathan Shaw</a
               >
+                Jonathan Shaw
+              </a>
             </li>
           </ul>
         </div>
 
         <div class="footer-col web-designer">
-          Web Designer + Developer: <br />
-          <a href="https://www.linkedin.com/in/megan-palmquist/" target="_blank"
-            >Megan Palmquist</a
-          >
+          Web Designer + Developer:
+          <br />
+
+          <a href="https://www.mspstudios.co/" target="_blank"> MSP Studios </a>
         </div>
 
         <div class="footer-col feedback">
           <h4>Already played Bloodletting? We'd Love your Feedback!</h4>
+
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeblitz-k1ZS6mbZEc8krWf_sYg5VrOVLVFUbWxBRpunEd95A/viewform?usp=dialog"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdiDv1Mp-aJzOOs0aAVWgVIShjJOwy_ZcX2IA-xQMH-WMtfAQ/viewform?pli=1"
             target="_blank"
             class="feedback-btn"
-            >Playtest Review Form</a
           >
+            Playtest Review Form
+          </a>
         </div>
       </div>
     </footer>
+
     <script src="/js/app.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".faction-card");
-        let activeIndex = 0;
-
-        function updateCards() {
-          cards.forEach((card, i) => {
-            card.classList.remove("active", "tilted-left", "tilted-right");
-            if (i < activeIndex) card.classList.add("tilted-left");
-            else if (i > activeIndex) card.classList.add("tilted-right");
-            else card.classList.add("active");
-          });
-        }
-
-        // Swipe support for mobile
-        let touchStartX = 0;
-        document.addEventListener("touchstart", (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.addEventListener("touchend", (e) => {
-          const deltaX = e.changedTouches[0].screenX - touchStartX;
-          if (Math.abs(deltaX) > 50) {
-            if (deltaX < 0) {
-              activeIndex = (activeIndex + 1) % cards.length;
-            } else {
-              activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-            }
-            updateCards();
-          }
-        });
-
-        // Click on desktop to advance
-        document
-          .querySelector(".factions-stack")
-          .addEventListener("click", () => {
-            if (window.innerWidth > 768) {
-              activeIndex = (activeIndex + 1) % cards.length;
-              updateCards();
-            }
-          });
-
-        updateCards(); // initial load
-      });
-
-      // Hamburger Menu
-      document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.querySelector(".hamburger");
-        const navMenu = document.querySelector(".navbar ul");
-
-        hamburger?.addEventListener("click", () => {
-          navMenu.classList.toggle("active");
-        });
-      });
-    </script>
   </body>
 </html>

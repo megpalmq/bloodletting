@@ -4,13 +4,14 @@ if (introScreen) {
   document.body.classList.add("intro-active");
 
   const heroArt = new Image();
+
   const finishIntro = () => {
     introScreen.classList.add("is-ready");
     document.body.classList.remove("intro-active");
 
     window.setTimeout(() => {
       introScreen.remove();
-    }, 1800);
+    }, 1400);
   };
 
   heroArt.onload = () => {
@@ -19,12 +20,17 @@ if (introScreen) {
       return;
     }
 
-    window.setTimeout(finishIntro, 3500);
+    window.setTimeout(finishIntro, 2500);
   };
+
   heroArt.onerror = finishIntro;
   heroArt.src = "/assets/images/BoxCover_Transparent.png";
 }
 
+
+// ----------------------------------------------
+// Mobile navigation
+// ----------------------------------------------
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".navbar ul");
 
@@ -33,6 +39,44 @@ if (hamburger && navMenu) {
     navMenu.classList.toggle("active");
   });
 }
+
+
+// ----------------------------------------------
+// Active navigation link
+// ----------------------------------------------
+const navLinks = document.querySelectorAll(".navbar ul li a");
+
+const currentPage =
+  window.location.pathname.split("/").pop() || "index.html";
+
+navLinks.forEach((link) => {
+  const href = link.getAttribute("href");
+
+  if (!href) return;
+
+  const linkPage =
+    href.split("/").pop().split("#")[0] || "index.html";
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+    link.setAttribute("aria-current", "page");
+  } else {
+    link.classList.remove("active");
+    link.removeAttribute("aria-current");
+  }
+
+  // Close mobile menu after clicking
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      navMenu?.classList.remove("active");
+    }
+  });
+});
+
+
+// ----------------------------------------------
+// Scroll reveal
+// ----------------------------------------------
 const revealElements = Array.from(
   document.querySelectorAll(".reveal-on-scroll"),
 ).filter((element) => !element.closest(".regions"));

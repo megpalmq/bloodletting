@@ -124,239 +124,55 @@ body {
   padding: 1rem;
   flex-direction: row;
 
-  img {
-    width: 100%;
-    height: 90vh;
-    object-fit: cover;
-    filter: brightness(0.8);
-    position: relative;
-    top: 0;
-    left: 20px;
-    margin-left: 150px;
-    z-index: 0;
-  }
-
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 1rem;
-    color: $light;
-    animation: fadeInUp 2s ease-out;
-    min-width: 600px;
-    margin: 0 auto;
-    right: 130px;
-    background-color: rgb(11, 20, 18, 0.7);
-    padding: 20px;
-
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-      color: $light;
-      text-shadow:
-        0 0 5px $accent,
-        0 0 5px $mint;
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      color: $accent;
-    }
-
-    .buy-button {
-      margin-top: 1rem;
-      background: $mint;
-      padding: 1rem 2rem;
-      border: none;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-      box-shadow: 0 0 10px $mint;
-      font-family: "Cinzel", serif;
-      color: $dark;
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px $accent;
-        background: $accent;
-      }
-    }
-  }
-
-  .hero-title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow:
-      0 0 5px $accent,
-      0 0 5px $mint;
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-    color: $accent;
-    text-shadow:
-      0 0 6px $accent,
-      0 0 12px $mint;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    max-width: 600px;
-    color: $light;
-    text-shadow: 0 0 6px $accent;
-    animation: fadeInUp 2.5s ease-out;
-  }
-
   .fog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 180vw;
-    height: 100vh;
-    background: url("/assets/images/mist.jpeg") center/cover no-repeat;
-    opacity: 0.7;
-    animation: floatFog 30s linear infinite;
-    pointer-events: none;
-    z-index: -1;
+    position: absolute;
 
-    &.fog-1 {
-      animation-delay: 0s;
-    }
+    top: -15%;
+    left: -25%;
+
+    width: 150%;
+    height: 130%;
+
+    background: url("/assets/images/mist.jpeg") center / cover no-repeat;
+
+    opacity: 0.7;
+
+    filter: blur(18px);
+
+    pointer-events: none;
+    z-index: 0;
+
+    /* Fade the image into the hero instead of showing its edges */
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      black 35%,
+      rgba(0, 0, 0, 0.95) 55%,
+      transparent 88%
+    );
+
+    mask-image: radial-gradient(
+      ellipse at center,
+      black 35%,
+      rgba(0, 0, 0, 0.95) 55%,
+      transparent 88%
+    );
+
+    animation: floatFog 60s ease-in-out infinite alternate;
   }
 
   &.rough-edge::before {
-    background: url("/assets/images/mist.jpeg");
-    opacity: 0.6;
+    background: url("/images/rough-edge.png") repeat;
+    opacity: 0.25;
+  }
+}
+
+@keyframes floatFog {
+  from {
+    transform: scale(1.12) translateX(-2%);
   }
 
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    padding: 2rem 2rem;
-    height: auto;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 1;
-      object-fit: contain;
-      filter: brightness(0.8);
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      right: 0;
-      z-index: 2;
-      padding: 1rem;
-      width: 100%;
-      max-width: 100%;
-      min-width: auto;
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1rem;
-      }
-
-      .buy-button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
-      }
-    }
-
-    .hero-title {
-      font-size: 2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.2rem;
-    }
-
-    .hero-description {
-      font-size: 0.9rem;
-      margin: 1rem 0;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero-content {
-      padding: 1rem;
-      width: 100%;
-      max-width: 100%;
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      h2 {
-        font-size: 0.95rem;
-      }
-
-      .buy-button {
-        padding: 0.7rem 1.3rem;
-        font-size: 0.85rem;
-      }
-    }
-
-    .hero-title {
-      font-size: 1.7rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-    }
-
-    .hero-description {
-      font-size: 0.88rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-content {
-      padding: 1rem;
-      width: 100%;
-      max-width: 100%;
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      h2 {
-        font-size: 0.9rem;
-      }
-
-      .buy-button {
-        font-size: 0.85rem;
-        padding: 0.6rem 1.2rem;
-      }
-    }
-
-    .hero-title {
-      font-size: 1.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-
-    .hero-description {
-      font-size: 0.85rem;
-    }
+  to {
+    transform: scale(1.12) translateX(2%);
   }
 }
 .learn-about {
@@ -434,9 +250,23 @@ body {
       padding: 0 1rem;
     }
   }
+  @media (max-width: 560px) {
+    #app .hero .hero-content h1 {
+      font-size: 2.35rem !important;
+      line-height: 1 !important;
+      letter-spacing: -0.04em !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      white-space: nowrap;
+    }
+  }
 
   @media (max-width: 480px) {
     padding: 3rem 1rem;
+    h1 {
+      font-size: 1rem;
+      padding: 0.5rem 0.5rem;
+    }
 
     h2 {
       font-size: 2.2rem;
@@ -475,17 +305,6 @@ body {
 }
 
 // --- REGIONS SECTION ---
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 
 @keyframes wiggle {
   0% {
@@ -807,7 +626,7 @@ body {
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #ffffff;
+      background-color: #030303;
     }
   }
 }
@@ -1325,11 +1144,11 @@ body.intro-active {
     max-width: 60ch;
   }
 
-  #app .hero .fog {
-    height: 130%;
-    left: -90%;
-    width: 220%;
-  }
+  // #app .hero .fog {
+  //   height: 130%;
+  //   left: -90%;
+  //   width: 220%;
+  // }
 
   #app .learn-about {
     align-items: center;
@@ -1412,9 +1231,9 @@ body.intro-active {
     margin-bottom: -2rem;
   }
 
-  #app .hero .hero-content h1 {
-    font-size: clamp(2.8rem, 15vw, 4rem);
-  }
+  // #app .hero .hero-content h1 {
+  //   font-size: clamp(2.8rem, 15vw, 4rem);
+  // }
 
   #app .hero .hero-content h2 {
     font-size: 0.78rem;
@@ -1484,6 +1303,11 @@ body.intro-active {
   #app .intro-screen__art-wrap {
     height: min(52vh, 420px);
     width: min(78vw, 340px);
+  }
+}
+@media (max-width: 400px) {
+  #app .hero .hero-content h1 {
+    font-size: 2rem;
   }
 }
 
@@ -1688,12 +1512,12 @@ body.intro-active {
 }
 
 .navbar ul li a:hover,
-.navbar ul li:first-child a {
+.navbar ul li a.active {
   color: $mint-light;
 }
 
 .navbar ul li a:hover::before,
-.navbar ul li:first-child a::before {
+.navbar ul li a.active::before {
   transform: scaleX(1);
 }
 
