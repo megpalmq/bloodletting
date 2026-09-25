@@ -1062,64 +1062,11 @@ body.intro-active {
     padding-top: 3rem;
   }
   #app .hero img.hero-image {
-    height: 42vh;
-    margin-bottom: -2rem;
-  }
-  #app .hero .hero-content h2 {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-  }
-  #app .hero-meta {
-    gap: 0.8rem;
-    margin-top: 2rem;
-  }
-  #app .hero-meta strong {
-    font-size: 1rem;
-  }
-  #app .learn-about {
-    padding: 5rem 1rem 4rem;
-  }
-  #app .learn-about h2 {
-    font-size: clamp(2.25rem, 11vw, 3.1rem);
-  }
-  #app .learn-tabletop__orbit {
-    height: min(84vw, 290px);
-    width: min(84vw, 290px);
-  }
-  #app .learn-tabletop__token {
-    height: 58px;
-    width: 58px;
-  }
-  #app .learn-tabletop__throne {
-    height: 70px;
-    width: 70px;
-  }
-  #app .learn-about .text {
-    padding: 1.25rem;
-  }
-  #app .learn-about p {
-    font-size: 1rem;
-    line-height: 1.75;
-  }
-  #app .regions .regions-row {
-    grid-template-columns: 1fr;
-    padding-top: 3rem;
-  }
-  #app .regions h2 {
-    font-size: clamp(2.25rem, 11vw, 3.1rem);
-  }
-  #app .regions .region,
-  #app .regions .region.death,
-  #app .regions .region.war,
-  #app .regions .region.pestilence,
-  #app .regions .region.famine {
-    height: 440px;
-    max-width: none;
     width: 100%;
-  }
-  #app .intro-screen__art-wrap {
-    height: min(52vh, 420px);
-    width: min(78vw, 340px);
+    height: auto;
+    max-height: 360px;
+    object-fit: contain;
+    margin: -1rem auto 2rem;
   }
 }
 @media (max-width: 400px) {
