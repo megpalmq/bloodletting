@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap");
 $dark: #0b1412;
 $light: #f0f0f0;
 $accent: #5df2d6;
@@ -32,86 +31,8 @@ body {
 }
 
 // ----------------------------------------------
-// Navbar
+// Hero
 // ----------------------------------------------
-.navbar {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 3px solid $accent;
-  animation: glitchIn 1s ease-out;
-
-  .logo {
-    font-size: 1.3rem;
-    color: $accent;
-    text-shadow: 0 0 10px $accent;
-  }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-
-  ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-
-    li {
-      a {
-        color: $light;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 1.2rem;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: $accent;
-          text-shadow: 0 0 5px $accent;
-        }
-      }
-    }
-  }
-
-  // Responsive
-  @media (max-width: 768px) {
-    .hamburger {
-      display: flex;
-      font-size: 40px;
-    }
-
-    ul {
-      position: absolute;
-      top: 100%;
-      right: 2rem;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.95);
-      border: 2px solid $accent;
-      border-radius: 10px;
-      padding: 1rem;
-      display: none;
-      gap: 1rem;
-      width: 200px;
-
-      &.active {
-        display: flex;
-      }
-
-      li a {
-        font-size: 1.2rem;
-      }
-    }
-  }
-}
-
 .hero {
   height: 100vh;
   width: 100vw;
@@ -289,145 +210,56 @@ body {
 .signup,
 .champions,
 .regions {
-  padding: 4rem 2rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-
-  h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: $accent;
-    text-shadow:
-      0 0 8px $accent,
-      0 0 15px $mint;
-  }
-}
-
-// --- REGIONS SECTION ---
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(0deg);
-  }
-  15% {
-    transform: rotate(-3deg);
-  }
-  30% {
-    transform: rotate(3deg);
-  }
-  45% {
-    transform: rotate(-2deg);
-  }
-  60% {
-    transform: rotate(2deg);
-  }
-  75% {
-    transform: rotate(-1deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, -10px);
-  }
-  100% {
-    transform: translate(-50%, 0);
-  }
-}
-
-.regions {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   height: auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 1;
+  text-align: center;
 
   h2 {
-    font-size: clamp(2.6rem, 4vw, 4.2rem);
+    width: 100%;
+    margin: 50px 0 0;
     color: $light;
+    font-size: clamp(2.6rem, 4vw, 4.2rem);
+    text-align: left;
     text-shadow:
       0 0 10px $accent,
       0 0 25px $accent;
-    margin-bottom: 0;
-    text-align: left;
-    margin-top: 50px;
   }
 
   .regions-row {
     display: flex;
     flex-wrap: nowrap;
-    gap: 3rem;
     justify-content: center;
-    width: 100%;
     align-items: flex-start;
-    padding-top: 100px;
+    gap: 3rem;
+    width: 100%;
     max-width: 1920px;
+    padding-top: 100px;
   }
 
   .region {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 420px;
     height: 600px;
     padding: 2.5rem 1.5rem 1rem;
     border-radius: 20px;
     overflow: visible;
+    transition:
+      transform 0.4s ease,
+      border-color 0.4s ease;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    transition: all 0.4s ease;
     &:hover {
       transform: scale(1.07);
       backdrop-filter: blur(20px);
-    }
-
-    h3 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 0.5rem;
-      color: $light;
-      text-shadow:
-        0 0 8px $accent,
-        0 0 20px $accent;
-      letter-spacing: 1px;
-    }
-
-    .description {
-      font-size: 1.1rem;
-      text-align: center;
-      color: lighten($light, 20%);
-      margin-bottom: 1.5rem;
-      padding: 0 1rem;
-      line-height: 1.4;
-      font-family: "Times New Roman", Times, serif;
-    }
-
-    img {
-      position: absolute;
-      top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      width: 260px;
-      height: 250px;
-      z-index: 3;
-
-      /* GRAY BY DEFAULT */
-      filter: grayscale(100%) !important;
-      transition: filter 0.5s ease;
-    }
-
-    /* COLOR ON CARD HOVER */
-    &:hover {
-      transform: scale(1.07);
 
       img {
         filter: grayscale(0%) !important;
@@ -435,21 +267,57 @@ body {
       }
     }
 
+    img {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      width: 260px;
+      height: 250px;
+      object-fit: contain;
+      transform: translateX(-50%);
+      filter: grayscale(100%) !important;
+      transition: filter 0.5s ease;
+      z-index: 3;
+    }
+
+    h3 {
+      margin-bottom: 0.5rem;
+      color: $light;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-align: center;
+      text-shadow:
+        0 0 8px $accent,
+        0 0 20px $accent;
+    }
+
+    .description {
+      margin-bottom: 1.5rem;
+      padding: 0 1rem;
+      color: lighten($light, 20%);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      text-align: center;
+    }
+
     button {
+      display: block;
+      margin: auto auto 0;
       padding: 0.9rem 1.8rem;
       border: 2px solid $accent;
+      border-radius: 10px;
       background: rgba(0, 0, 0, 0.2);
       color: $accent;
+      font-family: "Cinzel", serif;
       font-size: 1rem;
       font-weight: 600;
-      border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: auto;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      font-family: "Cinzel", serif;
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 
       &:hover {
         background: $accent;
@@ -467,38 +335,28 @@ body {
     &.famine {
       height: 600px;
     }
-
     &.death {
       border-color: rgba(43, 0, 255, 0.4);
       box-shadow: 0 0 20px rgba(43, 0, 255, 0.4);
     }
-
     &.war {
       border-color: rgba(255, 80, 0, 0.4);
       box-shadow: 0 0 20px rgba(255, 80, 0, 0.3);
     }
-
     &.pestilence {
       border-color: rgba(255, 100, 227, 0.4);
-      box-shadow:
-        0 0 20px,
-        rgba(255, 100, 227, 0.4);
+      box-shadow: 0 0 20px rgba(255, 100, 227, 0.4);
     }
-
     &.famine {
       border-color: rgba(255, 255, 0, 0.4);
       box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
     }
   }
 
-  // === MEDIA QUERIES ===
   @media (max-width: 1200px) {
-    h2 {
-      font-size: 4rem;
-    }
     .regions-row {
-      gap: 2rem;
       flex-wrap: wrap;
+      gap: 2rem;
     }
     .region {
       max-width: 380px;
@@ -506,28 +364,43 @@ body {
   }
 
   @media (max-width: 768px) {
+    padding: 4rem 1.25rem;
+
     h2 {
-      font-size: 3.2rem;
+      font-size: clamp(2.5rem, 8vw, 3.2rem);
     }
+
     .regions-row {
       flex-direction: column;
       flex-wrap: nowrap;
-      padding-top: 100px;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 3.5rem;
     }
+
     .region {
-      max-width: 90%;
-      padding: 2rem 1rem;
+      width: 100%;
+      max-width: 420px;
       height: auto;
+      min-height: 500px;
+      padding: 2rem 1rem;
 
-      img {
-        width: 280px;
-        margin-top: 150px;
+      &.death,
+      &.war,
+      &.pestilence,
+      &.famine {
+        height: auto;
+        min-height: 500px;
       }
-
+      img {
+        width: min(70vw, 280px);
+        height: auto;
+        padding: 0;
+        margin: 0;
+      }
       h3 {
         font-size: 1.8rem;
       }
-
       .description {
         font-size: 0.95rem;
       }
@@ -535,71 +408,37 @@ body {
   }
 
   @media (max-width: 480px) {
+    padding-inline: 1rem;
     h2 {
       font-size: 2.5rem;
     }
 
     .region {
-      margin: 0 auto;
-      height: auto;
-      min-height: 380px;
-      padding: 2rem 1rem;
-
-      img {
-        width: 200px;
-        padding: 30px;
-        margin-top: 170px;
-        object-fit: contain;
-      }
-
-      h3 {
-        font-size: 1.7rem;
-      }
-
-      .description {
-        font-size: 1rem;
-        padding: 0 0.5rem;
-      }
-
-      button {
-        font-size: 1rem;
-        padding: 0.8rem 1.4rem;
-      }
-
+      min-height: 460px;
       &.death,
       &.war,
       &.pestilence,
       &.famine {
-        height: auto !important;
-        min-height: 420px; // make themed cards taller
+        min-height: 460px;
       }
-    }
-  }
-
-  @media (max-width: 330px) {
-    h2 {
-      font-size: 2rem;
-    }
-    .region {
-      padding: 1.5rem 0.5rem;
-      min-height: 200px;
       img {
-        width: 160px;
-        margin-top: 100px;
+        width: min(65vw, 230px);
       }
       h3 {
-        font-size: 1.3rem;
+        font-size: 1.7rem;
       }
       .description {
-        font-size: 0.85rem;
+        padding: 0 0.5rem;
+        font-size: 1rem;
       }
       button {
-        font-size: 0.8rem;
-        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        padding: 0.8rem 1.4rem;
       }
     }
   }
 }
+
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
@@ -1154,13 +993,6 @@ body.intro-active {
     order: 2;
   }
 
-  #app .hero .hero-content {
-    max-width: 680px;
-    order: 2;
-    padding: 0;
-    width: 100%;
-  }
-
   #app .hero .hero-content h1 {
     font-size: clamp(3.2rem, 12vw, 5.5rem);
   }
@@ -1230,19 +1062,6 @@ body.intro-active {
     max-width: 68ch;
     padding: 1.5rem;
     width: 100%;
-  }
-
-  #app .regions {
-    padding: 5rem 1.25rem;
-  }
-
-  #app .regions h2 {
-    font-size: clamp(2.5rem, 8vw, 3.8rem);
-  }
-
-  #app .regions .regions-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-top: 3.5rem;
   }
 }
 
@@ -1381,7 +1200,9 @@ body.intro-active {
   transform: translate3d(0, -8px, 0);
 }
 
-// Sticky command-bar navigation
+// ----------------------------------------------
+// Navbar
+// ----------------------------------------------
 #app ~ .navbar,
 .navbar {
   align-items: center;
