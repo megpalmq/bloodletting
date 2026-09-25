@@ -1123,16 +1123,35 @@ body.intro-active {
   #app .hero {
     display: flex;
     flex-direction: column;
-    min-height: 760px;
-    padding: 4rem 1.25rem 3rem;
+
+    height: auto;
+    min-height: 0;
+
+    padding: 3rem 1.25rem;
+    overflow: visible;
   }
 
   #app .hero img.hero-image {
-    height: min(52vh, 460px);
-    margin: -1rem auto -4rem;
+    display: block;
+    padding-top: 100px;
+    width: 100%;
+    height: auto;
+
     max-width: 620px;
+    max-height: none;
+
+    object-fit: contain;
+
+    margin: 0 auto 2rem;
+
     order: 1;
-    width: min(100%, 620px);
+  }
+
+  #app .hero .hero-content {
+    width: 100%;
+    max-width: 680px;
+    padding: 0;
+    order: 2;
   }
 
   #app .hero .hero-content {
@@ -1229,16 +1248,13 @@ body.intro-active {
 
 @media (max-width: 560px) {
   #app .hero {
-    min-height: 700px;
-    padding-top: 3rem;
+    padding: 2rem 1.25rem 3rem;
   }
 
   #app .hero img.hero-image {
     width: 100%;
     height: auto;
-    max-height: 360px;
-    object-fit: contain;
-    margin: -1rem auto 2rem;
+    margin: 0 auto 2rem;
   }
 }
 @media (max-width: 400px) {
