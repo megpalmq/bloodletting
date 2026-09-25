@@ -769,8 +769,8 @@ $war-body: "DM Sans", sans-serif;
   min-height: 190px;
   display: grid;
   grid-template-columns: 1fr 130px 1fr;
-  border-top: 1px solid red;
-  border-bottom: 1px solid red;
+  border-top: 1px solid rgba(255, 0, 0, 0.151);
+  border-bottom: 1px solid rgba(255, 0, 0, 0.151);
 
   &__link {
     padding: 2.2rem $death-padding;
