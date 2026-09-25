@@ -90,7 +90,7 @@ body {
   color: #5df2d6;
   text-shadow: 0 0 5px #5df2d6;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navbar .hamburger {
     display: flex;
     font-size: 40px;
@@ -114,7 +114,7 @@ body {
   .navbar ul li a {
     font-size: 1.2rem;
   }
-}
+} */
 
 .hero {
   height: 100vh;
