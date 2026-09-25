@@ -466,35 +466,35 @@ $rules-body: "DM Sans", sans-serif;
     a {
       text-decoration: none;
     }
-  }
 
-  .start-game-cta {
-    min-width: min(460px, calc(100vw - 2.5rem));
-    padding: 1.3rem 1.6rem;
-    border: 1px solid $rules-ink;
-    background: transparent;
-    color: $rules-ink;
-    font-family: $rules-body;
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-align: center;
-    text-transform: uppercase;
-    transition:
-      color 0.25s ease,
-      background 0.25s ease,
-      transform 0.25s ease;
+    .start-game-cta {
+      min-width: min(460px, calc(100vw - 2.5rem));
+      padding: 1.3rem 1.6rem;
+      border: 1px solid $rules-ink;
+      background: transparent;
+      color: $rules-ink;
+      font-family: $rules-body;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-align: center;
+      text-transform: uppercase;
+      transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
 
-    &::after {
-      content: "↗";
-      margin-left: 1.2rem;
-      color: $rules-green-dark;
-    }
+      &::after {
+        content: "↗";
+        margin-left: 1.2rem;
+        color: $rules-green-dark;
+      }
 
-    &:hover {
-      background: $rules-ink;
-      color: $rules-paper;
-      transform: translateY(-3px);
+      &:hover {
+        background: $rules-ink;
+        color: $rules-paper;
+        transform: translateY(-3px);
+      }
     }
   }
 }
@@ -539,6 +539,16 @@ $rules-body: "DM Sans", sans-serif;
         left: -37px !important;
       }
     }
+
+    .start-game-wrapper {
+      padding: 5rem 1.25rem;
+
+      .start-game-cta {
+        width: min(460px, 100%);
+        padding: 1.2rem 1.4rem;
+        font-size: 0.62rem;
+      }
+    }
   }
 }
 
@@ -559,6 +569,7 @@ $rules-body: "DM Sans", sans-serif;
     .yap {
       margin-top: 3rem;
       font-size: 1rem;
+      padding-left: 0;
     }
 
     .rules-facts {
@@ -583,6 +594,7 @@ $rules-body: "DM Sans", sans-serif;
       padding: 0;
       scroll-snap-type: x mandatory;
       scroll-padding-left: 1rem;
+      overflow-x: auto;
 
       &__label {
         min-width: 120px;
@@ -633,6 +645,102 @@ $rules-body: "DM Sans", sans-serif;
         font-size: 0.88rem;
       }
     }
+
+    .start-game-wrapper {
+      padding: 4rem 1rem;
+
+      .start-game-cta {
+        width: 100%;
+        max-width: 460px;
+        min-width: 0;
+        padding: 1.1rem 1rem;
+        font-size: 0.6rem;
+        line-height: 1.5;
+        letter-spacing: 0.1em;
+
+        &::after {
+          margin-left: 0.6rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .how-to-play-page {
+    > header {
+      padding-top: 6rem;
+
+      h1 {
+        font-size: clamp(2.8rem, 17vw, 4rem);
+      }
+    }
+
+    .yap {
+      font-size: 0.92rem;
+    }
+
+    .rules-facts {
+      grid-template-columns: 1fr;
+
+      > div {
+        border-left: 0 !important;
+        border-top: 1px solid $rules-line;
+
+        &:first-child {
+          border-top: 0;
+        }
+      }
+    }
+
+    .phase-nav {
+      &__label {
+        min-width: 100px;
+        font-size: 0.75rem;
+      }
+
+      a {
+        font-size: 0.75rem;
+      }
+    }
+
+    .timeline {
+      width: calc(100% - 1.5rem);
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .step {
+      padding: 1.25rem;
+      grid-template-columns: 32px 1fr;
+      column-gap: 0.75rem;
+
+      .step-number {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      ol li {
+        padding-left: 1rem;
+        font-size: 0.82rem;
+      }
+    }
+
+    .start-game-wrapper {
+      padding: 3rem 0.75rem;
+
+      .start-game-cta {
+        padding: 0.95rem 0.75rem;
+        font-size: 0.52rem;
+        letter-spacing: 0.07em;
+
+        &::after {
+          margin-left: 0.4rem;
+        }
+      }
+    }
   }
 }
 
@@ -645,12 +753,21 @@ $rules-body: "DM Sans", sans-serif;
     .step {
       opacity: 1;
       transform: none !important;
-      transition: none;
+      transition: none !important;
     }
 
     header h1,
     .rules-facts {
       transform: none !important;
+      animation: none !important;
+    }
+
+    .start-game-cta {
+      transition: none !important;
+
+      &:hover {
+        transform: none !important;
+      }
     }
   }
 }

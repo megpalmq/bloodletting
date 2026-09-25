@@ -791,33 +791,39 @@ $pest-padding: clamp(1.25rem, 5vw, 5rem);
     margin-bottom: 0.6rem;
 
     display: flex;
-
+    align-items: center;
     justify-content: space-between;
 
     font-family: $pest-title;
-
     font-size: 0.6rem;
-
     font-weight: 600;
-
     letter-spacing: 0.09em;
-
     text-transform: uppercase;
   }
 
   &__track {
-    height: 3px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
 
-    background: rgba($pest-black, 0.15);
+    width: 100%;
+    height: 7px;
 
     span {
       display: block;
-
-      width: var(--meter-width);
-
       height: 100%;
 
-      background: $pest-purple;
+      // Empty
+      background: rgba($pest-black, 0.15);
+
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+      // Filled
+      &.filled {
+        background: $pest-purple;
+      }
     }
   }
 }

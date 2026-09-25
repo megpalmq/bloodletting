@@ -511,8 +511,11 @@ $death-padding: clamp(1.25rem, 5vw, 5rem);
 
   &__meta {
     margin-bottom: 0.6rem;
+
     display: flex;
+    align-items: center;
     justify-content: space-between;
+
     font-family: $death-title;
     font-size: 0.6rem;
     font-weight: 600;
@@ -521,14 +524,25 @@ $death-padding: clamp(1.25rem, 5vw, 5rem);
   }
 
   &__track {
-    height: 3px;
-    background: rgba($death-black, 0.15);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+
+    width: 100%;
+    height: 7px;
 
     span {
       display: block;
-      width: var(--meter-width);
       height: 100%;
-      background: $death-blue;
+      background: rgba($death-black, 0.15);
+
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+
+      &.filled {
+        background: $death-blue;
+      }
     }
   }
 }
